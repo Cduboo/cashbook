@@ -4,6 +4,7 @@ public class Cash {
 	private int cashNo;
 	// private Category category; // INNER JOIN -> Cash 타입
 	private int categoryNo; // FK -> INNER JOIN -> Map 타입
+	private String cashDate;
 	private long cashPrice;
 	private String cashMemo;
 	private String updatedate;
@@ -20,6 +21,12 @@ public class Cash {
 	}
 	public void setCategoryNo(int categoryNo) {
 		this.categoryNo = categoryNo;
+	}
+	public String getCashDate() {
+		return cashDate;
+	}
+	public void setCashDate(String cashDate) {
+		this.cashDate = cashDate;
 	}
 	public long getCashPrice() {
 		return cashPrice;
