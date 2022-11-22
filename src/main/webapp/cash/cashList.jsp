@@ -3,7 +3,7 @@
 <%@ page import="vo.Member"%>
 <%@ page import="java.util.*"%>
 <%
-/* 	//비로그인 유저는 접근 불가
+ 	//비로그인 유저는 접근 불가
 	if(session.getAttribute("loginMember") == null) {
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
@@ -11,7 +11,7 @@
 	
 	//session에 담긴 로그인한 계정 정보
 	Member loginMember = (Member)session.getAttribute("loginMember");
-	String name = loginMember.getMemberName(); */
+	String memberId = loginMember.getMemberId();
 	
 	
 	//Controller : session, request
@@ -53,9 +53,9 @@
 	// 전체 td의 개수 : 7로 나누어 떨어져야 한다.
 	int totalTd = beginBlank + lastDate + endBlank;
 	
-	//Model -> 일별 cash 목록
+	//Model -> 해당 유저의 일별 cash 목록
 	CashDao cashDao = new CashDao();
-	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(year, month+1);
+	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(memberId, year, month+1);
 	
 	//View -> 달력 출력 + 일별 cash 목록 출력  
 %>
@@ -68,8 +68,14 @@
 	<body>
 		<div>
 			<!-- 로그인 정보(세션 loginMember 변수) 출력 -->
+			<%=loginMember.getMemberName()%>의 가계부
 		</div>
 		
+		<div>
+			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&lt;</a>
+			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>">&gt;</a>
+			<a href="<%=request.getContextPath()%>/logOut.jsp">로그아웃</a>
+		</div>
 		<div>
 			<%=year%>년 <%=month+1%>월
 		</div>
@@ -95,7 +101,7 @@
 						if(date > 0 && date <= lastDate){
 			%>
 							<div>
-								<a href="<%=request.getContextPath()%>/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+								<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
 									<%=date%>
 								</a>
 							</div>

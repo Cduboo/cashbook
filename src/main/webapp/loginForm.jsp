@@ -31,6 +31,7 @@
 				<input type="password" name="pw" placeholder="패스워드">
 				<button type="submit">로그인</button>
 			</form>			
+			<a href="<%=request.getContextPath()%>/insertMemberForm.jsp">회원가입</a>
 		</div>
 	</body>
 </html>
