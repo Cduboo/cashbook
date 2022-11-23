@@ -69,6 +69,7 @@
 		<div>
 			<!-- 로그인 정보(세션 loginMember 변수) 출력 -->
 			<%=loginMember.getMemberName()%>의 가계부
+			<a href="<%=request.getContextPath()%>/memberOneForm.jsp">마이페이지</a>
 		</div>
 		
 		<div>

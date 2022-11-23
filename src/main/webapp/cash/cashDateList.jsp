@@ -13,6 +13,10 @@
 	if(request.getParameter("msg") != null) {
 		msg = request.getParameter("msg");
 	}
+	if(request.getParameter("year") == null || request.getParameter("month") == null) {
+		response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
+		return;
+	}
 	
 	Member loginMember = (Member)session.getAttribute("loginMember");
 	int year = Integer.parseInt(request.getParameter("year"));
@@ -98,8 +102,8 @@
 						<td><%=m.get("categoryName")%></td>
 						<td><%=m.get("cashPrice")%></td>
 						<td><%=m.get("cashMemo")%></td>
-						<td><a href="#">수정</a></td>
-						<td><a href="#">삭제</a></td>
+						<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=m.get("cashNo")%>">수정</a></td>
+						<td><a href="<%=request.getContextPath()%>/cash/deleteCashAction.jsp?cashNo=<%=m.get("cashNo")%>">삭제</a></td>
 					</tr>
 			<%			
 				}
