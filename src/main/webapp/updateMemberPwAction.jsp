@@ -31,9 +31,9 @@
 		return;
 	}
 	
-	//현재 비밀번호와 수정 비밀번호 동일한지 검사 
+ 	//현재 비밀번호와 수정 비밀번호 동일한지 검사 
 	if(currentPw.equals(updatePw)){
-		String msg = URLEncoder.encode("현재 비밀번호와 동일합니다.", "utf-8");
+		String msg = URLEncoder.encode("입력한 현재 비밀번호와 새 비밀번호가 동일합니다.", "utf-8");
 		response.sendRedirect(request.getContextPath()+"/updateMemberPwForm.jsp?msg="+msg);
 		return;
 	}

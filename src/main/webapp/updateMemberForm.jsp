@@ -36,7 +36,7 @@
 			<table>
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="updateId" value="<%=loginMember.getMemberId()%>" readonly="readonly"></td>
+					<td><input type="text" value="<%=loginMember.getMemberId()%>" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>이름</td>

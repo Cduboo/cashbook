@@ -12,19 +12,20 @@
 		response.sendRedirect(request.getContextPath()+"/insertMemberForm.jsp?msg="+msg);
 		return;
 	}
-	Member paramMember = new Member();
-	paramMember.setMemberId(request.getParameter("id"));
-	paramMember.setMemberPw(request.getParameter("pw"));
-	paramMember.setMemberName(request.getParameter("name"));
 	
-	MemberDao dao = new MemberDao();
-	int row = dao.insertMember(paramMember);
+	Member member = new Member();
+	member.setMemberId(request.getParameter("id"));
+	member.setMemberPw(request.getParameter("pw"));
+	member.setMemberName(request.getParameter("name"));
 	
-	if(row == 0) {
+	MemberDao memberDao = new MemberDao();
+	//true -> 중복된 아이디
+	if(memberDao.selectMemberIdCk(member.getMemberId())) {
 		String msg = URLEncoder.encode("중복된 아이디입니다.", "utf-8");
 		response.sendRedirect(request.getContextPath()+"/insertMemberForm.jsp?msg="+msg);
 		return;
 	}
-	
-	response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
+	//중복된 아이디가 아니라면
+	int row = memberDao.insertMember(member);
+	response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 %>
