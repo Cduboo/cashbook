@@ -4,6 +4,7 @@ public class Member {
 	private int memberNo;
 	private String memberId;
 	private String memberPw;
+	private int memberLevel;
 	private String memberName;
 	private String updatedate;
 	private String createdate;
@@ -25,6 +26,12 @@ public class Member {
 	}
 	public void setMemberPw(String memberPw) {
 		this.memberPw = memberPw;
+	}
+	public int getMemberLevel() {
+		return memberLevel;
+	}
+	public void setMemberLevel(int memberLevel) {
+		this.memberLevel = memberLevel;
 	}
 	public String getMemberName() {
 		return memberName;

@@ -27,7 +27,7 @@
 			}
 		%>
 		<h1>비밀번호 수정</h1>
-		<form action="<%=request.getContextPath()%>/updateMemberPwAction.jsp" method="post">
+		<form action="<%=request.getContextPath()%>/member/updateMemberPwAction.jsp" method="post">
 			<table>
 				<tr>
 					<td>현재 비밀번호</td>

@@ -25,13 +25,13 @@
 			<a href="<%=request.getContextPath()%>/cash/cashList.jsp">홈</a>
 		</div>
 		<div>
-			<a href="<%=request.getContextPath()%>/updateMemberPwForm.jsp">비밀번호 수정</a>
+			<a href="<%=request.getContextPath()%>/member/updateMemberPwForm.jsp">비밀번호 수정</a>
 		</div>
 		<div>
-			<a href="<%=request.getContextPath()%>/updateMemberForm.jsp">회원정보 수정</a>
+			<a href="<%=request.getContextPath()%>/member/updateMemberForm.jsp">회원정보 수정</a>
 		</div>
 		<div>
-			<a href="<%=request.getContextPath()%>/deleteMemberForm.jsp">회원탈퇴</a>
+			<a href="<%=request.getContextPath()%>/member/deleteMemberForm.jsp">회원탈퇴</a>
 		</div>
 	</body>
 </html>

@@ -32,7 +32,7 @@
 			}
 		%>
 		<h1>회원정보 수정</h1>
-		<form action="<%=request.getContextPath()%>/updateMemberAction.jsp" method="post">
+		<form action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post">
 			<table>
 				<tr>
 					<td>아이디</td>

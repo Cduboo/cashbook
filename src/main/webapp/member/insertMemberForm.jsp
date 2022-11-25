@@ -25,7 +25,7 @@
 		<%		
 			}
 		%>
-		<form action="<%=request.getContextPath()%>/insertMemberAction.jsp" method="post">
+		<form action="<%=request.getContextPath()%>/member/insertMemberAction.jsp" method="post">
 			<div><input type="text" name="name" placeholder="이름"></div>
 			<div><input type="text" name="id" placeholder="아이디"></div>
 			<div><input type="password" name="pw" placeholder="패스워드"></div>

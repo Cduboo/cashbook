@@ -13,7 +13,7 @@
 	
 	if(request.getParameter("updateName") == null || request.getParameter("updateName").equals("")){
 		String msg = URLEncoder.encode("수정정보를 입력해주세요.", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/updateMemberForm.jsp?msg="+msg);
+		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?msg="+msg);
 		return;
 	}
 	
@@ -32,7 +32,7 @@
 	//기존 아이디,이름 비교 -> 변경이 일어나지 않으면 수정 x
 	if(updateMember.getMemberName().equals(loginMember.getMemberName())) {
 		String msg = URLEncoder.encode("기존 정보와 동일합니다.", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/updateMemberForm.jsp?msg="+msg);
+		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?msg="+msg);
 		return;
 	}
 	
@@ -48,5 +48,5 @@
 	memberDao.updateMember(currentMember, updateMember);
 	updateMember.setMemberId(loginMember.getMemberId());
 	session.setAttribute("loginMember", updateMember);
-	response.sendRedirect(request.getContextPath()+"/memberOneForm.jsp");
+	response.sendRedirect(request.getContextPath()+"/member/memberOneForm.jsp");
 %>

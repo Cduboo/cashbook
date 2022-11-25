@@ -10,7 +10,7 @@ public class MemberDao {
 		Member resultMember = null;
 		DBUtil dbUtil = new DBUtil();
 		Connection conn = dbUtil.getConnection();
-		String sql = "SELECT member_name memberName, member_id memberId FROM member WHERE member_id = ? AND member_pw = PASSWORD(?)";
+		String sql = "SELECT member_name memberName, member_id memberId, member_level memberLevel FROM member WHERE member_id = ? AND member_pw = PASSWORD(?)";
 
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		stmt.setString(1, paramMember.getMemberId());
@@ -20,6 +20,7 @@ public class MemberDao {
 			resultMember = new Member();
 			resultMember.setMemberId(rs.getString("memberId"));
 			resultMember.setMemberName(rs.getString("memberName"));
+			resultMember.setMemberLevel(rs.getInt("memberLevel"));
 			return resultMember;
 		}
 
