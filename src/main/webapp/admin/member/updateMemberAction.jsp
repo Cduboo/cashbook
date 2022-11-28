@@ -17,8 +17,6 @@
 	
 	int memberLevel = Integer.parseInt(request.getParameter("memberLevel"));
 	int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-	System.out.println(memberLevel);
-	System.out.println(memberNo);
 	
 	Member member = new Member();
 	member.setMemberNo(memberNo);
