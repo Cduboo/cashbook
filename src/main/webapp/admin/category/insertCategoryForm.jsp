@@ -24,7 +24,7 @@
 		<form action="<%=request.getContextPath()%>/admin/category/insertCategoryAction.jsp" method="post">
 			<div>
 				category Kind
-				<input type="radio" name="categoryKind" value="수입"/>수입
+				<input type="radio" name="categoryKind" value="수입"/>수입 
 				<input type="radio" name="categoryKind" value="지출"/>지출
 			</div>
 			<div>
