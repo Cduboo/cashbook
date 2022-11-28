@@ -12,8 +12,7 @@
 	if(	request.getParameter("currentPw") == null || request.getParameter("currentPw").equals("")
 		|| request.getParameter("updatePw") == null || request.getParameter("updatePw").equals("") 
 		|| request.getParameter("updatePwCk") == null || request.getParameter("updatePwCk").equals("")){
-		String msg = URLEncoder.encode("비밀번호를 입력하세요.", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/member/updateMemberPwForm.jsp?msg="+msg);
+		response.sendRedirect(request.getContextPath()+"/member/updateMemberPwForm.jsp");
 		return;
 	}
 	

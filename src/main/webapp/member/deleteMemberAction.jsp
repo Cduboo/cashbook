@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.net.URLEncoder"%>
+<%@ page import="dao.MemberDao"%>
+<%@ page import="vo.*"%>
 <%
 	request.setCharacterEncoding("utf-8");
 
@@ -9,15 +11,30 @@
 		return;
 	}
 
-	if(request.getParameter("deleteId") == null || request.getParameter("deleteId").equals("") 
-	|| request.getParameter("deletePw") == null || request.getParameter("deletePw").equals("")){
-		String msg = URLEncoder.encode("아이디와 비밀번호를 입력해주세요.", "utf-8");
+	if(request.getParameter("memberPw") == null || request.getParameter("memberPw").equals("")){
+		response.sendRedirect(request.getContextPath()+"/member/deleteMemberForm.jsp");
+		return;
+	}
+	
+	
+	//session에 담긴 로그인한 계정 정보
+	Member loginMember = (Member)session.getAttribute("loginMember");
+	String loginMemberId = loginMember.getMemberId();
+	//탈퇴확인비밀번호
+	String memberPw = request.getParameter("memberPw");
+	
+	Member member = new Member();
+	member.setMemberId(loginMemberId);
+	member.setMemberPw(memberPw);
+	
+	MemberDao memberDao = new MemberDao();
+	int row = memberDao.deleteMember(member);
+	
+	if(row == 0) {
+		String msg = URLEncoder.encode("잘못된 패스워드", "utf-8");
 		response.sendRedirect(request.getContextPath()+"/member/deleteMemberForm.jsp?msg="+msg);
 		return;
 	}
 	
-	//회원 탈퇴에 입력한 회원 정보
-	String deleteId = request.getParameter("deleteId");
-	String deletePw = request.getParameter("deletePw");
-	
+	response.sendRedirect(request.getContextPath()+"/logOut.jsp");
 %>

@@ -8,7 +8,7 @@
 	<!-- 홈 링크 로고 추가 -->
 	<a href="<%=request.getContextPath()%>/cash/cashList.jsp">가계부</a>
 	<div> <!-- drop down 처리 -->
-		<a><%=loginMember.getMemberName()%></a> <!-- dropdown-toggle -->
+		<a href="#"><%=loginMember.getMemberName()%></a> <!-- dropdown-toggle -->
 		<div>
 			<div>
 				<div>

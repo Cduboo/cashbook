@@ -9,6 +9,11 @@
 
 	//session에 담긴 로그인한 계정 정보
 	Member loginMember = (Member)session.getAttribute("loginMember");
+	
+	String msg = null;
+	if(request.getParameter("msg") != null) {
+		msg = request.getParameter("msg");
+	}
 %>
 <!DOCTYPE html>
 	<html>
@@ -25,6 +30,13 @@
 		<!-- main -->
 		<div>
 			<h1>회원정보 수정</h1>
+			<%
+				if(msg != null) {
+			%>
+				<div><%=msg%></div>
+			<%		
+				}
+			%>
 			<form action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post">
 				<table>
 					<tr>

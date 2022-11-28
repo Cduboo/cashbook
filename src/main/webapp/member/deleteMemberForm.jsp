@@ -8,6 +8,11 @@
 	}
 	//session에 담긴 로그인한 계정 정보
 	Member loginMember = (Member)session.getAttribute("loginMember");
+	
+	String msg = null;
+	if(request.getParameter("msg") != null) {
+		msg = request.getParameter("msg");
+	}
 %>
 
 <!DOCTYPE html>
@@ -24,15 +29,18 @@
 		
 		<!-- main -->
 		<h1>회원탈퇴</h1>
+		<%
+			if(msg != null) {
+		%>
+			<div><%=msg%></div>
+		<%		
+			}
+		%>
 		<form action="<%=request.getContextPath()%>/member/deleteMemberAction.jsp" method="post">
 			<table>
 				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="deleteId"></td>
-				</tr>
-				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="deletePw"></td>
+					<td><input type="password" name="memberPw"></td>
 				</tr>
 				<tr>
 					<td><button type="submit">회원탈퇴</button></td>
