@@ -9,14 +9,7 @@
 
 	//session에 담긴 로그인한 계정 정보
 	Member loginMember = (Member)session.getAttribute("loginMember");
-	
-	//updateMemberAction.jsp
-	String msg = null;
-	if(request.getParameter("msg") != null) {
-		msg = request.getParameter("msg");
-	}
 %>
-
 <!DOCTYPE html>
 	<html>
 	<head>
@@ -24,29 +17,30 @@
 		<title>updateMemberForm</title>
 	</head>
 	<body>
-		<%
-			if(msg != null){
-		%>
-				<div><%=msg%></div>
-		<%
-			}
-		%>
-		<h1>회원정보 수정</h1>
-		<form action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post">
-			<table>
-				<tr>
-					<td>아이디</td>
-					<td><input type="text" value="<%=loginMember.getMemberId()%>" readonly="readonly"></td>
-				</tr>
-				<tr>
-					<td>이름</td>
-					<td><input type="text" name="updateName" value="<%=loginMember.getMemberName()%>"></td>
-				</tr>
-				<tr>
-					<td><input type="password" name="currentPw" placeholder="비밀번호 확인"></td>
-					<td><button type="submit">회원정보 수정</button></td>
-				</tr>
-			</table>
-		</form>
+		<!-- header -->
+		<jsp:include page="/inc/header.jsp"></jsp:include>
+		<!-- nav  -->
+		<jsp:include page="/inc/nav.jsp"></jsp:include>
+		
+		<!-- main -->
+		<div>
+			<h1>회원정보 수정</h1>
+			<form action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post">
+				<table>
+					<tr>
+						<td>아이디</td>
+						<td><input type="text" value="<%=loginMember.getMemberId()%>" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>이름</td>
+						<td><input type="text" name="updateName" value="<%=loginMember.getMemberName()%>"></td>
+					</tr>
+					<tr>
+						<td><input type="password" name="currentPw" placeholder="비밀번호 확인"></td>
+						<td><button type="submit">회원정보 수정</button></td>
+					</tr>
+				</table>
+			</form>
+		</div>
 	</body>
 </html>

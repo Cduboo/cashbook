@@ -9,11 +9,10 @@
 		return;
 	}
 	Member loginMember = (Member)session.getAttribute("loginMember");
-
-	//updateCashAction
-	String msg = null;
-	if(request.getParameter("msg") != null) {
-		msg = request.getParameter("msg");
+	
+	if(request.getParameter("cashNo") == null || request.getParameter("cashNo").equals("")){
+		response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
+		return;
 	}
 	
 	int cashNo = Integer.parseInt(request.getParameter("cashNo"));
@@ -33,15 +32,14 @@
 		<title>updateCashForm</title>
 	</head>
 	<body>
-		<!-- cash 입력 폼 -->
+		<!-- header -->
+		<jsp:include page="/inc/header.jsp"></jsp:include>
+		<!-- nav  -->
+		<jsp:include page="/inc/nav.jsp"></jsp:include>
+			
+		<!-- main -->
+		<h1>가계부 수정</h1>
 		<form action="<%=request.getContextPath()%>/cash/updateCashAction.jsp?cashNo=<%=cashNo%>" method="post">
-			<%
-				if(msg != null) {
-			%>
-					<span><%=msg%></span>			
-			<%		
-				}
-			%>
 			<input type="hidden" name="memberId" value="<%=loginMember.getMemberId()%>">
 			<table border="1">
 				<tr>

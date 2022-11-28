@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.net.*"%>
 <%@ page import="vo.Cash"%>
 <%@ page import="dao.CashDao"%>
 <%
@@ -18,8 +17,7 @@
 	int date = Integer.parseInt(splitCashDate[2]);
 	
 	if(request.getParameter("cashPrice") == null || request.getParameter("cashPrice").equals("")) {
-		String msg = URLEncoder.encode("입력하지 않은 항목이 있습니다.", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/cash/cashDateList.jsp?year="+year+"&month="+month+"&date="+date+"&msg="+msg);
+		response.sendRedirect(request.getContextPath()+"/cash/cashDateList.jsp?year="+year+"&month="+month+"&date="+date);
 		return;
 	}
 	

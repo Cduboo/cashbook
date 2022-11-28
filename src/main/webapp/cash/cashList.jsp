@@ -1,4 +1,4 @@
-<%@page import="dao.CashDao"%>
+<%@ page import="dao.CashDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.Member"%>
 <%@ page import="java.util.*"%>
@@ -32,7 +32,7 @@
 			year -= 1;
 		} 
 		if(month == 12) {
-			month = 1;
+			month = 0;
 			year += 1;
 		}
 	}
@@ -66,22 +66,18 @@
 		<title>cashList</title>
 	</head>
 	<body>
-		<div>
-			<!-- 로그인 정보(세션 loginMember 변수) 출력 -->
-			<%=loginMember.getMemberName()%>의 가계부
-			<a href="<%=request.getContextPath()%>/memberOneForm.jsp">마이페이지</a>
-		</div>
+		<!-- header -->
+		<jsp:include page="/inc/header.jsp"></jsp:include>
 		
+		<!-- main -->
 		<div>
 			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&lt;</a>
 			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>">&gt;</a>
-			<a href="<%=request.getContextPath()%>/logOut.jsp">로그아웃</a>
 		</div>
 		<div>
 			<%=year%>년 <%=month+1%>월
 		</div>
 		<div>
-			<!-- 달력 -->
 			<table border="1">
 				<tr>
 					<th>일</th>

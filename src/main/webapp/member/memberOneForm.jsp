@@ -18,20 +18,9 @@
 		<title>memberOne</title>
 	</head>
 	<body>
-		<h1>마이페이지</h1>
-		<%=loginMember.getMemberId()%>
-		<%=loginMember.getMemberName()%>
-		<div>
-			<a href="<%=request.getContextPath()%>/cash/cashList.jsp">홈</a>
-		</div>
-		<div>
-			<a href="<%=request.getContextPath()%>/member/updateMemberPwForm.jsp">비밀번호 수정</a>
-		</div>
-		<div>
-			<a href="<%=request.getContextPath()%>/member/updateMemberForm.jsp">회원정보 수정</a>
-		</div>
-		<div>
-			<a href="<%=request.getContextPath()%>/member/deleteMemberForm.jsp">회원탈퇴</a>
-		</div>
+		<!-- header -->
+		<jsp:include page="/inc/header.jsp"></jsp:include>
+		<!-- nav  -->
+		<jsp:include page="/inc/nav.jsp"></jsp:include>
 	</body>
 </html>

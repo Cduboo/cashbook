@@ -9,10 +9,6 @@
 		return;
 	}
 
-	String msg = null;
-	if(request.getParameter("msg") != null) {
-		msg = request.getParameter("msg");
-	}
 	if(request.getParameter("year") == null || request.getParameter("month") == null) {
 		response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
 		return;
@@ -38,15 +34,39 @@
 		<title>cashDateList</title>
 	</head>
 	<body>
-		<!-- cash 입력 폼 -->
-		<form action="<%=request.getContextPath()%>/cash/insertCashAction.jsp" method="post">
+		<!-- header -->
+		<jsp:include page="/inc/header.jsp"></jsp:include>
+		<!-- nav  -->
+		<jsp:include page="/inc/nav.jsp"></jsp:include>
+	
+		<!-- main -->
+		<!-- cash 목록 출력 -->
+		<table border="1">
+			<tr>
+				<td>categoryKind</td>
+				<td>categoryName</td>
+				<td>cashPrice</td>
+				<td>cashMemo</td>
+				<td>수정</td> <!-- /cash/deleteCash.jsp?cashNo=  -->
+				<td>삭제</td> <!-- /cash/updateForm.jsp?cashNo= -->
+			</tr>
 			<%
-				if(msg != null) {
+				for(HashMap<String, Object> m : cashList) {
 			%>
-					<span><%=msg%></span>			
-			<%		
+					<tr>
+						<td><%=m.get("categoryKind")%></td>
+						<td><%=m.get("categoryName")%></td>
+						<td><%=m.get("cashPrice")%></td>
+						<td><%=m.get("cashMemo")%></td>
+						<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=m.get("cashNo")%>">수정</a></td>
+						<td><a href="<%=request.getContextPath()%>/cash/deleteCashAction.jsp?cashNo=<%=m.get("cashNo")%>">삭제</a></td>
+					</tr>
+			<%			
 				}
 			%>
+		</table>
+		<!-- 입력폼 -->
+		<form action="<%=request.getContextPath()%>/cash/insertCashAction.jsp" method="post">
 			<input type="hidden" name="memberId" value="<%=loginMember.getMemberId()%>">
 			<table border="1">
 				<tr>
@@ -84,30 +104,5 @@
 			<button type="submit">입력</button>
 		</form>
 		
-		<!-- cash 목록 출력 -->
-		<table border="1">
-			<tr>
-				<td>categoryKind</td>
-				<td>categoryName</td>
-				<td>cashPrice</td>
-				<td>cashMemo</td>
-				<td>수정</td> <!-- /cash/deleteCash.jsp?cashNo=  -->
-				<td>삭제</td> <!-- /cash/updateForm.jsp?cashNo= -->
-			</tr>
-			<%
-				for(HashMap<String, Object> m : cashList) {
-			%>
-					<tr>
-						<td><%=m.get("categoryKind")%></td>
-						<td><%=m.get("categoryName")%></td>
-						<td><%=m.get("cashPrice")%></td>
-						<td><%=m.get("cashMemo")%></td>
-						<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=m.get("cashNo")%>">수정</a></td>
-						<td><a href="<%=request.getContextPath()%>/cash/deleteCashAction.jsp?cashNo=<%=m.get("cashNo")%>">삭제</a></td>
-					</tr>
-			<%			
-				}
-			%>
-		</table>
 	</body>
 </html>
