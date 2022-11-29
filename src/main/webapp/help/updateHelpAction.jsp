@@ -2,35 +2,36 @@
 <%@ page import="vo.*"%>
 <%@ page import="dao.HelpDao"%>
 <%
-	request.setCharacterEncoding("utf-8");	
-
 	//비로그인 유저는 접근 불가
 	if(session.getAttribute("loginMember") == null) {
 		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
 	}
+
+	request.setCharacterEncoding("utf-8");
 	
-	if(request.getParameter("helpMemo") == null || request.getParameter("helpMemo").equals("")
-		|| request.getParameter("helpTitle") == null || request.getParameter("helpTitle").equals("")) {
+	if(request.getParameter("helpNo") == null || request.getParameter("helpNo").equals("")) {
 		response.sendRedirect(request.getContextPath()+"/help/helpList.jsp");
 		return;
 	}
-	//helpTitle
+	int helpNo = Integer.parseInt(request.getParameter("helpNo"));
+	
+	if(request.getParameter("helpTitle") == null || request.getParameter("helpTitle").equals("")
+		|| request.getParameter("helpMemo") == null || request.getParameter("helpMemo").equals("")){
+		response.sendRedirect(request.getContextPath()+"/help/updateHelpForm.jsp?helpNo="+helpNo);
+		return;
+	}
+	
 	String helpTitle = request.getParameter("helpTitle");
-	//helpMemo
 	String helpMemo = request.getParameter("helpMemo");
-	//memberId
-	Member loginMember = (Member)session.getAttribute("loginMember");	
-	String memberId = loginMember.getMemberId();	
 	
 	Help help = new Help();
-	help.setHelpMemo(request.getParameter("helpMemo"));
+	help.setHelpNo(helpNo);
 	help.setHelpTitle(helpTitle);
 	help.setHelpMemo(helpMemo);
-	help.setMemberId(memberId);
 	
 	HelpDao helpDao = new HelpDao();
-	helpDao.insertHelp(help);
+	helpDao.updateHelp(help);
 	
 	response.sendRedirect(request.getContextPath()+"/help/helpList.jsp");
 %>

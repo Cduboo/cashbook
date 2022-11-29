@@ -13,6 +13,7 @@
 	Member loginMember = (Member)session.getAttribute("loginMember");
 	String memberId = loginMember.getMemberId();
 
+	//나의 문의 리스트
 	HelpDao helpDao = new HelpDao();
 	ArrayList<HashMap<String, Object>> list = helpDao.selectHelpList(memberId);
 %>
@@ -31,67 +32,25 @@
 		<a href="<%=request.getContextPath()%>/help/insertHelpForm.jsp">문의하기</a>
 		<table>
 			<tr>
-				<th>문의사항</th>
+				<th>제목</th>
 				<th>문의날짜</th>
-				<th>답변내용</th>
 				<th>답변날짜</th>
-				<th>수정</th>
-				<th>삭제</th>
 			</tr>
 			<%
 				for(HashMap<String, Object> m : list) {
 			%>
 					<tr>
-						<td><%=m.get("helpMemo")%></td>
+						<td><a href="<%=request.getContextPath()%>/help/helpOne.jsp?helpNo=<%=m.get("helpNo")%>"><%=m.get("helpTitle")%></a></td>
 						<td><%=m.get("helpCreatedate")%></td>
-						<td>
-							<%
-								if(m.get("commentMemo") == null) {
-							%>
-									답변전
-							<%
-								}else {
-							%>
-									<%=m.get("commentMemo")%>
-							<%		
-								}
-							%>
-						</td>
 						<td>
 							<%
 								if(m.get("commentCreatedate") == null) {
 							%>
-									답변전
+									답변전 
 							<%
 								}else {
 							%>
 									<%=m.get("commentCreatedate")%>
-							<%		
-								}
-							%>
-						</td>
-						<td>
-							<%
-								if(m.get("commentMemo") == null) {
-							%>
-									<a href="">수정</a>
-							<%
-								}else {
-							%>
-							
-							<%		
-								}
-							%>
-						</td>
-						<td>
-							<%
-								if(m.get("commentMemo") == null) {
-							%>
-									<a href="">삭제</a>
-							<%
-								}else {
-							%>
-							
 							<%		
 								}
 							%>

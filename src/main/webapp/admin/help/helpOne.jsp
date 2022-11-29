@@ -14,8 +14,8 @@
 		response.sendRedirect(request.getContextPath()+"/admin/help/helpList.jsp");
 		return;
 	}
-	
 	int helpNo = Integer.parseInt(request.getParameter("helpNo"));
+	
 	//문의 상세정보
 	HelpDao helpDao = new HelpDao();
 	Help helpOne = helpDao.selectHelpOne(helpNo);	

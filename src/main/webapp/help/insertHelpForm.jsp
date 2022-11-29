@@ -19,7 +19,8 @@
 		
 		<!-- main -->
 		<form action="<%=request.getContextPath()%>/help/insertHelpAction.jsp" method="post">
-			<div>문의사항</div>
+			<h1>문의사항</h1>
+			<div>제목 : <input type="text" name="helpTitle"></div>
 			<textarea rows="10" cols="30" name="helpMemo"></textarea>
 			<button type="submit">작성하기</button>
 		</form>
