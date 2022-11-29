@@ -70,13 +70,13 @@
 							<%=c.getUpdatedate()%>
 							<%=c.getCreatedate()%>
 							<button type="submit" formaction="<%=request.getContextPath()%>/admin/category/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</button>
-							<button type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
+							<button type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
 			<%										
 					}	
 				}
 			%>
-					</form>
-				</div>
+						</form>
+					</div>
 		</div>
 	</body>
 </html>

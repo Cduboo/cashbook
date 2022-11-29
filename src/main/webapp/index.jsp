@@ -38,6 +38,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>index</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 	</head>
 	<body>
 		<!-- header -->
@@ -72,7 +73,7 @@
 		</div>
 		<!-- (최근 공지 5개) 게시판 -->
 		<div>
-			<table border="1">
+			<table>
 				<tr>
 					<th>제목</th>
 					<th>날짜</th>

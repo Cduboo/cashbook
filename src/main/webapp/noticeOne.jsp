@@ -3,7 +3,7 @@
 <%@ page import="dao.*"%>
 <%
 	if(request.getParameter("noticeNo") == null || request.getParameter("noticeNo").equals("")) {
-		response.sendRedirect(request.getContextPath()+"/admin/adminMain.jsp");
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 		return;
 	}
 	

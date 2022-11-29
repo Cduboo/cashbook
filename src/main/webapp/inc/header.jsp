@@ -26,6 +26,18 @@
 					}
 				%>
 				<a href="<%=request.getContextPath()%>/member/memberOneForm.jsp">마이페이지</a>
+				<%
+					if(loginMember.getMemberLevel() > 0) {
+				%>
+						
+						<a href="<%=request.getContextPath()%>/admin/help/helpList.jsp">고객센터</a>
+				<%		
+					}else {
+				%>
+						<a href="<%=request.getContextPath()%>/help/helpList.jsp">고객센터</a>
+				<%		
+					}
+				%>
 			</div>
 		</div>
 	</div>

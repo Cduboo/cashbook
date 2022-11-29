@@ -36,8 +36,6 @@
 	<body>
 		<!-- header -->
 		<jsp:include page="/inc/header.jsp"></jsp:include>
-		<!-- nav  -->
-		<jsp:include page="/inc/nav.jsp"></jsp:include>
 	
 		<!-- main -->
 		<!-- cash 목록 출력 -->
