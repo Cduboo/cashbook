@@ -25,14 +25,17 @@
 		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars-o.css">
 		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars.css">
 		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/styles.css">
 		<link rel="shortcut icon" href="../images/favicon.png" />
 	</head>
 	<body>
 		<!-- 네비게이션/헤더부분 -->
 		<div class="container-scroller">
 			<jsp:include page="/inc/header.jsp"></jsp:include>
-			<!-- 네비게이션/사이드  -->
-			<jsp:include page="/inc/nav.jsp"></jsp:include>
+			<div class="container-fluid page-body-wrapper">
+				<!-- 네비게이션/사이드  -->
+				<jsp:include page="/inc/nav.jsp"></jsp:include>
+			</div>	
 		</div>
 		
 		<!-- js -->

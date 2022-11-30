@@ -74,76 +74,91 @@
 		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars-o.css">
 		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars.css">
 		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/styles.css">
 		<link rel="shortcut icon" href="../images/favicon.png" />
 	</head>
 	<body>
 		<!-- 네비게이션/헤더부분 -->
 		<div class="container-scroller">
 			<jsp:include page="/inc/header.jsp"></jsp:include>
-			<!-- 네비게이션/사이드  -->
-			<jsp:include page="/inc/nav.jsp"></jsp:include>
-		</div>
-		<!-- main -->
-		<div>
-			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&lt;</a>
-			<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>">&gt;</a>
-		</div>
-		<div>
-			<%=year%>년 <%=month+1%>월
-		</div>
-		<div>
-			<table border="1">
-				<tr>
-					<th>일</th>
-					<th>월</th>
-					<th>화</th>
-					<th>수</th>
-					<th>목</th>
-					<th>금</th>
-					<th>토</th>
-				</tr>
-				<tr>
-			<%
-				for(int i=1; i<=totalTd; i++) {
-			%>
-					<td>
-			<%
-						int date = i - beginBlank;
-						if(date > 0 && date <= lastDate){
-			%>
-							<div>
-								<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
-									<%=date%>
-								</a>
+			<div class="container-fluid page-body-wrapper">
+				<!-- 네비게이션/사이드  -->
+				<jsp:include page="/inc/nav.jsp"></jsp:include>
+				<!-- 달력 -->
+				<div class="main-panel">
+		        	<div class="content-wrapper">
+						<div class="stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="d-flex justify-content-center align-items-center">
+										<a class="btn me-3" href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&lt;</a>
+									    <div class="card-title m-0"><%=year%>년 <%=month+1%>월</div>
+										<a class="btn me-3" href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month+1%>">&gt;</a>
+									</div>
+									<div class="table-responsive mt-3">
+										<table class="table table-header-bg">
+											<thead>
+												<tr>
+													<th>일</th>
+													<th>월</th>
+													<th>화</th>
+													<th>수</th>
+													<th>목</th>
+													<th>금</th>
+													<th>토</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+												<%
+													for(int i=1; i<=totalTd; i++) {
+												%>
+														<td>
+												<%
+															int date = i - beginBlank;
+															if(date > 0 && date <= lastDate){
+												%>
+																<div>
+																	<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month+1%>&date=<%=date%>">
+																		<%=date%>
+																	</a>
+																</div>
+																<div>
+																	<%
+																		for(HashMap<String, Object> m : list) {
+																			String cashDate = (String)(m.get("cashDate"));
+																			if(Integer.parseInt(cashDate.substring(8)) == date) {
+																	%>			
+																				[<%=(String)(m.get("categoryKind"))%>]
+																				<%=(String)(m.get("categoryName"))%>
+																				<%=(Long)(m.get("cashPrice"))%>원
+																				<br>
+																	<%	
+																			}
+																		}
+																	%>
+																</div>
+												<%				
+															}
+												%>			
+														</td>
+												<%		
+														if(i % 7 == 0 && i!=totalTd) {
+												%>
+															</tr><tr><!-- td7개 만들고 테이블 줄 바꿈 -->
+												<%
+														}
+													}
+												%>
+											</tbody>
+										</table>
+									</div>
+								</div>
 							</div>
-							<div>
-								<%
-									for(HashMap<String, Object> m : list) {
-										String cashDate = (String)(m.get("cashDate"));
-										if(Integer.parseInt(cashDate.substring(8)) == date) {
-								%>			
-											[<%=(String)(m.get("categoryKind"))%>]
-											<%=(String)(m.get("categoryName"))%>
-											<%=(Long)(m.get("cashPrice"))%>원
-											<br>
-								<%	
-										}
-									}
-								%>
-							</div>
-			<%				
-						}
-			%>			
-					</td>
-			<%		
-					if(i % 7 == 0 && i!=totalTd) {
-			%>
-						</tr><tr><!-- td7개 만들고 테이블 줄 바꿈 -->
-			<%
-					}
-				}
-			%>
-			</table>
+				        </div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- js -->
 		<script src="../vendors/base/vendor.bundle.base.js"></script>
