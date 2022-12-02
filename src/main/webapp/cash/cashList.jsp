@@ -163,8 +163,8 @@
 								<div class="col-12">
 									<div class="card">
 										<div class="card-header">
-											<h4>
-												<a class="btn me-3" href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month - 1%>">&lt;</a>
+											<h4 class="text-center">
+												<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&lt;</a>
 												<%=year%>년 <%=month + 1%>월
 												<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month + 1%>">&gt;</a>
 											</h4>
