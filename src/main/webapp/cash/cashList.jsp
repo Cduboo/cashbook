@@ -3,60 +3,60 @@
 <%@ page import="vo.Member"%>
 <%@ page import="java.util.*"%>
 <%
-//비로그인 유저는 접근 불가
-if (session.getAttribute("loginMember") == null) {
-	response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
-	return;
-}
-
-//session에 담긴 로그인한 계정 정보
-Member loginMember = (Member) session.getAttribute("loginMember");
-String memberId = loginMember.getMemberId();
-
-//Controller : session, request
-//request -> 년,월
-int year = 0;
-int month = 0;
-
-if (request.getParameter("year") == null || request.getParameter("month") == null) {
-	Calendar today = Calendar.getInstance(); // 오늘 날짜
-	year = today.get(Calendar.YEAR);
-	month = today.get(Calendar.MONTH);
-} else {
-	year = Integer.parseInt(request.getParameter("year"));
-	month = Integer.parseInt(request.getParameter("month"));
-	//month가 -1 or 12 일 경우, 0~11
-	if (month == -1) {
-		month = 11;
-		year -= 1;
+	//비로그인 유저는 접근 불가
+	if (session.getAttribute("loginMember") == null) {
+		response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
+		return;
 	}
-	if (month == 12) {
-		month = 0;
-		year += 1;
+	
+	//session에 담긴 로그인한 계정 정보
+	Member loginMember = (Member) session.getAttribute("loginMember");
+	String memberId = loginMember.getMemberId();
+	
+	//Controller : session, request
+	//request -> 년,월
+	int year = 0;
+	int month = 0;
+	
+	if (request.getParameter("year") == null || request.getParameter("month") == null) {
+		Calendar today = Calendar.getInstance(); // 오늘 날짜
+		year = today.get(Calendar.YEAR);
+		month = today.get(Calendar.MONTH);
+	} else {
+		year = Integer.parseInt(request.getParameter("year"));
+		month = Integer.parseInt(request.getParameter("month"));
+		//month가 -1 or 12 일 경우, 0~11
+		if (month == -1) {
+			month = 11;
+			year -= 1;
+		}
+		if (month == 12) {
+			month = 0;
+			year += 1;
+		}
 	}
-}
-
-//출력하고자 하는 년,월의 1일의 요일(일요일:1,월요일:2,화요일:3,...,토요일:7)
-Calendar targetDate = Calendar.getInstance();
-targetDate.set(Calendar.YEAR, year);
-targetDate.set(Calendar.MONTH, month);
-targetDate.set(Calendar.DATE, 1);
-int firstDay = targetDate.get(Calendar.DAY_OF_WEEK); //1일의 요일
-int lastDate = targetDate.getActualMaximum(Calendar.DATE); //마지막 날짜
-int beginBlank = firstDay - 1; //달력 출력테이블의 시작 공백일(td)과 마지막 공백(td)의 개수
-int endBlank = 0; //beginBlank + lastDate + endBlank --> 7로 나누어 떨어진다.
-if ((beginBlank + lastDate) % 7 != 0) {
-	endBlank = 7 - ((beginBlank + lastDate) % 7);
-}
-
-// 전체 td의 개수 : 7로 나누어 떨어져야 한다.
-int totalTd = beginBlank + lastDate + endBlank;
-
-//Model -> 해당 유저의 일별 cash 목록
-CashDao cashDao = new CashDao();
-ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(memberId, year, month + 1);
-
-//View -> 달력 출력 + 일별 cash 목록 출력
+	
+	//출력하고자 하는 년,월의 1일의 요일(일요일:1,월요일:2,화요일:3,...,토요일:7)
+	Calendar targetDate = Calendar.getInstance();
+	targetDate.set(Calendar.YEAR, year);
+	targetDate.set(Calendar.MONTH, month);
+	targetDate.set(Calendar.DATE, 1);
+	int firstDay = targetDate.get(Calendar.DAY_OF_WEEK); //1일의 요일
+	int lastDate = targetDate.getActualMaximum(Calendar.DATE); //마지막 날짜
+	int beginBlank = firstDay - 1; //달력 출력테이블의 시작 공백일(td)과 마지막 공백(td)의 개수
+	int endBlank = 0; //beginBlank + lastDate + endBlank --> 7로 나누어 떨어진다.
+	if ((beginBlank + lastDate) % 7 != 0) {
+		endBlank = 7 - ((beginBlank + lastDate) % 7);
+	}
+	
+	// 전체 td의 개수 : 7로 나누어 떨어져야 한다.
+	int totalTd = beginBlank + lastDate + endBlank;
+	
+	//Model -> 해당 유저의 일별 cash 목록
+	CashDao cashDao = new CashDao();
+	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(memberId, year, month + 1);
+	
+	//View -> 달력 출력 + 일별 cash 목록 출력
 %>
 <!DOCTYPE html>
 <html>
