@@ -9,7 +9,9 @@
 		return;
 	}
 
-	if(request.getParameter("year") == null || request.getParameter("month") == null) {
+	if(request.getParameter("year") == null || request.getParameter("year").equals("") 
+		|| request.getParameter("month") == null || request.getParameter("month").equals("") 
+		|| request.getParameter("date") == null || request.getParameter("date").equals("")) {
 		response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
 		return;
 	}

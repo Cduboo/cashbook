@@ -18,11 +18,15 @@
 	
 	//삭제 후 redirect를 위해 날짜 가져오기 yyyy-mm-dd
 	CashDao cashDao = new CashDao();
-	String cashDate = cashDao.deleteCash(cash);
+	String cashDate = cashDao.selectCashDate(cash);
 	String[] splitCashDate = cashDate.split("-"); 
 	int year = Integer.parseInt(splitCashDate[0]);
 	int month = Integer.parseInt(splitCashDate[1]);
 	int date = Integer.parseInt(splitCashDate[2]);
+	
+	//cash삭제
+	cashDao.deleteCash(cash);
+	
 	
 	response.sendRedirect(request.getContextPath()+"/cash/cashDateList.jsp?year="+year+"&month="+month+"&date="+date);
 %>
