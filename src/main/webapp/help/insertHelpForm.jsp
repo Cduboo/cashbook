@@ -49,7 +49,7 @@ if (session.getAttribute("loginMember") == null) {
 											<div class="col-md-11 form-group">
 												<input type="text" id="title" name="helpTitle" class="form-control" placeholder="Title">
 											</div>
-											<div class="mt-4">
+											<div class="col-md-12 form-group mt-3">
 												<textarea id="summernote" name="helpMemo"></textarea>
 											</div>
 										</div>

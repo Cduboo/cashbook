@@ -72,16 +72,16 @@
 												<label>Writer</label>
 											</div>
 											<div class="col-md-11 form-group">
-												<input type="text" class="form-control" value="<%=helpOne.getMemberId()%>" placeholder="Writer" readonly="readonly">
+												<input type="text" class="form-control" value="<%=helpOne.getMemberId()%>" readonly="readonly">
 											</div>
 											<div class="col-md-1">
 												<label>Date</label>
 											</div>
 											<div class="col-md-11 form-group">
-												<input type="text" class="form-control" value="<%=helpOne.getCreatedate()%>" placeholder="Date" readonly="readonly">
+												<input type="text" class="form-control" value="<%=helpOne.getCreatedate()%>" readonly="readonly">
 											</div>
 											<div class="col-md-12 form-group mt-3">
-												<textarea class="form-control" rows="3" name="helpMemo"><%=helpOne.getHelpMemo()%></textarea>
+												<textarea id="summernote" name="helpMemo"></textarea>
 											</div>
 											<div class="d-flex justify-content-end mt-3">
 												<a class="btn btn-outline-primary me-3" href="<%=request.getContextPath()%>/help/helpList.jsp">List</a>
@@ -89,8 +89,8 @@
 													for (HashMap<String, Object> map : list) {
 														if (helpNo == (int)map.get("helpNo") && map.get("commentMemo") == null) {
 												%>
-															<a class="btn btn-outline-primary me-3" href="<%=request.getContextPath()%>/help/updateHelpForm.jsp?helpNo=<%=helpNo%>">Update</a>
-															<a class="btn btn-outline-primary" href="<%=request.getContextPath()%>/help/deleteHelpAction.jsp?helpNo=<%=helpNo%>">Delete</a>
+															<button class="btn btn-outline-primary me-3" type="submit" formaction="<%=request.getContextPath()%>/help/updateHelpAction.jsp?helpNo=<%=helpNo%>">Update</button>
+															<button class="btn btn-outline-primary" type="submit" formaction="<%=request.getContextPath()%>/help/deleteHelpAction.jsp?helpNo=<%=helpNo%>">Delete</button>
 												<%
 														}
 													}
@@ -107,7 +107,6 @@
 			</div>
 			<!-- app end -->
 		</div>
-								
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="../assets/js/bootstrap.bundle.min.js"></script>
 		<script src="../assets/vendors/jquery/jquery.min.js"></script>
@@ -120,32 +119,5 @@
 	    </script>
 		<script src="../assets/js/pages/dashboard.js"></script>
 		<script src="../assets/js/main.js"></script>
-		<%-- <!-- header -->
-		<jsp:include page="/inc/header.jsp"></jsp:include>
-		
-		<!-- main -->
-		<div>
-			<form method="post">
-				<h1>문의사항</h1>
-					<div>제목 : <input type="text" name="helpTitle" value="<%=helpOne.getHelpTitle()%>"/></div>
-					<div>작성자 : <%=helpOne.getMemberId()%></div>
-					<div>
-						작성일: <%=helpOne.getCreatedate()%>
-					</div>
-					<div><textarea rows="10" cols="30" name="helpMemo"><%=helpOne.getHelpMemo()%></textarea></div>
-				<a href="<%=request.getContextPath()%>/help/helpList.jsp">목록</a>
-				
-				<%
-					for(HashMap<String, Object> map : list){
-						if(helpNo == (int)map.get("helpNo") && map.get("commentMemo") == null) {
-				%>		
-							<button type="submit" formaction="<%=request.getContextPath()%>/help/updateHelpAction.jsp?helpNo=<%=helpNo%>">수정</button>
-							<button type="submit" formaction="<%=request.getContextPath()%>/help/deleteHelpAction.jsp?helpNo=<%=helpNo%>">삭제</button>
-				<%
-						}
-					}
-				%>	
-			</form>
-		</div> --%>
 	</body>
 </html>
