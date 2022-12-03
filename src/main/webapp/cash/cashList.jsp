@@ -62,16 +62,16 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>cashList</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="../assets/css/bootstrap.css">
-		<link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
-		<link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-		<link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
-		<link rel="stylesheet" href="../assets/css/app.css">
-		<link rel="shortcut icon" href="../assets/images/favicon/favicon.ico" type="image/x-icon">
+	    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+	    <link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
+	    <link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+	    <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+	    <link rel="stylesheet" href="../assets/css/app.css">
+	    <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
 	</head>
 	<body>
 		<div id="app">
@@ -170,61 +170,62 @@
 											</h4>
 										</div>
 										<div class="card-body">
-											<table class="table">
-												<thead>
-													<tr>
-														<th>일</th>
-														<th>월</th>
-														<th>화</th>
-														<th>수</th>
-														<th>목</th>
-														<th>금</th>
-														<th>토</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<%
-															for (int i = 1; i <= totalTd; i++) {
-														%>
-																<td>
-														<%
-																int date = i - beginBlank;
-																if (date > 0 && date <= lastDate) {
-														%>
-																<div>
-																	<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month + 1%>&date=<%=date%>"> <%=date%></a>
-																</div>
+											<div class="table-responsive">
+												<table class="table table-lg" style="table-layout: fixed;">
+													<thead>
+														<tr>
+															<th>일</th>
+															<th>월</th>
+															<th>화</th>
+															<th>수</th>
+															<th>목</th>
+															<th>금</th>
+															<th>토</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<%
+																for (int i = 1; i <= totalTd; i++) {
+															%>
+																	<td style="vertical-align:top; width: 200px; height: 100px;">
+															<%
+																	int date = i - beginBlank;
+																	if (date > 0 && date <= lastDate) {
+															%>
 																	<div>
-																		<%
-																			for (HashMap<String, Object> m : list) {
-																				String cashDate = (String) (m.get("cashDate"));
-																				if (Integer.parseInt(cashDate.substring(8)) == date) {
-																		%>
-																					[<%=(String) (m.get("categoryKind"))%>]
-																					<%=(String) (m.get("categoryName"))%>
-																					<%=(Long) (m.get("cashPrice"))%>원 <br>
-																		<%
+																		<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month + 1%>&date=<%=date%>"> <%=date%></a>
+																	</div>
+																		<div>
+																			<%
+																				for (HashMap<String, Object> m : list) {
+																					String cashDate = (String) (m.get("cashDate"));
+																					if (Integer.parseInt(cashDate.substring(8)) == date) {
+																			%>
+																						[<%=(String) (m.get("categoryKind"))%>]
+																						<%=(String) (m.get("categoryName"))%>
+																						<%=(Long) (m.get("cashPrice"))%>원 <br>
+																			<%
+																					}
 																				}
-																			}
-																		%>
-																	</div> 
-														<%
-																 }
-														%>
-																</td>
-														<%
-																if (i % 7 == 0 && i != totalTd) {
-														%>
-													</tr>
-													<tr>
-														<!-- td7개 만들고 테이블 줄 바꿈 -->
-														<%
+																			%>
+																		</div> 
+															<%
+																	 }
+															%>
+																	</td>
+															<%
+																	if (i % 7 == 0 && i != totalTd) {
+															%>
+																		</tr><tr><!-- td7개 만들고 테이블 줄 바꿈 -->
+															<%
+																	}
 																}
-															}
-														%>
-												</tbody>
-											</table>
+															%>
+														</tr>
+													</tbody>
+												</table>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -260,9 +261,9 @@
 		<!-- app end -->
 		</div>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-		<script src="../assets/js/bootstrap.bundle.min.js"></script>
-		<script src="../assets/vendors/apexcharts/apexcharts.js"></script>
-		<script src="../assets/js/pages/dashboard.js"></script>
-		<script src="../assets/js/main.js"></script>
+	    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+	    <script src="../assets/vendors/apexcharts/apexcharts.js"></script>
+	    <script src="../assets/js/pages/dashboard.js"></script>
+	    <script src="../assets/js/main.js"></script>
 	</body>
 </html>

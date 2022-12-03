@@ -21,44 +21,46 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>helpList</title>
-		<!-- css -->
-		<!-- CSS only -->
-		<link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
-		<link rel="stylesheet" href="../vendors/feather/feather.css">
-		<link rel="stylesheet" href="../vendors/base/vendor.bundle.base.css">
-		<link rel="stylesheet" href="../vendors/flag-icon-css/css/flag-icon.min.css"/>
-		<link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars-o.css">
-		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars.css">
-		<link rel="stylesheet" href="../css/style.css">
-		<link rel="stylesheet" href="../css/styles.css">
-		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+	    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+	    <link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
+	    <link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+	    <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+	    <link rel="stylesheet" href="../assets/css/app.css">
+	    <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
 	</head>
 	<body>
-		<!-- 네비게이션/헤더부분 -->
-		<div class="container-scroller">
-			<jsp:include page="/inc/header.jsp"></jsp:include>
-			<div class="container-fluid page-body-wrapper">
-				<!-- 네비게이션/사이드  -->
-				<jsp:include page="/inc/nav.jsp"></jsp:include>
-				<!-- 고객센터 -->
-				<div class="main-panel">
-		        	<div class="content-wrapper">
-						<div class="stretch-card">
+		<div id="app">
+			<jsp:include page="/inc/nav.jsp"></jsp:include>
+			<div id="main">
+				<header class="mb-3">
+					<a href="#" class="burger-btn d-block d-xl-none">
+						<i class="bi bi-justify fs-3"></i>
+					</a>
+				</header>
+				<div class="page-heading">
+					<h3>Service center </h3>
+				</div>
+				<div class="page-content">
+					<section class="row">
+						<div class="col-12">
 							<div class="card">
+								<div class="card-header">
+									<h4 class="text-end me-3">
+										<a href="<%=request.getContextPath()%>/help/insertHelpForm.jsp">+ Question</a>
+									</h4>
+								</div>
 								<div class="card-body">
-									<div class="d-flex justify-content-between align-items-center">
-										<h1>고객센터</h1>
-										<a class="btn btn-info font-weight-bold" href="<%=request.getContextPath()%>/help/insertHelpForm.jsp">+ 문의하기</a>
-									</div>
-									<div class="table-responsive mt-3">
-										<table class="table table-header-bg">
+									<div class="table-responsive">
+										<table class="table table-lg" style="table-layout: fixed;">
 											<thead>
 												<tr>
-													<th>제목</th>
-													<th>문의날짜</th>
-													<th>답변날짜</th>
+													<th>Title</th>
+													<th>Reporting</th>
+													<th>Answer date</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -72,7 +74,7 @@
 																<%
 																	if(m.get("commentCreatedate") == null) {
 																%>
-																		답변전 
+																		Before answering 
 																<%
 																	}else {
 																%>
@@ -90,19 +92,17 @@
 									</div>
 								</div>
 							</div>
-				        </div>
-					</div>
+						</div>
+					</section>
 				</div>
+			<!-- main end -->
 			</div>
+		<!-- app end -->	
 		</div>
-		<!-- js -->
-		<script src="../vendors/base/vendor.bundle.base.js"></script>
-		<script src="../js/off-canvas.js"></script>
-		<script src="../js/hoverable-collapse.js"></script>
-		<script src="../js/template.js"></script>
-		<script src="../vendors/chart.js/Chart.min.js"></script>
-		<script src="../vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
-		<script src="../js/dashboard.js"></script>
-		<script src="https://kit.fontawesome.com/0917e5f385.js" crossorigin="anonymous"></script>
+		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+	    <script src="../assets/vendors/apexcharts/apexcharts.js"></script>
+	    <script src="../assets/js/pages/dashboard.js"></script>
+	    <script src="../assets/js/main.js"></script>
 	</body>
 </html>

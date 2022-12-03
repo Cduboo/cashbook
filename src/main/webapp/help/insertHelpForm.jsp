@@ -1,66 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	//비로그인 유저는 접근 불가
-	if(session.getAttribute("loginMember") == null) {
-		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
-		return;
-	}
-	
+//비로그인 유저는 접근 불가
+if (session.getAttribute("loginMember") == null) {
+	response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
+	return;
+}
 %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>insertHelpForm</title>
-		<!-- css -->
-		<link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
-		<link rel="stylesheet" href="../vendors/feather/feather.css">
-		<link rel="stylesheet" href="../vendors/base/vendor.bundle.base.css">
-		<link rel="stylesheet" href="../vendors/flag-icon-css/css/flag-icon.min.css"/>
-		<link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars-o.css">
-		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars.css">
-		<link rel="stylesheet" href="../css/style.css">
-		<link rel="stylesheet" href="../css/styles.css">
-		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="../assets/css/bootstrap.css">
+		<link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
+		<link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+		<link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+		<link rel="stylesheet" href="../assets/css/app.css">
+		<link rel="stylesheet" href="../assets/vendors/summernote/summernote-lite.min.css">
+		<link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
 	</head>
 	<body>
-		<!-- 네비게이션/헤더부분 -->
-		<div class="container-scroller">
-			<jsp:include page="/inc/header.jsp"></jsp:include>
-			<div class="container-fluid page-body-wrapper" style="background-color: #F4F7FA;">
-				<!-- 네비게이션/사이드  -->
-				<jsp:include page="/inc/nav.jsp"></jsp:include>
-				<!-- main -->
-				<div class="container stretch-card mt-5" style="height: 500px;">
-					<div class="card">
-						<div class="card-body">
-							<p class="card-description">Service center</p>
-							<h4 class="mb-5">Q&A</h4>
-							<form class="forms-sample" action="<%=request.getContextPath()%>/help/insertHelpAction.jsp" method="post">
-								<div class="form-group">
-									<label for="exampleInputUsername1">Title</label>
-									<input type="text" class="form-control" name="helpTitle" id="exampleInputUsername1">
-								</div>
-								<div class="form-group">
-									<label for="exampleTextarea1">Contents</label>
-									<textarea class="form-control" name="helpMemo" id="exampleTextarea1" rows="4"></textarea>
-			                    </div>
-								<button type="submit" class="btn btn-primary mr-2">Submit</button>
-							</form>
-						</div>
-					</div>
+		<div id="app">
+			<jsp:include page="/inc/nav.jsp"></jsp:include>
+			<div id="main">
+				<header class="mb-3">
+					<a href="#" class="burger-btn d-block d-xl-none"> <i class="bi bi-justify fs-3"></i>
+					</a>
+				</header>
+				<div class="page-heading">
+					<h3>Service center</h3>
 				</div>
+				<div class="page-content">
+					<section class="card">
+						<div class="card-header">
+							<h4 class="card-title">Question</h4>
+						</div>
+						<div class="card-content">
+							<div class="card-body">
+								<form class="form form-horizontal px-4" action="<%=request.getContextPath()%>/help/insertHelpAction.jsp" method="post">
+									<div class="form-body">
+										<div class="row">
+											<div class="col-md-1">
+												<label for="title">Title</label>
+											</div>
+											<div class="col-md-11 form-group">
+												<input type="text" id="title" name="helpTitle" class="form-control" placeholder="Title">
+											</div>
+											<div class="mt-4">
+												<textarea id="summernote" name="helpMemo"></textarea>
+											</div>
+										</div>
+										<div class="d-flex justify-content-end mt-3">
+											<button type="submit" class="btn btn-primary">Submit</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</section>
+					<!-- page-content end -->
+				</div>
+				<!-- main end -->
 			</div>
+			<!-- app end -->
 		</div>
-		<!-- js -->
-		<script src="../vendors/base/vendor.bundle.base.js"></script>
-		<script src="../js/off-canvas.js"></script>
-		<script src="../js/hoverable-collapse.js"></script>
-		<script src="../js/template.js"></script>
-		<script src="../vendors/chart.js/Chart.min.js"></script>
-		<script src="../vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
-		<script src="../js/dashboard.js"></script>
-		<script src="https://kit.fontawesome.com/0917e5f385.js" crossorigin="anonymous"></script>
+		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+		<script src="../assets/js/bootstrap.bundle.min.js"></script>
+		<script src="../assets/vendors/jquery/jquery.min.js"></script>
+	    <script src="../assets/vendors/summernote/summernote-lite.min.js"></script>
+	    <script>
+	        $('#summernote').summernote({
+	            tabsize: 2,
+	            height: 300,
+	        });	      
+	    </script>
+		<script src="../assets/js/pages/dashboard.js"></script>
+		<script src="../assets/js/main.js"></script>
 	</body>
 </html>

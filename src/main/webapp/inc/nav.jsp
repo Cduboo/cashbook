@@ -18,8 +18,8 @@
 		<div class="sidebar-menu">
 			<ul class="menu">
 				<li class="sidebar-title">Menu</li>
-				<li class="sidebar-item active">
-					<a href="index.html" class='sidebar-link'>
+				<li class="sidebar-item">
+					<a href="<%=request.getContextPath()%>/cash/cashList.jsp" class='sidebar-link'>
 						<i class="bi bi-grid-fill"></i>
 						<span>Account book</span>
 					</a>
@@ -34,13 +34,13 @@
 							</a>
 							<ul class="submenu ">
 								<li class="submenu-item ">
-									<a href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp">공지관리</a>
+									<a href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp">Notice management</a>
 								</li>
 								<li class="submenu-item ">
-									<a href="<%=request.getContextPath()%>/admin/category/categoryList.jsp">카테고리관리</a>
+									<a href="<%=request.getContextPath()%>/admin/category/categoryList.jsp">Category Management</a>
 								</li>
 								<li class="submenu-item ">
-									<a href="<%=request.getContextPath()%>/admin/member/memberList.jsp">회원관리</a>
+									<a href="<%=request.getContextPath()%>/admin/member/memberList.jsp">Member management</a>
 								</li>
 							</ul>
 						</li>
@@ -54,13 +54,13 @@
 					</a>
 					<ul class="submenu ">
 						<li class="submenu-item ">
-							<a href="<%=request.getContextPath()%>/member/updateMemberForm.jsp">회원정보 수정</a>
+							<a href="<%=request.getContextPath()%>/member/updateMemberForm.jsp">Edit information</a>
 						</li>
 						<li class="submenu-item ">
-							<a href="<%=request.getContextPath()%>/member/updateMemberPwForm.jsp">비밀번호 수정</a>
+							<a href="<%=request.getContextPath()%>/member/updateMemberPwForm.jsp">Edit password</a>
 						</li>
 						<li class="submenu-item ">
-							<a href="<%=request.getContextPath()%>/member/deleteMemberForm.jsp">회원탈퇴</a>
+							<a href="<%=request.getContextPath()%>/member/deleteMemberForm.jsp">Delete account</a>
 						</li>
 					</ul>
 				</li>

@@ -33,6 +33,44 @@
 		<link rel="shortcut icon" href="../images/favicon.png" />
 	</head>
 	<body>
+			<%-- <!-- 네비게이션/헤더부분 -->
+		<div class="container-scroller">
+			<jsp:include page="/inc/header.jsp"></jsp:include>
+			<div class="container-fluid page-body-wrapper" style="background-color: #F4F7FA;">
+				<!-- 네비게이션/사이드  -->
+				<jsp:include page="/inc/nav.jsp"></jsp:include>
+				<!-- main -->
+				<div class="container col-md-6 grid-margin stretch-card mt-5" style="height: 500px;">
+					<div class="card">
+						<div class="card-body">
+							<p class="card-description">Service center</p>
+							<h4 class="card-title mb-5">Q & A</h4>
+							<form action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post" class="forms-sample">
+								<div class="form-group row">
+									<label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID</label>
+									<div class="col-sm-9">
+										<input type="text" value="<%=loginMember.getMemberId()%>" readonly="readonly" class="form-control" id="exampleInputUsername2" placeholder="Username">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="exampleInputEmail2" class="col-sm-3 col-form-label">NAME</label>
+									<div class="col-sm-9">
+										<input type="text" name="updateName" value="<%=loginMember.getMemberName()%>" class="form-control" id="exampleInputEmail2" placeholder="Email">
+									</div>
+								</div>   
+								<div class="form-group row">
+									<label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
+									<div class="col-sm-9">
+										<input type="password" name="currentPw" class="form-control" id="exampleInputPassword2" placeholder="Password">
+									</div>
+								</div>
+								<button type="submit" class="btn btn-primary mr-2">Submit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> --%>
 		<!-- 네비게이션/헤더부분 -->
 		<div class="container-scroller">
 			<jsp:include page="/inc/header.jsp"></jsp:include>
