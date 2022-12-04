@@ -260,6 +260,7 @@
 			</div>
 		<!-- app end -->
 		</div>
+		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	    <script src="../assets/js/bootstrap.bundle.min.js"></script>
 	    <script src="../assets/vendors/apexcharts/apexcharts.js"></script>

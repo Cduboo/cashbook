@@ -8,7 +8,7 @@
 		<div class="sidebar-header">
 			<div class="d-flex justify-content-between">
 				<div class="logo">
-					<a href="<%=request.getContextPath()%>/cash/cashList.jsp"><img src="../assets/images/logo/logo.png" alt="Logo"></a>
+					<a href="<%=request.getContextPath()%>/cash/cashList.jsp"><img src="/cashbook/assets/images/logo/logo.png" alt="Logo"></a>
 				</div>
 				<div class="toggler">
 					<a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -20,7 +20,7 @@
 				<li class="sidebar-title">Menu</li>
 				<li class="sidebar-item">
 					<a href="<%=request.getContextPath()%>/cash/cashList.jsp" class='sidebar-link'>
-						<i class="bi bi-grid-fill"></i>
+						<i class="far fa-calendar"></i>
 						<span>Account book</span>
 					</a>
 				</li>	
@@ -29,7 +29,7 @@
 				%>	
 						<li class="sidebar-item  has-sub">
 							<a href="#" class='sidebar-link'>
-								<i class="bi bi-stack"></i>
+								<i class="fas fa-user-check"></i>
 								<span>Admin</span>
 							</a>
 							<ul class="submenu ">
@@ -49,7 +49,7 @@
 				%>
 				<li class="sidebar-item  has-sub">
 					<a href="#" class='sidebar-link'>
-						<i class="bi bi-stack"></i>
+						<i class="fas fa-user"></i>
 						<span>Mypage</span>
 					</a>
 					<ul class="submenu ">
@@ -69,7 +69,7 @@
 				%>
 						<li class="sidebar-item">
 							<a href="<%=request.getContextPath()%>/admin/help/helpList.jsp" class='sidebar-link'>
-								<i class="bi bi-grid-fill"></i>
+								<i class="fas fa-question-circle"></i>
 								<span>Service center</span>
 							</a>
 						</li>
@@ -78,7 +78,7 @@
 				%>
 					<li class="sidebar-item">
 							<a href="<%=request.getContextPath()%>/help/helpList.jsp" class='sidebar-link'>
-								<i class="bi bi-grid-fill"></i>
+								<i class="fas fa-question-circle"></i>
 								<span>Service center</span>
 							</a>
 					</li>
@@ -87,7 +87,7 @@
 				%>
 				<li class="sidebar-item">
 					<a href="<%=request.getContextPath()%>/logOut.jsp" class='sidebar-link'>
-						<i class="bi bi-grid-fill"></i>
+						<i class="fas fa-sign-out-alt"></i>
 						<span>Logout</span>
 					</a>
 				</li>

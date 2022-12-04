@@ -133,7 +133,7 @@ public class CommentDao {
 		try {
 			dbUtil = new DBUtil();
 			conn = dbUtil.getConnection();
-			String sql = "SELECT comment_memo commentMemo, c.member_id memberId, c.createdate createdate, comment_no commentNo FROM comment c INNER JOIN help h ON c.help_no = h.help_no WHERE c.help_no = ?";
+			String sql = "SELECT comment_memo commentMemo, c.member_id memberId, c.createdate createdate, comment_no commentNo FROM comment c INNER JOIN help h ON c.help_no = h.help_no WHERE c.help_no = ? ORDER BY createdate DESC";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, helpNo);
 			rs = stmt.executeQuery();

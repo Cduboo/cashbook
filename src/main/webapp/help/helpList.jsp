@@ -34,13 +34,9 @@
 	</head>
 	<body>
 		<div id="app">
+			<jsp:include page="/inc/header.jsp"></jsp:include>			
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<header class="mb-3">
-					<a href="#" class="burger-btn d-block d-xl-none">
-						<i class="bi bi-justify fs-3"></i>
-					</a>
-				</header>
 				<div class="page-heading">
 					<h3>Service center </h3>
 				</div>
@@ -58,8 +54,8 @@
 										<table class="table table-lg" style="table-layout: fixed;">
 											<thead>
 												<tr>
-													<th>Title</th>
-													<th>Reporting</th>
+													<th class="text-center" style="width: 70%">Title</th>
+													<th>Reporting date</th>
 													<th>Answer date</th>
 												</tr>
 											</thead>
@@ -68,7 +64,7 @@
 													for(HashMap<String, Object> m : list) {
 												%>
 														<tr>
-															<td><a href="<%=request.getContextPath()%>/help/helpOne.jsp?helpNo=<%=m.get("helpNo")%>"><%=m.get("helpTitle")%></a></td>
+															<td class="text-center"><a href="<%=request.getContextPath()%>/help/helpOne.jsp?helpNo=<%=m.get("helpNo")%>"><%=m.get("helpTitle")%></a></td>
 															<td><%=m.get("helpCreatedate")%></td>
 															<td>
 																<%
@@ -99,6 +95,7 @@
 			</div>
 		<!-- app end -->	
 		</div>
+		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	    <script src="../assets/js/bootstrap.bundle.min.js"></script>
 	    <script src="../assets/js/pages/dashboard.js"></script>

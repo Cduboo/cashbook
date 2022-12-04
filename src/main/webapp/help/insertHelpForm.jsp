@@ -24,12 +24,9 @@ if (session.getAttribute("loginMember") == null) {
 	</head>
 	<body>
 		<div id="app">
+			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<header class="mb-3">
-					<a href="#" class="burger-btn d-block d-xl-none"> <i class="bi bi-justify fs-3"></i>
-					</a>
-				</header>
 				<div class="page-heading">
 					<h3>Service center</h3>
 				</div>
@@ -67,6 +64,7 @@ if (session.getAttribute("loginMember") == null) {
 			</div>
 			<!-- app end -->
 		</div>
+		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="../assets/js/bootstrap.bundle.min.js"></script>
 		<script src="../assets/vendors/jquery/jquery.min.js"></script>

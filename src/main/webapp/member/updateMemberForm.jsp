@@ -19,111 +19,79 @@
 	<html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>updateMemberForm</title>
-		<!-- css -->
-		<link rel="stylesheet" href="../vendors/mdi/css/materialdesignicons.min.css">
-		<link rel="stylesheet" href="../vendors/feather/feather.css">
-		<link rel="stylesheet" href="../vendors/base/vendor.bundle.base.css">
-		<link rel="stylesheet" href="../vendors/flag-icon-css/css/flag-icon.min.css"/>
-		<link rel="stylesheet" href="../vendors/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars-o.css">
-		<link rel="stylesheet" href="../vendors/jquery-bar-rating/fontawesome-stars.css">
-		<link rel="stylesheet" href="../css/style.css">
-		<link rel="stylesheet" href="../css/styles.css">
-		<link rel="shortcut icon" href="../images/favicon.png" />
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="../assets/css/bootstrap.css">
+		<link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
+		<link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+		<link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+		<link rel="stylesheet" href="../assets/css/app.css">
+		<link rel="stylesheet" href="../assets/vendors/summernote/summernote-lite.min.css">
+		<link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
 	</head>
 	<body>
-			<%-- <!-- 네비게이션/헤더부분 -->
-		<div class="container-scroller">
+		<div id="app">
 			<jsp:include page="/inc/header.jsp"></jsp:include>
-			<div class="container-fluid page-body-wrapper" style="background-color: #F4F7FA;">
-				<!-- 네비게이션/사이드  -->
-				<jsp:include page="/inc/nav.jsp"></jsp:include>
-				<!-- main -->
-				<div class="container col-md-6 grid-margin stretch-card mt-5" style="height: 500px;">
-					<div class="card">
-						<div class="card-body">
-							<p class="card-description">Service center</p>
-							<h4 class="card-title mb-5">Q & A</h4>
-							<form action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post" class="forms-sample">
-								<div class="form-group row">
-									<label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID</label>
-									<div class="col-sm-9">
-										<input type="text" value="<%=loginMember.getMemberId()%>" readonly="readonly" class="form-control" id="exampleInputUsername2" placeholder="Username">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="exampleInputEmail2" class="col-sm-3 col-form-label">NAME</label>
-									<div class="col-sm-9">
-										<input type="text" name="updateName" value="<%=loginMember.getMemberName()%>" class="form-control" id="exampleInputEmail2" placeholder="Email">
-									</div>
-								</div>   
-								<div class="form-group row">
-									<label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
-									<div class="col-sm-9">
-										<input type="password" name="currentPw" class="form-control" id="exampleInputPassword2" placeholder="Password">
-									</div>
-								</div>
-								<button type="submit" class="btn btn-primary mr-2">Submit</button>
-							</form>
-						</div>
-					</div>
+			<jsp:include page="/inc/nav.jsp"></jsp:include>
+			<div id="main">
+				<div class="page-heading">
+					<h3>Mypage</h3>
 				</div>
-			</div>
-		</div> --%>
-		<!-- 네비게이션/헤더부분 -->
-		<div class="container-scroller">
-			<jsp:include page="/inc/header.jsp"></jsp:include>
-			<div class="container-fluid page-body-wrapper" style="background-color: #F4F7FA;">
-				<!-- 네비게이션/사이드  -->
-				<jsp:include page="/inc/nav.jsp"></jsp:include>
-				<!-- main -->
-				<div class="container col-md-6 grid-margin stretch-card mt-5" style="height: 500px;">
-					<div class="card">
-						<div class="card-body">
-							<p class="card-description">MYPAGE</p>
-							<h4 class="card-title mb-5">Edit member information</h4>
-							<%
-								if(msg != null) {
-							%>
-								<div><%=msg%></div>
-							<%		
-								}
-							%>
-							<form action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post" class="forms-sample">
-								<div class="form-group row">
-									<label for="exampleInputUsername2" class="col-sm-3 col-form-label">ID</label>
-									<div class="col-sm-9">
-										<input type="text" value="<%=loginMember.getMemberId()%>" readonly="readonly" class="form-control" id="exampleInputUsername2" placeholder="Username">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label for="exampleInputEmail2" class="col-sm-3 col-form-label">NAME</label>
-									<div class="col-sm-9">
-										<input type="text" name="updateName" value="<%=loginMember.getMemberName()%>" class="form-control" id="exampleInputEmail2" placeholder="Email">
-									</div>
-								</div>   
-								<div class="form-group row">
-									<label for="exampleInputPassword2" class="col-sm-3 col-form-label">Password</label>
-									<div class="col-sm-9">
-										<input type="password" name="currentPw" class="form-control" id="exampleInputPassword2" placeholder="Password">
-									</div>
-								</div>
-								<button type="submit" class="btn btn-primary mr-2">Submit</button>
-							</form>
+				<div class="page-content w-70 container">
+					<section class="card">
+						<div class="card-header">
+							<h4 class="card-title">Edit information</h4>
 						</div>
-					</div>
+						<div class="card-content">
+							<div class="card-body">
+								<%
+									if(msg != null) {
+								%>
+									<div><%=msg%></div>
+								<%		
+									}
+								%>
+								<form class="form form-horizontal px-4" action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post">
+									<div class="form-body">
+										<div class="row">
+											<div class="col-md-2">
+												<label>ID</label>
+											</div>
+											<div class="col-md-10 form-group">
+												<input type="text" class="form-control" value="<%=loginMember.getMemberId()%>" placeholder="id" readonly="readonly">
+											</div>
+											<div class="col-md-2">
+												<label for="name">NAME</label>
+											</div>
+											<div class="col-md-10 form-group">
+												<input type="text" class="form-control" id="name" name="updateName" value="<%=loginMember.getMemberName()%>" placeholder="Name">
+											</div>
+											<div class="col-md-2">
+												<label for="pw">PASSWORD</label>
+											</div>
+											<div class="col-md-10 form-group">
+												<input type="password" name="currentPw" id="pw" class="form-control" placeholder="Password">
+											</div>
+											<div class="d-flex justify-content-end mt-3">
+												<button type="submit" class="btn btn-primary mr-2">Submit</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</section>
 				</div>
+				<!-- main end -->
 			</div>
+			<!-- app end -->
 		</div>
-		<!-- js -->
-		<script src="../vendors/base/vendor.bundle.base.js"></script>
-		<script src="../js/off-canvas.js"></script>
-		<script src="../js/hoverable-collapse.js"></script>
-		<script src="../js/template.js"></script>
-		<script src="../vendors/chart.js/Chart.min.js"></script>
-		<script src="../vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
-		<script src="../js/dashboard.js"></script>
-		<script src="https://kit.fontawesome.com/0917e5f385.js" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
+		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+		<script src="../assets/js/bootstrap.bundle.min.js"></script>
+		<script src="../assets/js/pages/dashboard.js"></script>
+		<script src="../assets/js/main.js"></script>
 	</body>
 </html>

@@ -9,6 +9,8 @@
 		return;
 	}
 
+	request.setCharacterEncoding("utf-8");	
+	
  	if(request.getParameter("noticeTitle") == null || request.getParameter("noticeTitle").equals("")
  		|| request.getParameter("noticeMemo") == null || request.getParameter("noticeMemo").equals("")) {
 		response.sendRedirect(request.getContextPath()+"/admin/notice/insertNoticeForm.jsp");

@@ -40,52 +40,128 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>noticeList</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/vendors/iconly/bold.css">
+    <link rel="stylesheet" href="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="../../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/app.css">
+    <link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
 	</head>
 	<body>
-		<!-- header -->
-		<jsp:include page="/inc/header.jsp"></jsp:include>
-		<!-- nav -->	
-		<jsp:include page="/inc/navAdmin.jsp"></jsp:include>
-		
-		<!-- main -->
-		<div>
-			<h1>공지사항</h1>
-			<!-- 공지사항 페이징 -->
-			<div>
-				<a href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=1">&lt;&lt;</a>
-				<%
-					if(currentPage > 1){
-				%>
-						<a href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
-				<%		
-					}
-					if(currentPage < lastPage) {
-				%>
-						<a href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
-				<%		
-					}
-				%>
-				<a href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
-				<span>총 <%=noticeCount%>건 page : <%=currentPage%> / <%=lastPage%></span>
+		<div id="app">
+			<jsp:include page="/inc/header.jsp"></jsp:include>			
+			<jsp:include page="/inc/nav.jsp"></jsp:include>
+			<div id="main">
+				<div class="page-heading">
+					<h3>Notice Management</h3>
+				</div>
+				<div class="page-content">
+					<section class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="text-end me-3">
+										<a href="<%=request.getContextPath()%>/admin/notice/insertNoticeForm.jsp">+ Notice</a>
+										<!-- 공지사항 페이징 -->
+										<div class="mt-2">
+											<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=1">&lt;&lt;</a>
+											<%
+												if(currentPage >= 1){
+											%>
+													<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
+													<span class="me-2"><%=currentPage%></span>
+											<%		
+												}
+												if(currentPage <= lastPage) {
+											%>
+													<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
+											<%		
+												}
+											%>
+											<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
+										</div>
+									</h4>
+								</div>
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-striped table-hover text-center caption-top" style="table-layout: fixed;">
+											<caption>total <%=noticeCount%></caption>
+											<thead>
+												<tr>
+													<th>Title</th>
+													<th>Date</th>
+												</tr>
+											</thead>
+											<tbody>
+												<%
+													for(Notice n : list) {
+												%>		
+														<tr> 
+															<td>
+																<a href="#" data-bs-toggle="modal" data-bs-target="#notice<%=n.getNoticeNo()%>"><%=n.getNoticeTitle()%></a>
+	                                            				<div class="modal fade" id="notice<%=n.getNoticeNo()%>" tabindex="-1" role="dialog"
+						                                            aria-labelledby="noticeTitle" aria-hidden="true">
+						                                            <div class="modal-dialog modal-dialog-scrollable" role="document">
+						                                                <div class="modal-content w-100">
+						                                                    <div class="modal-header">
+						                                                        <h5 class="modal-title" id="noticeTitle">
+						                                                            <%=n.getNoticeTitle()%></h5>
+						                                                        <button type="button" class="close" data-bs-dismiss="modal"
+						                                                            aria-label="Close">
+						                                                            <i data-feather="x"></i>
+						                                                        </button>
+						                                                    </div>
+						                                                    <div class="modal-body">
+						                                                        <div class="text-end mb-3"><%=n.getCreatedate()%></div>
+						                                                        <p><%=n.getNoticeMemo()%></p>
+						                                                    </div>
+					                                                    	<form method="post">
+							                                                    <div class="modal-footer">
+																					<input type="hidden" name="noticeNo" value="<%=n.getNoticeNo()%>">
+																					<input type="hidden" name="noticeTitle" value="<%=n.getNoticeTitle()%>">
+																					<input type="hidden" name="noticeMemo" value="<%=n.getNoticeMemo()%>">
+							                                                        <button type="submit" class="btn btn-primary ml-1" formaction="<%=request.getContextPath()%>/admin/notice/updateNoticeForm.jsp">
+							                                                            <i class="bx bx-check d-block d-sm-none"></i>
+							                                                            <span class="d-none d-sm-block">update</span>
+							                                                        </button>
+							                                                        <button type="submit" class="btn btn-primary ml-1" formaction="<%=request.getContextPath()%>/admin/notice/deleteNoticeAction.jsp">
+							                                                            <i class="bx bx-check d-block d-sm-none"></i>
+							                                                            <span class="d-none d-sm-block">delete</span>
+							                                                        </button>
+							                                                        <button type="submit" class="btn btn-light-secondary" data-bs-dismiss="modal">
+							                                                            <i class="bx bx-x d-block d-sm-none"></i>
+							                                                            <span class="d-none d-sm-block">Close</span>
+							                                                        </button>
+							                                                    </div>
+						                                                    </form>
+						                                                </div>
+						                                            </div>
+						                                        </div>
+															</td>
+															<td><%=n.getCreatedate()%></td>
+														</tr>
+												<%		
+													}
+												%>
+											</tbody>
+										</table>
+									</div>
+									<div class="text-end">page : <%=currentPage%> / <%=lastPage%></div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
 			</div>
-			<a href="<%=request.getContextPath()%>/admin/notice/insertNoticeForm.jsp">공지등록</a>
-			<table border="1">
-				<tr>
-					<th>제목</th>
-					<th>날짜</th>
-				</tr>
-				<%
-					for(Notice n : list) {
-				%>
-						<tr>
-							<td><a href="<%=request.getContextPath()%>/admin/notice/noticeOne.jsp?noticeNo=<%=n.getNoticeNo()%>"><%=n.getNoticeTitle()%></a></td>
-							<td><%=n.getCreatedate()%></td>
-						</tr>
-				<%		
-					}
-				%>
-			</table>
 		</div>
+		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
+		<script src="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+	    <script src="../../assets/js/pages/dashboard.js"></script>
+	    <script src="../../assets/js/main.js"></script>
 	</body>
 </html>

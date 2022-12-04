@@ -44,12 +44,9 @@
 	</head>
 	<body>
 		<div id="app">
+			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<header class="mb-3">
-					<a href="#" class="burger-btn d-block d-xl-none"> <i class="bi bi-justify fs-3"></i>
-					</a>
-				</header>
 				<div class="page-heading">
 					<h3>Q&#38;A</h3>
 				</div>
@@ -85,13 +82,13 @@
 												<textarea class="form-control" rows="3" readonly="readonly"><%=helpOne.getHelpMemo()%></textarea>
 											</div>
 											<div class="d-flex justify-content-end mt-3">
-												<a class="btn btn-outline-primary me-3" href="<%=request.getContextPath()%>/help/helpList.jsp">List</a>
+												<a class="btn btn-primary me-3" href="<%=request.getContextPath()%>/help/helpList.jsp">List</a>
 												<%
 													for (HashMap<String, Object> map : list) {
 														if (helpNo == (int)map.get("helpNo") && map.get("commentMemo") == null) {
 												%>
-															<a class="btn btn-outline-primary me-3" href="<%=request.getContextPath()%>/help/updateHelpForm.jsp?helpNo=<%=helpNo%>">Update</a>
-															<a class="btn btn-outline-primary" href="<%=request.getContextPath()%>/help/deleteHelpAction.jsp?helpNo=<%=helpNo%>">Delete</a>
+															<a class="btn btn-primary me-3" href="<%=request.getContextPath()%>/help/updateHelpForm.jsp?helpNo=<%=helpNo%>">Update</a>
+															<a class="btn btn-primary" href="<%=request.getContextPath()%>/help/deleteHelpAction.jsp?helpNo=<%=helpNo%>">Delete</a>
 												<%
 														}
 													}
@@ -100,6 +97,7 @@
 										</div>
 									</div>
 								</form>
+								<hr>
 								<div class="card">
 									<div class="card-header">
 										<h4 class="card-title">Answer List</h4>
@@ -111,7 +109,7 @@
 												<%
 													for (HashMap<String, Object> m : commentList) {
 												%>
-														<a href="#" class="list-group-item list-group-item-action">
+														<div href="#" class="list-group-item list-group-item-action">
 															<div class="d-flex w-100 mb-3 justify-content-between">
 																<h5 class="mb-1 text-primary">
 																	<div class="avatar avatar-sm me-3">
@@ -122,7 +120,7 @@
 																<small><%=m.get("createdate")%></small>
 															</div>
 															<p class="mb-1"><%=m.get("commentMemo")%></p>
-														</a>
+														</div>
 												<%
 													}
 												%>
@@ -138,10 +136,10 @@
 			</div>
 			<!-- app end -->
 		</div>
+		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="../assets/js/pages/dashboard.js"></script>
 		<script src="../assets/js/bootstrap.bundle.min.js"></script>
-	    <script src="../assets/js/pages/form-editor.js"></script>
 		<script src="../assets/js/main.js"></script>
 	</body>
 </html>

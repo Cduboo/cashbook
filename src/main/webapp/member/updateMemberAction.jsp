@@ -50,5 +50,5 @@
 		updateMember.setMemberLevel(loginMember.getMemberLevel());
 		session.setAttribute("loginMember", updateMember);		
 	}
-	response.sendRedirect(request.getContextPath()+"/member/memberOneForm.jsp");
+	response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
 %>

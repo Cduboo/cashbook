@@ -43,12 +43,9 @@
 	</head>
 	<body>
 		<div id="app">
+			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<header class="mb-3">
-					<a href="#" class="burger-btn d-block d-xl-none"> <i class="bi bi-justify fs-3"></i>
-					</a>
-				</header>
 				<div class="page-heading">
 					<h3>Q&#38;A</h3>
 				</div>
@@ -81,7 +78,7 @@
 												<input type="text" class="form-control" value="<%=helpOne.getCreatedate()%>" readonly="readonly">
 											</div>
 											<div class="col-md-12 form-group mt-3">
-												<textarea id="summernote" name="helpMemo"></textarea>
+												<textarea id="summernote" name="helpMemo"><%=helpOne.getHelpMemo()%></textarea>
 											</div>
 											<div class="d-flex justify-content-end mt-3">
 												<a class="btn btn-outline-primary me-3" href="<%=request.getContextPath()%>/help/helpList.jsp">List</a>
@@ -107,6 +104,7 @@
 			</div>
 			<!-- app end -->
 		</div>
+		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="../assets/js/bootstrap.bundle.min.js"></script>
 		<script src="../assets/vendors/jquery/jquery.min.js"></script>

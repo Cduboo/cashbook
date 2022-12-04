@@ -3,62 +3,47 @@
 <%
 	Member loginMember = (Member)session.getAttribute("loginMember");
 %>
-<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-	<!-- 로고 -->
-	<div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-		<a class="navbar-brand brand-logo" href="<%=request.getContextPath()%>/cash/cashList.jsp"><img src="../images/logo.svg" alt="logo"/></a>
-		<a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo"/></a>
-	</div>
-	<!-- 헤더 네비게이션 -->
-	<div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-		<!-- 메뉴바 확대/축소 -->
-		<button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-			<span class="icon-menu"></span>				
-		</button>
-		<!-- 내정보 -->
-		<ul class="navbar-nav navbar-nav-right">
-			<li class="nav-item dropdown d-flex mr-4 ">
-				<a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-					<i class="icon-grid"></i>
-				</a>
-				<div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-					<p class="mb-0 font-weight-normal float-left dropdown-header"><%=loginMember.getMemberName()%>님</p>
-				  	<%
-						if(loginMember.getMemberLevel() > 0) {
-					%>
-							<a class="dropdown-item preview-item" href="<%=request.getContextPath()%>/admin/adminMain.jsp">               
-							    <i class="icon-head"></i> 관리자페이지
-							</a>
-					<%		
-						}
-					%>
-					<a class="dropdown-item preview-item" href="<%=request.getContextPath()%>/member/memberOneForm.jsp">               
-					    <i class="icon-head"></i> 마이페이지
-					</a>
-					<%
-						if(loginMember.getMemberLevel() > 0) {
-					%>
-							
-							<a class="dropdown-item preview-item" href="<%=request.getContextPath()%>/admin/help/helpList.jsp">               
-					    		<i class="icon-head"></i> 고객센터
-							</a>
-					<%		
-						}else {
-					%>
-							<a class="dropdown-item preview-item" href="<%=request.getContextPath()%>/help/helpList.jsp">               
-					    		<i class="icon-head"></i> 고객센터
-							</a>
-					<%		
-						}
-					%>  
-					<a class="dropdown-item preview-item" href="<%=request.getContextPath()%>/logOut.jsp">
-					    <i class="icon-inbox"></i> Logout
-					</a>
+<div id="main" class='layout-navbar'>
+	<header class='mb-3'>
+		<nav class="navbar navbar-expand navbar-light ">
+			<div class="container-fluid">
+				<div>
+	                <a href="#" class="burger-btn d-block d-xl-none">
+	                    <i class="bi bi-justify fs-3"></i>
+	                </a>
+	            </div>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					</ul>
+					<div class="dropdown">
+						<a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+							<div class="user-menu d-flex">
+								<div class="user-name text-end me-3">
+									<h6 class="mb-0 text-gray-600"><%=loginMember.getMemberName()%></h6>
+									<p class="mb-0 text-sm text-gray-600"><%=loginMember.getMemberId()%></p>
+								</div>
+								<div class="user-img d-flex align-items-center">
+									<div class="avatar avatar-md">
+										<img src="/cashbook/assets/images/faces/1.jpg">	
+									</div>
+								</div>
+							</div>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+							<li>
+								<h6 class="dropdown-header">
+									Hello, <%=loginMember.getMemberName()%>!
+								</h6>
+							</li>
+							<li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My Profile</a></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li><a class="dropdown-item" href="<%=request.getContextPath()%>/logOut.jsp"><i class="icon-mid bi bi-box-arrow-left me-2"></i>Logout</a></li>
+						</ul>
+					</div>
 				</div>
-			</li>
-		</ul>
-		<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-		  <span class="icon-menu"></span>
-		</button>
-	</div>
-</nav>
+			</div>
+		</nav>
+	</header>
+</div>

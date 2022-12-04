@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.*"%>
 <%@ page import="dao.*"%>
 <%
@@ -28,11 +28,6 @@
 		<title>noticeOne</title>
 	</head>
 	<body>
-		<!-- header -->
-		<jsp:include page="/inc/header.jsp"></jsp:include>
-		<!-- nav -->	
-		<jsp:include page="/inc/navAdmin.jsp"></jsp:include>
-		
 		<!-- main -->
 		<div>
 			<h1>공지사항</h1>
@@ -54,4 +49,4 @@
 			</form>
 		</div>		
 	</body>
-</html>
+</html> --%>
