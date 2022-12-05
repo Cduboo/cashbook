@@ -31,7 +31,6 @@
 		<link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
 		<link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
 		<link rel="stylesheet" href="../assets/css/app.css">
-		<link rel="stylesheet" href="../assets/vendors/summernote/summernote-lite.min.css">
 		<link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
 	</head>
 	<body>
@@ -40,12 +39,12 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Mypage</h3>
+					<h3>마이페이지</h3>
 				</div>
 				<div class="page-content w-70 container">
 					<section class="card">
 						<div class="card-header">
-							<h4 class="card-title">Edit password</h4>
+							<h4 class="card-title">비밀번호 변경</h4>
 						</div>
 						<div class="card-content">
 							<div class="card-body">
@@ -60,25 +59,25 @@
 									<div class="form-body">
 										<div class="row">
 											<div class="col-md-2">
-												<label for="currentPw">CURRENT PASSWORD</label>
+												<label for="currentPw">현재 비밀번호</label>
 											</div>
 											<div class="col-md-10 form-group">
-												<input type="password" name="currentPw" id="currentPw" class="form-control" placeholder="Current Password">
+												<input type="password" name="currentPw" id="currentPw" class="form-control" placeholder="현재 비밀번호">
 											</div>
 											<div class="col-md-2">
-												<label for="newPw">NEW PASSWORD</label>
+												<label for="newPw">새 비밀번호</label>
 											</div>
 											<div class="col-md-10 form-group">
-												<input type="password" name="updatePw" id="newPw" class="form-control" placeholder="New Password">
+												<input type="password" name="updatePw" id="newPw" class="form-control" placeholder="새 비밀번호">
 											</div>
 											<div class="col-md-2">
-												<label for="confirmPw">CONFIRM PASSWORD</label>
+												<label for="confirmPw">새 비밀번호 확인</label>
 											</div>
 											<div class="col-md-10 form-group">
-												<input type="password" name="updatePwCk" id="confirmPw" class="form-control" placeholder="Confirm Password">
+												<input type="password" name="updatePwCk" id="confirmPw" class="form-control" placeholder="새 비밀번호 확인">
 											</div>
 											<div class="d-flex justify-content-end mt-3">
-												<button type="submit" class="btn btn-primary mr-2">Submit</button>
+												<button type="submit" class="btn btn-primary mr-2">변경하기</button>
 											</div>
 										</div>
 									</div>

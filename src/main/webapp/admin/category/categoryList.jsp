@@ -35,7 +35,7 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Category Management</h3>
+					<h3>카테고리 관리</h3>
 				</div>
 				<div class="page-content">
 					<section class="row">
@@ -43,17 +43,16 @@
 							<div class="card">
 								<div class="card-header">
 									<h4 class="text-end me-3">
-										<a href="<%=request.getContextPath()%>/admin/category/insertCategoryForm.jsp">+ Category</a>
+										<a href="<%=request.getContextPath()%>/admin/category/insertCategoryForm.jsp">+ 카테고리 등록</a>
 									</h4>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-lg" style="table-layout: fixed;">
+										<table class="table table-md" style="table-layout: fixed;">
 											<thead>
 												<tr>
-													<th>번호</th>
-													<th>수입/지출</th>
-													<th>이름</th>
+													<th>분류</th>
+													<th>종류</th>
 													<th>마지막 수정 날짜</th>
 													<th>생성 날짜</th>
 													<th>수정</th>
@@ -65,13 +64,12 @@
 													for(Category c : categoryList) {
 												%>
 														<tr>
-															<td><%=c.getCategoryNo()%></td>
 															<td><%=c.getCategoryKind()%></td>
 															<td><%=c.getCategoryName()%></td>
 															<td><%=c.getUpdatedate()%></td>
 															<td><%=c.getCreatedate()%></td>
-															<td><a href="<%=request.getContextPath()%>/admin/category/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</a></td>
-															<td><a href="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</a></td>
+															<td><a class="btn btn-sm btn-light-secondary" href="<%=request.getContextPath()%>/admin/category/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</a></td>
+															<td><a class="btn btn-sm btn-light-secondary" href="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</a></td>
 														</tr>
 												<%		
 													}

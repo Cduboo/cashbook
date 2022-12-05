@@ -31,12 +31,12 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Notice Management</h3>
+					<h3>공지사항 관리</h3>
 				</div>
 				<div class="page-content">
 					<section class="card">
 						<div class="card-header">
-							<h4 class="card-title">Notice</h4>
+							<h4 class="card-title">공지사항 등록</h4>
 						</div>
 						<div class="card-content">
 							<div class="card-body">
@@ -44,17 +44,17 @@
 									<div class="form-body">
 										<div class="row">
 											<div class="col-md-1">
-												<label for="title">Title</label>
+												<label for="title">제목</label>
 											</div>
 											<div class="col-md-11 form-group">
-												<input type="text" id="title" name="noticeTitle" class="form-control" placeholder="Title">
+												<input type="text" id="title" name="noticeTitle" class="form-control" placeholder="제목">
 											</div>
 											<div class="col-md-12 form-group mt-3">
 												<textarea id="summernote" name="noticeMemo"></textarea>
 											</div>
 										</div>
 										<div class="d-flex justify-content-end mt-3">
-											<button type="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" class="btn btn-primary">글쓰기</button>
 										</div>
 									</div>
 								</form>

@@ -1,7 +1,9 @@
-<%@ page import="dao.CashDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.Member"%>
+<%@ page import="dao.CashDao"%>
+<%@ page import="java.text.*"%>
 <%@ page import="java.util.*"%>
+
 <%
 	//비로그인 유저는 접근 불가
 	if (session.getAttribute("loginMember") == null) {
@@ -54,8 +56,11 @@
 	
 	//Model -> 해당 유저의 일별 cash 목록
 	CashDao cashDao = new CashDao();
-	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(memberId, year, month + 1);
-	
+	ArrayList<HashMap<String, Object>> list = cashDao.selectCashListByMonth(memberId, year, month+1);
+	//회원의 해당 년월 총 수입/지출
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	int totalIncome = cashDao.selectIncomeByMonth(memberId, year, month+1);
+	int totalExpenditure = cashDao.selectExpenditureByMonth(memberId, year, month+1);
 	//View -> 달력 출력 + 일별 cash 목록 출력
 %>
 <!DOCTYPE html>
@@ -83,7 +88,7 @@
 					</a>
 				</header>
 				<div class="page-heading">
-					<h3>Account book</h3>
+					<h3>가계부</h3>
 				</div>
 				<div class="page-content">
 					<section class="row">
@@ -99,8 +104,8 @@
 													</div>
 												</div>
 												<div class="col-md-8">
-													<h6 class="text-muted font-semibold">Profile Views</h6>
-													<h6 class="font-extrabold mb-0">112.000</h6>
+													<h6 class="text-muted font-semibold"><%=month+1%>월 수입</h6>
+													<h6 class="font-extrabold mb-0"><%=formatter.format(totalIncome)%></h6>
 												</div>
 											</div>
 										</div>
@@ -116,8 +121,8 @@
 													</div>
 												</div>
 												<div class="col-md-8">
-													<h6 class="text-muted font-semibold">Followers</h6>
-													<h6 class="font-extrabold mb-0">183.000</h6>
+													<h6 class="text-muted font-semibold"><%=month+1%>월 지출</h6>
+													<h6 class="font-extrabold mb-0"><%=formatter.format(totalExpenditure)%></h6>
 												</div>
 											</div>
 										</div>
@@ -236,7 +241,7 @@
 	                            <div class="card-body py-4 px-5">
 	                                <div class="d-flex align-items-center">
 	                                    <div class="avatar avatar-xl">
-	                                        <img src="../assets/images/faces/1.jpg" alt="Face 1">
+	                                        <img src="<%=request.getContextPath()%>/assets/images/faces/1.jpg" alt="Face 1">
 	                                    </div>
 	                                    <div class="ms-3 name">
 	                                        <h5 class="font-bold"><%=loginMember.getMemberName()%></h5>

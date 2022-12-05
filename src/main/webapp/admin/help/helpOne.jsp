@@ -46,28 +46,27 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Q&#38;A</h3>
+					<h3>1대1 문의</h3>
 				</div>
 				<div class="page-content">
 					<section class="card">
 						<div class="card-header">
-							<h4 class="card-title">Question</h4>
+							<h4 class="card-title">문의 사항</h4>
 						</div>
 						<div class="card-content">
 							<div class="card-body">
-								<h4 class="card-title">Title : <%=helpOne.getHelpTitle()%></h4>
-								<h4 class="card-title">Writer : <%=helpOne.getMemberId()%></h4>
-								<h4 class="card-title">Reporting date : <%=helpOne.getCreatedate()%></h4>
+								<h4 class="card-title">제목 : <%=helpOne.getHelpTitle()%></h4>
+								<h4 class="card-title">작성자 : <%=helpOne.getMemberId()%></h4>
+								<h4 class="card-title">작성일 : <%=helpOne.getCreatedate()%></h4>
 								<hr>
 								<h6 class="card-subtitle"><%=helpOne.getHelpMemo()%></h6>
 								<div class="d-flex justify-content-end mt-3">
-									<a class="btn btn-primary me-3" href="<%=request.getContextPath()%>/admin/help/helpList.jsp">List</a>
+									<a class="btn btn-primary me-3 mt-5 mb-5" href="<%=request.getContextPath()%>/admin/help/helpList.jsp">목록</a>
 								</div>
-								<hr>
+								<div class="divider mt-5">
+                                	<div class="divider-text">답변 목록</div>
+                   	  			</div>
 								<div class="card">
-									<div class="card-header">
-										<h4 class="card-title">Answer List</h4>
-									</div>
 									<div class="card-content">
 										<div class="card-body">
 											<div class="list-group">
@@ -79,14 +78,14 @@
 															<div class="d-flex w-100 mb-3 justify-content-between">
 																<h5 class="mb-1 text-primary">
 																	<div class="avatar avatar-sm me-3">
-																		<img src="../../assets/images/faces/1.jpg" alt="face">
+																		<img src="<%=request.getContextPath()%>/assets/images/faces/1.jpg" alt="face">
 																	</div>
 																	<%=m.get("memberId")%>
 																</h5>
 																<small>
 																	<%=m.get("createdate")%>
-																	<a class="mx-2" href="<%=request.getContextPath()%>/admin/help/updateCommentForm.jsp?commentNo=<%=m.get("commentNo")%>&helpNo=<%=helpNo%>">update</a>
-																	<a href="<%=request.getContextPath()%>/admin/help/deleteCommentAction.jsp?commentNo=<%=m.get("commentNo")%>&helpNo=<%=helpNo%>">delete</a>
+																	<a class="mx-2" href="<%=request.getContextPath()%>/admin/help/updateCommentForm.jsp?commentNo=<%=m.get("commentNo")%>&helpNo=<%=helpNo%>">수정</a>
+																	<a href="<%=request.getContextPath()%>/admin/help/deleteCommentAction.jsp?commentNo=<%=m.get("commentNo")%>&helpNo=<%=helpNo%>">삭제</a>
 																</small>
 															</div>
 															<p class="mb-1"><%=m.get("commentMemo")%></p>
@@ -100,16 +99,16 @@
 								</div>
 								<!-- 답변 입력 -->
 								<div class="card">
-									<div class="card-header">Answer</div>
+									<div class="card-header">답변 쓰기</div>
 									<div class="card-body">
 										<form action="<%=request.getContextPath()%>/admin/help/insertCommentAction.jsp" method="post">
 											<input type="hidden" name="helpNo" value="<%=helpNo%>">
 											<div class="form-floating">
 												<textarea class="form-control" name="commentMemo" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px"></textarea>
-												<label for="floatingTextarea">Comments</label>
+												<label for="floatingTextarea">Comments...</label>
 											</div>
 											<div class="text-end">
-												<button class="btn btn-sm btn-primary mt-3" type="submit">submit</button>
+												<button class="btn btn-sm btn-primary mt-3" type="submit">등록하기</button>
 											</div>
 										</form>
 									</div>

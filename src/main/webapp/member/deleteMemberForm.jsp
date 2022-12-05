@@ -37,12 +37,12 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Mypage</h3>
+					<h3>마이페이지</h3>
 				</div>
 				<div class="page-content w-70 container">
 					<section class="card">
 						<div class="card-header">
-							<h4 class="card-title">Delete Your Account</h4>
+							<h4 class="card-title">회원 탈퇴</h4>
 						</div>
 						<div class="card-content">
 							<div class="card-body">
@@ -57,13 +57,13 @@
 									<div class="form-body">
 										<div class="row">
 											<div class="col-md-2">
-												<label for="pw">PASSWORD</label>
+												<label for="pw">비밀번호</label>
 											</div>
 											<div class="col-md-10 form-group">
-												<input type="password" name="memberPw" class="form-control" id="pw" placeholder="Password">
+												<input type="password" name="memberPw" class="form-control" id="pw" placeholder="비밀번호">
 											</div>
 											<div class="d-flex justify-content-end mt-3">
-												<button type="submit" class="btn btn-primary mr-2">Submit</button>
+												<button type="submit" class="btn btn-primary mr-2">탈퇴하기</button>
 											</div>
 										</div>
 									</div>

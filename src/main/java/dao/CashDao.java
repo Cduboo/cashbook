@@ -6,6 +6,73 @@ import java.util.*;
 import java.sql.*;
 
 public class CashDao {
+	//회원의 해당 년월 총 지출
+	public int selectExpenditureByMonth(String memberId, int year, int month) {
+		int totalExpenditure = 0;
+		DBUtil dbUtil = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			dbUtil = new DBUtil();
+			conn = dbUtil.getConnection();
+			String sql = "SELECT SUM(c.cash_price) totalExpenditure, ct.category_kind categoryKind, ct.category_name categoryName FROM cash c INNER JOIN  category ct ON c.category_no = ct.category_no WHERE c.member_id = ? AND YEAR(c.cash_date) = ? AND MONTH(c.cash_date) = ? AND ct.category_kind = '지출'";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			stmt.setInt(2, year);
+			stmt.setInt(3, month);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				totalExpenditure = rs.getInt("totalExpenditure");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				dbUtil.close(rs, stmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return totalExpenditure;
+	}
+	//회원의 해당 년월 총 수입
+	public int selectIncomeByMonth(String memberId, int year, int month) {
+		int totalIncome = 0;
+		DBUtil dbUtil = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			dbUtil = new DBUtil();
+			conn = dbUtil.getConnection();
+			String sql = "SELECT SUM(c.cash_price) totalIncome,  ct.category_kind categoryKind, ct.category_name categoryName FROM cash c INNER JOIN  category ct ON c.category_no = ct.category_no WHERE c.member_id = ? AND YEAR(c.cash_date) = ? AND MONTH(c.cash_date) = ? AND ct.category_kind = '수입'";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			stmt.setInt(2, year);
+			stmt.setInt(3, month);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				totalIncome = rs.getInt("totalIncome");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				dbUtil.close(rs, stmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return totalIncome;
+	}
+	
 	//cashDateList.jsp, 해당 일자 가계부정보 출력
 	public ArrayList<HashMap<String, Object>> selectCashListByDate(String memberId, int year, int month, int date) {
 		ArrayList<HashMap<String , Object>> list = null;

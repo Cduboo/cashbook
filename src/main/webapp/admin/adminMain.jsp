@@ -21,6 +21,6 @@
 		<!-- header -->
 		<jsp:include page="/inc/header.jsp"></jsp:include>
 		<!-- nav -->	
-		<jsp:include page="/inc/navAdmin.jsp"></jsp:include>
+		<%-- <jsp:include page="/inc/navAdmin.jsp"></jsp:include> --%>
 	</body>
 </html>

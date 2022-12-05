@@ -28,12 +28,12 @@ if (session.getAttribute("loginMember") == null) {
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Service center</h3>
+					<h3>1대1 문의</h3>
 				</div>
 				<div class="page-content">
 					<section class="card">
 						<div class="card-header">
-							<h4 class="card-title">Question</h4>
+							<h4 class="card-title">문의 사항</h4>
 						</div>
 						<div class="card-content">
 							<div class="card-body">
@@ -41,17 +41,17 @@ if (session.getAttribute("loginMember") == null) {
 									<div class="form-body">
 										<div class="row">
 											<div class="col-md-1">
-												<label for="title">Title</label>
+												<label for="title">제목</label>
 											</div>
 											<div class="col-md-11 form-group">
-												<input type="text" id="title" name="helpTitle" class="form-control" placeholder="Title">
+												<input type="text" id="title" name="helpTitle" class="form-control" placeholder="제목">
 											</div>
 											<div class="col-md-12 form-group mt-3">
 												<textarea id="summernote" name="helpMemo"></textarea>
 											</div>
 										</div>
 										<div class="d-flex justify-content-end mt-3">
-											<button type="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" class="btn btn-primary">작성하기</button>
 										</div>
 									</div>
 								</form>

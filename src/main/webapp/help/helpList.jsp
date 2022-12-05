@@ -38,15 +38,18 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Service center </h3>
+					<h3>1대1 문의</h3>
 				</div>
 				<div class="page-content">
 					<section class="row">
 						<div class="col-12">
 							<div class="card">
 								<div class="card-header">
+									<h4 class=" me-3">
+										내 문의 사항
+									</h4>
 									<h4 class="text-end me-3">
-										<a href="<%=request.getContextPath()%>/help/insertHelpForm.jsp">+ Question</a>
+										<a href="<%=request.getContextPath()%>/help/insertHelpForm.jsp">+ 1대1 문의</a>
 									</h4>
 								</div>
 								<div class="card-body">
@@ -54,9 +57,9 @@
 										<table class="table table-lg" style="table-layout: fixed;">
 											<thead>
 												<tr>
-													<th class="text-center" style="width: 70%">Title</th>
-													<th>Reporting date</th>
-													<th>Answer date</th>
+													<th class="text-center" style="width: 70%">제목</th>
+													<th>작성일</th>
+													<th>답변일</th>
 												</tr>
 											</thead>
 											<tbody>

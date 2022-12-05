@@ -68,13 +68,13 @@
 						<li class="sidebar-item">
 							<a href="<%=request.getContextPath()%>/index.jsp" class='sidebar-link'>
 								<i class="fas fa-home-lg-alt"></i>
-								<span>Home</span>
+								<span>홈</span>
 							</a>
 						</li>
 						<li class="sidebar-item">
 							<a href="<%=request.getContextPath()%>/loginForm.jsp" class='sidebar-link'>
 								<i class="fas fa-user"></i>
-								<span>Login</span>
+								<span>로그인</span>
 							</a>
 						</li>
 					</ul>
@@ -91,42 +91,20 @@
                 </a>
             </header>
 			<div class="page-heading">
-				<h3>Notice</h3>
+				<h3>공지사항</h3>
 			</div>
 			<div class="page-content">
 				<section class="row">
 					<div class="col-12">
 						<div class="card">
-							<div class="card-header">
-								<h4 class="text-end me-3">
-									<!-- 공지사항 페이징 -->
-									<div>
-										<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=1">&lt;&lt;</a>
-										<%
-											if(currentPage >= 1){
-										%>
-												<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
-												<span class="me-2"><%=currentPage%></span>
-										<%		
-											}
-											if(currentPage <= lastPage) {
-										%>
-												<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
-										<%		
-											}
-										%>
-										<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
-									</div>
-								</h4>
-							</div>
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-striped table-hover text-center caption-top" style="table-layout: fixed;">
+									<table class="table table-md table-hover text-center caption-top" style="table-layout: fixed;">
 										<caption>total <%=noticeCount%></caption>
 										<thead>
 											<tr>
-												<th>Title</th>
-												<th>Date</th>
+												<th>제목</th>
+												<th>작성일</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -136,7 +114,7 @@
 													<tr> 
 														<td>
 															<a href="#" data-bs-toggle="modal" data-bs-target="#notice<%=n.getNoticeNo()%>"><%=n.getNoticeTitle()%></a>
-                                            				<div class="modal fade" id="notice<%=n.getNoticeNo()%>" tabindex="-1" role="dialog"
+	                                           				<div class="modal fade" id="notice<%=n.getNoticeNo()%>" tabindex="-1" role="dialog"
 					                                            aria-labelledby="noticeTitle" aria-hidden="true">
 					                                            <div class="modal-dialog modal-dialog-scrollable" role="document">
 					                                                <div class="modal-content w-100">
@@ -172,6 +150,24 @@
 									</table>
 								</div>
 								<div class="text-end">page : <%=currentPage%> / <%=lastPage%></div>
+								<!-- 공지사항 페이징 -->
+								<div class="text-center">
+									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=1">&lt;&lt;</a>
+									<%
+										if(currentPage >= 1){
+									%>
+											<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
+											<span class="me-2"><%=currentPage%></span>
+									<%		
+										}
+										if(currentPage <= lastPage) {
+									%>
+											<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
+									<%		
+										}
+									%>
+									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
+								</div>
 							</div>
 						</div>
 					</div>

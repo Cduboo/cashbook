@@ -24,7 +24,7 @@
 								</div>
 								<div class="user-img d-flex align-items-center">
 									<div class="avatar avatar-md">
-										<img src="/cashbook/assets/images/faces/1.jpg">	
+										<img src="<%=request.getContextPath()%>/assets/images/faces/1.jpg">	
 									</div>
 								</div>
 							</div>
@@ -32,14 +32,14 @@
 						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
 							<li>
 								<h6 class="dropdown-header">
-									Hello, <%=loginMember.getMemberName()%>!
+									환영합니다. <%=loginMember.getMemberName()%>님!
 								</h6>
 							</li>
-							<li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My Profile</a></li>
+							<li><a class="dropdown-item" href="<%=request.getContextPath()%>/member/updateMemberForm.jsp"><i class="icon-mid bi bi-person me-2"></i>마이페이지</a></li>
 							<li>
 								<hr class="dropdown-divider">
 							</li>
-							<li><a class="dropdown-item" href="<%=request.getContextPath()%>/logOut.jsp"><i class="icon-mid bi bi-box-arrow-left me-2"></i>Logout</a></li>
+							<li><a class="dropdown-item" href="<%=request.getContextPath()%>/logOut.jsp"><i class="icon-mid bi bi-box-arrow-left me-2"></i>로그아웃</a></li>
 						</ul>
 					</div>
 				</div>

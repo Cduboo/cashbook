@@ -37,12 +37,12 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Mypage</h3>
+					<h3>마이페이지</h3>
 				</div>
 				<div class="page-content w-70 container">
 					<section class="card">
 						<div class="card-header">
-							<h4 class="card-title">Edit information</h4>
+							<h4 class="card-title">회원정보 수정</h4>
 						</div>
 						<div class="card-content">
 							<div class="card-body">
@@ -57,25 +57,25 @@
 									<div class="form-body">
 										<div class="row">
 											<div class="col-md-2">
-												<label>ID</label>
+												<label>아이디</label>
 											</div>
 											<div class="col-md-10 form-group">
-												<input type="text" class="form-control" value="<%=loginMember.getMemberId()%>" placeholder="id" readonly="readonly">
+												<input type="text" class="form-control" value="<%=loginMember.getMemberId()%>" placeholder="아이디" readonly="readonly">
 											</div>
 											<div class="col-md-2">
-												<label for="name">NAME</label>
+												<label for="name">이름</label>
 											</div>
 											<div class="col-md-10 form-group">
-												<input type="text" class="form-control" id="name" name="updateName" value="<%=loginMember.getMemberName()%>" placeholder="Name">
+												<input type="text" class="form-control" id="name" name="updateName" value="<%=loginMember.getMemberName()%>" placeholder="이름">
 											</div>
 											<div class="col-md-2">
-												<label for="pw">PASSWORD</label>
+												<label for="pw">비밀번호</label>
 											</div>
 											<div class="col-md-10 form-group">
-												<input type="password" name="currentPw" id="pw" class="form-control" placeholder="Password">
+												<input type="password" name="currentPw" id="pw" class="form-control" placeholder="비밀번호">
 											</div>
 											<div class="d-flex justify-content-end mt-3">
-												<button type="submit" class="btn btn-primary mr-2">Submit</button>
+												<button type="submit" class="btn btn-primary mr-2">수정하기</button>
 											</div>
 										</div>
 									</div>

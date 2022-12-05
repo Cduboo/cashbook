@@ -14,26 +14,68 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>insertCategoryForm</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="../../assets/css/bootstrap.css">
+		<link rel="stylesheet" href="../../assets/vendors/iconly/bold.css">
+		<link rel="stylesheet" href="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+		<link rel="stylesheet" href="../../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+		<link rel="stylesheet" href="../../assets/css/app.css">
+		<link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
 	</head>
 	<body>
-		<!-- header -->
-		<jsp:include page="/inc/header.jsp"></jsp:include>
-		<!-- nav -->	
-		<jsp:include page="/inc/navAdmin.jsp"></jsp:include>
-		<form action="<%=request.getContextPath()%>/admin/category/insertCategoryAction.jsp" method="post">
-			<div>
-				category Kind
-				<input type="radio" name="categoryKind" value="수입"/>수입 
-				<input type="radio" name="categoryKind" value="지출"/>지출
+		<div id="app">
+			<jsp:include page="/inc/header.jsp"></jsp:include>
+			<jsp:include page="/inc/nav.jsp"></jsp:include>
+			<div id="main">
+				<div class="page-heading">
+					<h3>카테고리 관리</h3>
+				</div>
+				<div class="page-content w-70 container">
+					<section class="card">
+						<div class="card-header">
+							<h4 class="card-title">카테고리 등록</h4>
+						</div>
+						<div class="card-content">
+							<div class="card-body">
+								<form class="form form-horizontal px-4" action="<%=request.getContextPath()%>/admin/category/insertCategoryAction.jsp" method="post">
+									<div class="form-body">
+										<div class="row">
+											<div class="col-md-2">
+												<label class="form-check-label" for="kind">분류</label>
+											</div>
+											<div class="col-md-10 form-group mb-4">
+												<input class="form-check-input" type="radio" name="categoryKind" id="kind1" value="수입" checked/>
+												<label class="form-check-label me-2" for="kind1">수입</label>
+												<input class="form-check-input" type="radio" name="categoryKind" id="kind2" value="지출"/>
+												<label class="form-check-label" for="kind2">지출</label>
+											</div>
+											<div class="col-md-2">
+												<label for="name">종류</label>
+											</div>
+											<div class="col-md-10 form-group  mb-4">
+												<input type="text" name="categoryName" id="name" class="form-control" placeholder="종류">
+											</div>
+											<div class="d-flex justify-content-end mt-3">
+												<button type="submit" class="btn btn-primary mr-2">등록하기</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</section>
+				</div>
+				<!-- main end -->
 			</div>
-			<div>
-				category Name
-				<input type="text" name="categoryName"/>
-			</div>
-			<div>
-				<button type="submit">추가</button>
-			</div>
-		</form>
+			<!-- app end -->
+		</div>
+		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
+		<script src="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+		<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+		<script src="../../assets/js/pages/dashboard.js"></script>
+		<script src="../../assets/js/main.js"></script>
 	</body>
 </html>

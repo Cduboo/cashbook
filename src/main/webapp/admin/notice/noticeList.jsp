@@ -39,17 +39,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>noticeList</title>
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../../assets/vendors/iconly/bold.css">
-    <link rel="stylesheet" href="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="../../assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../assets/css/app.css">
-    <link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>noticeList</title>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+	    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+	    <link rel="stylesheet" href="../../assets/vendors/iconly/bold.css">
+	    <link rel="stylesheet" href="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+	    <link rel="stylesheet" href="../../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+	    <link rel="stylesheet" href="../../assets/css/app.css">
+	    <link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
 	</head>
 	<body>
 		<div id="app">
@@ -57,7 +57,7 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Notice Management</h3>
+					<h3>공지사항 관리</h3>
 				</div>
 				<div class="page-content">
 					<section class="row">
@@ -65,35 +65,17 @@
 							<div class="card">
 								<div class="card-header">
 									<h4 class="text-end me-3">
-										<a href="<%=request.getContextPath()%>/admin/notice/insertNoticeForm.jsp">+ Notice</a>
-										<!-- 공지사항 페이징 -->
-										<div class="mt-2">
-											<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=1">&lt;&lt;</a>
-											<%
-												if(currentPage >= 1){
-											%>
-													<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
-													<span class="me-2"><%=currentPage%></span>
-											<%		
-												}
-												if(currentPage <= lastPage) {
-											%>
-													<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
-											<%		
-												}
-											%>
-											<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
-										</div>
+										<a href="<%=request.getContextPath()%>/admin/notice/insertNoticeForm.jsp">+ 공지 등록</a>
 									</h4>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-striped table-hover text-center caption-top" style="table-layout: fixed;">
+										<table class="table table-md table-hover text-center caption-top" style="table-layout: fixed;">
 											<caption>total <%=noticeCount%></caption>
 											<thead>
 												<tr>
-													<th>Title</th>
-													<th>Date</th>
+													<th>제목</th>
+													<th>작성일</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -108,10 +90,8 @@
 						                                            <div class="modal-dialog modal-dialog-scrollable" role="document">
 						                                                <div class="modal-content w-100">
 						                                                    <div class="modal-header">
-						                                                        <h5 class="modal-title" id="noticeTitle">
-						                                                            <%=n.getNoticeTitle()%></h5>
-						                                                        <button type="button" class="close" data-bs-dismiss="modal"
-						                                                            aria-label="Close">
+						                                                        <h5 class="modal-title" id="noticeTitle"><%=n.getNoticeTitle()%></h5>
+						                                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 						                                                            <i data-feather="x"></i>
 						                                                        </button>
 						                                                    </div>
@@ -126,15 +106,15 @@
 																					<input type="hidden" name="noticeMemo" value="<%=n.getNoticeMemo()%>">
 							                                                        <button type="submit" class="btn btn-primary ml-1" formaction="<%=request.getContextPath()%>/admin/notice/updateNoticeForm.jsp">
 							                                                            <i class="bx bx-check d-block d-sm-none"></i>
-							                                                            <span class="d-none d-sm-block">update</span>
+							                                                            <span class="d-none d-sm-block">수정</span>
 							                                                        </button>
 							                                                        <button type="submit" class="btn btn-primary ml-1" formaction="<%=request.getContextPath()%>/admin/notice/deleteNoticeAction.jsp">
 							                                                            <i class="bx bx-check d-block d-sm-none"></i>
-							                                                            <span class="d-none d-sm-block">delete</span>
+							                                                            <span class="d-none d-sm-block">삭제</span>
 							                                                        </button>
 							                                                        <button type="submit" class="btn btn-light-secondary" data-bs-dismiss="modal">
 							                                                            <i class="bx bx-x d-block d-sm-none"></i>
-							                                                            <span class="d-none d-sm-block">Close</span>
+							                                                            <span class="d-none d-sm-block">닫기</span>
 							                                                        </button>
 							                                                    </div>
 						                                                    </form>
@@ -151,6 +131,24 @@
 										</table>
 									</div>
 									<div class="text-end">page : <%=currentPage%> / <%=lastPage%></div>
+									<!-- 공지사항 페이징 -->
+									<div class="mt-2 text-center">
+										<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=1">&lt;&lt;</a>
+										<%
+											if(currentPage >= 1){
+										%>
+												<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
+												<span class="me-2"><%=currentPage%></span>
+										<%		
+											}
+											if(currentPage <= lastPage) {
+										%>
+												<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
+										<%		
+											}
+										%>
+										<a class="me-2" href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
+									</div>
 								</div>
 							</div>
 						</div>

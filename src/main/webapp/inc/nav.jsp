@@ -8,7 +8,7 @@
 		<div class="sidebar-header">
 			<div class="d-flex justify-content-between">
 				<div class="logo">
-					<a href="<%=request.getContextPath()%>/cash/cashList.jsp"><img src="/cashbook/assets/images/logo/logo.png" alt="Logo"></a>
+					<a href="<%=request.getContextPath()%>/cash/cashList.jsp"><img src="<%=request.getContextPath()%>/assets/images/logo/logo.png" alt="Logo"></a>
 				</div>
 				<div class="toggler">
 					<a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -21,7 +21,7 @@
 				<li class="sidebar-item">
 					<a href="<%=request.getContextPath()%>/cash/cashList.jsp" class='sidebar-link'>
 						<i class="far fa-calendar"></i>
-						<span>Account book</span>
+						<span>가계부</span>
 					</a>
 				</li>	
 				<%
@@ -30,17 +30,17 @@
 						<li class="sidebar-item  has-sub">
 							<a href="#" class='sidebar-link'>
 								<i class="fas fa-user-check"></i>
-								<span>Admin</span>
+								<span>관리자페이지</span>
 							</a>
 							<ul class="submenu ">
 								<li class="submenu-item ">
-									<a href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp">Notice management</a>
+									<a href="<%=request.getContextPath()%>/admin/notice/noticeList.jsp">공지사항</a>
 								</li>
 								<li class="submenu-item ">
-									<a href="<%=request.getContextPath()%>/admin/category/categoryList.jsp">Category Management</a>
+									<a href="<%=request.getContextPath()%>/admin/category/categoryList.jsp">카테고리</a>
 								</li>
 								<li class="submenu-item ">
-									<a href="<%=request.getContextPath()%>/admin/member/memberList.jsp">Member management</a>
+									<a href="<%=request.getContextPath()%>/admin/member/memberList.jsp">회원</a>
 								</li>
 							</ul>
 						</li>
@@ -50,17 +50,17 @@
 				<li class="sidebar-item  has-sub">
 					<a href="#" class='sidebar-link'>
 						<i class="fas fa-user"></i>
-						<span>Mypage</span>
+						<span>마이페이지</span>
 					</a>
 					<ul class="submenu ">
 						<li class="submenu-item ">
-							<a href="<%=request.getContextPath()%>/member/updateMemberForm.jsp">Edit information</a>
+							<a href="<%=request.getContextPath()%>/member/updateMemberForm.jsp">회원정보 수정</a>
 						</li>
 						<li class="submenu-item ">
-							<a href="<%=request.getContextPath()%>/member/updateMemberPwForm.jsp">Edit password</a>
+							<a href="<%=request.getContextPath()%>/member/updateMemberPwForm.jsp">비밀번호 변경</a>
 						</li>
 						<li class="submenu-item ">
-							<a href="<%=request.getContextPath()%>/member/deleteMemberForm.jsp">Delete account</a>
+							<a href="<%=request.getContextPath()%>/member/deleteMemberForm.jsp">회원 탈퇴</a>
 						</li>
 					</ul>
 				</li>
@@ -70,7 +70,7 @@
 						<li class="sidebar-item">
 							<a href="<%=request.getContextPath()%>/admin/help/helpList.jsp" class='sidebar-link'>
 								<i class="fas fa-question-circle"></i>
-								<span>Service center</span>
+								<span>1대1 문의</span>
 							</a>
 						</li>
 				<%
@@ -79,7 +79,7 @@
 					<li class="sidebar-item">
 							<a href="<%=request.getContextPath()%>/help/helpList.jsp" class='sidebar-link'>
 								<i class="fas fa-question-circle"></i>
-								<span>Service center</span>
+								<span>1대1 문의</span>
 							</a>
 					</li>
 				<%
@@ -88,7 +88,7 @@
 				<li class="sidebar-item">
 					<a href="<%=request.getContextPath()%>/logOut.jsp" class='sidebar-link'>
 						<i class="fas fa-sign-out-alt"></i>
-						<span>Logout</span>
+						<span>로그아웃</span>
 					</a>
 				</li>
 			</ul>

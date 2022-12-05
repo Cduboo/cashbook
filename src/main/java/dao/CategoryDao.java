@@ -136,7 +136,7 @@ public class CategoryDao {
 		try {
 			dbUtil = new DBUtil();
 			conn = dbUtil.getConnection();
-			String sql = "SELECT category_no categoryNo, category_kind categoryKind, category_name categoryName, updatedate, createdate FROM category";
+			String sql = "SELECT category_no categoryNo, category_kind categoryKind, category_name categoryName, updatedate, createdate FROM category ORDER BY categoryKind";
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			

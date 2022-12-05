@@ -18,7 +18,7 @@
 	
 	CategoryDao categoryDao = new CategoryDao();
 	//해당 카테고리
-	Category category = categoryDao.selectCategoryOne(categoryNo);
+	Category categoryOne = categoryDao.selectCategoryOne(categoryNo);
 	//카테고리 리스트
 	ArrayList<Category> categoryList = categoryDao.selectCategoryList();
 %>
@@ -43,7 +43,7 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Category Management</h3>
+					<h3>카테고리 관리</h3>
 				</div>
 				<div class="page-content">
 					<section class="row">
@@ -51,59 +51,64 @@
 							<div class="card">
 								<div class="card-header">
 									<h4 class="text-end me-3">
-										<a href="<%=request.getContextPath()%>/admin/category/insertCategoryForm.jsp">+ Category</a>
+										<a href="<%=request.getContextPath()%>/admin/category/insertCategoryForm.jsp">+ 카테고리</a>
 									</h4>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-lg" style="table-layout: fixed;">
-											<thead>
-												<tr>
-													<th>번호</th>
-													<th>수입/지출</th>
-													<th>이름</th>
-													<th>마지막 수정 날짜</th>
-													<th>생성 날짜</th>
-													<th>수정</th>
-													<th>삭제</th>
-												</tr>
-											</thead>
-											<tbody>
-												<%
-													for(Category c : categoryList) {
-												%>
-														<form method="post">
-														<%			
-															if(c.getCategoryNo() == category.getCategoryNo()){
-														%>
-																<tr>
-																	<td><%=c.getCategoryNo()%></td>
-																	<td><%=c.getCategoryKind()%></td>
-																	<td><input type="text" name="categoryName" value="<%=c.getCategoryName()%>"></td>
-																	<td><%=c.getUpdatedate()%></td>
-																	<td><%=c.getCreatedate()%></td>
-																	<td><a href="<%=request.getContextPath()%>/admin/category/updateCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</a></td>
-																	<td><a href="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</a></td>
-																</tr>
-														<%			
-															}else {
-														%>
-																<tr>
-																	<td><%=c.getCategoryNo()%></td>
-																	<td><%=c.getCategoryKind()%></td>
-																	<td><%=c.getCategoryName()%></td>
-																	<td><%=c.getUpdatedate()%></td>
-																	<td><%=c.getCreatedate()%></td>
-																	<td><a href="<%=request.getContextPath()%>/admin/category/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</a></td>
-																	<td><a href="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</a></td>
-																</tr>
-														<%										
-																}	
-													}
-														%>
-														</form>
-											</tbody>
-										</table>
+										<form method="post">
+											<table class="table table-lg" style="table-layout: fixed;">
+												<thead>
+													<tr>
+														<th>수입/지출</th>
+														<th>이름</th>
+														<th>마지막 수정 날짜</th>
+														<th>생성 날짜</th>
+														<th>수정</th>
+														<th>삭제</th>
+													</tr>
+												</thead>
+												<tbody>
+													<%
+														for(Category c : categoryList) {
+													%>
+															<%			
+																if(c.getCategoryNo() == categoryOne.getCategoryNo()){
+															%>
+																	<tr>
+																		<td><%=c.getCategoryKind()%></td>
+																		<td><input class="form-control" type="text" name="categoryName" value="<%=c.getCategoryName()%>"></td>
+																		<td><%=c.getUpdatedate()%></td>
+																		<td><%=c.getCreatedate()%></td>
+																		<td>
+																			<button class="btn btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/updateCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</button>
+																		</td>
+																		<td>
+																			<button class="btn btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
+																		</td>
+																	</tr>
+															<%			
+																}else {
+															%>
+																	<tr>
+																		<td><%=c.getCategoryKind()%></td>
+																		<td><%=c.getCategoryName()%></td>
+																		<td><%=c.getUpdatedate()%></td>
+																		<td><%=c.getCreatedate()%></td>
+																		<td>
+																			<button class="btn btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</button>
+																		</td>
+																		<td>
+																			<button class="btn btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
+																		</td>
+																	</tr>
+															<%										
+																	}	
+														}
+															%>
+												</tbody>
+											</table>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -114,51 +119,6 @@
 			</div>
 		<!-- app end -->	
 		</div>
-		<%-- <div>
-			<h1>카테고리 목록</h1>
-			<a href="<%=request.getContextPath()%>/admin/category/insertCategoryForm.jsp">카테고리 추가</a>
-			<div>
-				번호
-				수입/지출
-				이름
-				마지막 수정 날짜
-				생성 날짜
-				수정
-				삭제
-			</div>
-			<%
-				for(Category c : categoryList) {
-			%>
-					<div>
-						<form method="post">
-			<%			
-					if(c.getCategoryNo() == category.getCategoryNo()){
-			%>
-							<%=c.getCategoryNo()%>
-							<%=c.getCategoryKind() %>	
-							<input type="text" name="categoryName" value="<%=c.getCategoryName()%>">
-							<%=c.getUpdatedate()%>
-							<%=c.getCreatedate()%>
-							<button type="submit" formaction="<%=request.getContextPath()%>/admin/category/updateCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</button>
-							<button type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
-			<%			
-					}else {
-			%>							
-							<%=c.getCategoryNo()%>
-							<%=c.getCategoryKind()%>
-							<%=c.getCategoryName()%>
-							<%=c.getUpdatedate()%>
-							<%=c.getCreatedate()%>
-							<button type="submit" formaction="<%=request.getContextPath()%>/admin/category/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</button>
-							<button type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
-			<%										
-					}	
-				}
-			%>
-						</form>
-					</div>
-		</div> --%>
-		
 		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	    <script src="../../assets/js/bootstrap.bundle.min.js"></script>

@@ -41,7 +41,7 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Service center </h3>
+					<h3>1대1 문의</h3>
 				</div>
 				<div class="page-content">
 					<section class="row">
@@ -49,7 +49,7 @@
 							<div class="card">
 								<div class="card-header">
 									<h4 class=" me-3">
-										Q&#38;A
+										문의 사항
 									</h4>
 								</div>
 								<div class="card-body">
@@ -57,10 +57,10 @@
 										<table class="table table-lg" style="table-layout: fixed;">
 											<thead>
 												<tr>
-													<th class="text-center" style="width: 50%">Title</th>
-													<th>Writer</th>
-													<th>Reporting date</th>
-													<th>Answer date</th>
+													<th class="text-center" style="width: 50%">제목</th>
+													<th>작성자</th>
+													<th>작성일</th>
+													<th>답변일</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -68,7 +68,7 @@
 													for(HashMap<String, Object> m : list) {
 												%>
 														<tr>
-															<td><a href="<%=request.getContextPath()%>/admin/help/helpOne.jsp?helpNo=<%=m.get("helpNo")%>"><%=m.get("helpTitle")%></a></td>
+															<td class="text-center"><a href="<%=request.getContextPath()%>/admin/help/helpOne.jsp?helpNo=<%=m.get("helpNo")%>"><%=m.get("helpTitle")%></a></td>
 															<td><%=m.get("memberId")%></td>
 															<td><%=m.get("createdate")%></td>
 															<td>답변일 조인하기</td>

@@ -23,32 +23,32 @@
 			<div class="row h-100">
 				<div class="col-lg-5 col-12">
 					<div id="auth-left">
-						<h1 class="auth-title">Sign Up</h1>
-						<p class="auth-subtitle mb-5">Input your data to register to our website.</p>
+						<h1 class="auth-title">회원가입</h1>
+						<p class="auth-subtitle mb-5">회원가입을 환영합니다!</p>
 						<form action="<%=request.getContextPath()%>/member/insertMemberAction.jsp" method="post">
 							<div class="form-group position-relative has-icon-left mb-4">
-								<input type="text" name="name" class="form-control form-control-xl" placeholder="Username">
+								<input type="text" name="name" class="form-control form-control-xl" placeholder="이름">
 								<div class="form-control-icon">
 									<i class="bi bi-person"></i>
 								</div>
 							</div>
 							<div class="form-group position-relative has-icon-left mb-4">
-								<input type="text" name="id" class="form-control form-control-xl" placeholder="UserId">
+								<input type="text" name="id" class="form-control form-control-xl" placeholder="아이디">
 								<div class="form-control-icon">
 									<i class="bi bi-envelope"></i>
 								</div>
 							</div>
 							<div class="form-group position-relative has-icon-left mb-4">
-								<input type="password" name="pw" class="form-control form-control-xl" placeholder="Password">
+								<input type="password" name="pw" class="form-control form-control-xl" placeholder="비밀번호">
 								<div class="form-control-icon">
 									<i class="bi bi-shield-lock"></i>
 								</div>
 							</div>
-							<button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Sign Up</button>
+							<button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">회원가입</button>
 						</form>
 						<div class="text-center mt-5 text-lg fs-4">
 							<p class='text-gray-600'>
-								Already have an account? <a href="<%=request.getContextPath()%>/loginForm.jsp" class="font-bold">Log in</a>.
+								이미 회원이신가요? <a href="<%=request.getContextPath()%>/loginForm.jsp" class="font-bold">로그인하기</a>
 							</p>
 						</div>
 					</div>

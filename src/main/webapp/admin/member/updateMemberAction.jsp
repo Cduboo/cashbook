@@ -11,19 +11,18 @@
 	}
 	if(request.getParameter("memberLevel") == null || request.getParameter("memberLevel").equals("")
 		|| request.getParameter("memberNo") == null || request.getParameter("memberNo").equals("")) {
-		response.sendRedirect(request.getContextPath()+"/admin/adminMain.jsp");
+		response.sendRedirect(request.getContextPath()+"/admin/memberList.jsp");
 		return;
 	}
 	
 	int memberLevel = Integer.parseInt(request.getParameter("memberLevel"));
 	int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-	
 	Member member = new Member();
 	member.setMemberNo(memberNo);
 	member.setMemberLevel(memberLevel);
 	
 	MemberDao memberDao = new MemberDao();
 	int row = memberDao.updateMemberLevel(member);
-	
+	System.out.println(row);
 	response.sendRedirect(request.getContextPath()+"/admin/member/memberList.jsp");
 %>
