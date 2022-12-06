@@ -70,7 +70,7 @@
 						<li class="sidebar-item">
 							<a href="<%=request.getContextPath()%>/admin/help/helpList.jsp" class='sidebar-link'>
 								<i class="fas fa-question-circle"></i>
-								<span>1대1 문의</span>
+								<span>1:1 문의</span>
 							</a>
 						</li>
 				<%
@@ -79,7 +79,7 @@
 					<li class="sidebar-item">
 							<a href="<%=request.getContextPath()%>/help/helpList.jsp" class='sidebar-link'>
 								<i class="fas fa-question-circle"></i>
-								<span>1대1 문의</span>
+								<span>1:1 문의</span>
 							</a>
 					</li>
 				<%

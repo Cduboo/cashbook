@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.*"%>
 <%@ page import="dao.HelpDao"%>
+<%@ page import="java.net.*"%>
 <%
 	request.setCharacterEncoding("utf-8");	
 
@@ -12,6 +13,7 @@
 	
 	if(request.getParameter("helpMemo") == null || request.getParameter("helpMemo").equals("")
 		|| request.getParameter("helpTitle") == null || request.getParameter("helpTitle").equals("")) {
+		String msg = URLEncoder.encode("입력하지 않은 항목이 있습니다.", "utf-8");
 		response.sendRedirect(request.getContextPath()+"/help/helpList.jsp");
 		return;
 	}

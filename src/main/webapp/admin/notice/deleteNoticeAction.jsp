@@ -10,7 +10,7 @@
 	}
 	
 	if(request.getParameter("noticeNo") == null) {
-		response.sendRedirect(request.getContextPath()+"/admin/adminMain.jsp");
+		response.sendRedirect(request.getContextPath()+"/admin/notice/noticeList.jsp");
 		return;
 	}
 	

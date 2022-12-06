@@ -56,10 +56,10 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>			
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-heading">
-					<h3>공지사항 관리</h3>
-				</div>
-				<div class="page-content">
+				<div class="page-content w-75 m-auto">
+					<div class="page-heading">
+						<h3>공지사항 관리</h3>
+					</div>
 					<section class="row">
 						<div class="col-12">
 							<div class="card">
@@ -88,7 +88,7 @@
 	                                            				<div class="modal fade" id="notice<%=n.getNoticeNo()%>" tabindex="-1" role="dialog"
 						                                            aria-labelledby="noticeTitle" aria-hidden="true">
 						                                            <div class="modal-dialog modal-dialog-scrollable" role="document">
-						                                                <div class="modal-content w-100">
+						                                                <div class="modal-content p-3">
 						                                                    <div class="modal-header">
 						                                                        <h5 class="modal-title" id="noticeTitle"><%=n.getNoticeTitle()%></h5>
 						                                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">

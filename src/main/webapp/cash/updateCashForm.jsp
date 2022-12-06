@@ -24,6 +24,10 @@
 	CategoryDao categoryDao = new CategoryDao();
 	ArrayList<Category> categoryList = categoryDao.selectCategoryList();
 	
+	String msg = null;
+	if(request.getParameter("msg") != null) {
+		msg = request.getParameter("msg");
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -32,13 +36,16 @@
 		<title>updateCashForm</title>
 	</head>
 	<body>
-		<!-- header -->
-		<jsp:include page="/inc/header.jsp"></jsp:include>
-		<!-- nav  -->
-		<jsp:include page="/inc/nav.jsp"></jsp:include>
-			
-		<!-- main -->
+		
 		<h1>가계부 수정</h1>
+		<!-- main -->
+		<%
+			if(msg != null) {
+		%>
+			<div><%=msg%></div>
+		<%		
+			}
+		%>
 		<form action="<%=request.getContextPath()%>/cash/updateCashAction.jsp?cashNo=<%=cashNo%>" method="post">
 			<input type="hidden" name="memberId" value="<%=loginMember.getMemberId()%>">
 			<table border="1">

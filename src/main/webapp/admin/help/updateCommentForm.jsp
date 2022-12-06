@@ -153,6 +153,7 @@
 				</div>
 				<!-- main end -->
 			</div>
+		</div>
 		<!-- app end -->
 		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

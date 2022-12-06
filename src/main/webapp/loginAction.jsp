@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.Member"%>
 <%@ page import="dao.MemberDao"%>
+<%@ page import="java.net.*"%>
 <% 
 	//로그인 유저는 접근 불가
 	if(session.getAttribute("loginMember") != null) {
@@ -11,7 +12,8 @@
 	//아이디 패스워드 빈 값 검사
 	if(request.getParameter("id") == null || request.getParameter("id").equals("")
 		|| request.getParameter("pw") == null || request.getParameter("pw").equals("")){
-		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
+		String msg = URLEncoder.encode("입력하지 않은 항목이 있습니다.", "utf-8");
+		response.sendRedirect(request.getContextPath()+"/loginForm.jsp?msg="+msg);
 		return;
 	}
 	
@@ -24,7 +26,9 @@
 	MemberDao memberDao = new MemberDao();
 	Member resultMember = memberDao.login(paramMember);
 	
-	String redirectUrl = "/loginForm.jsp";
+	//로그인 실패 메세지
+	String msg = URLEncoder.encode("일치하는 계정이 없습니다.", "utf-8");
+	String redirectUrl = "/loginForm.jsp?msg="+msg;
 	
 	//로그인 성공 시
 	if(resultMember != null) {

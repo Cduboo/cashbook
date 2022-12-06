@@ -38,46 +38,46 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
+				<div class="page-content w-50 m-auto">
 				<div class="page-heading">
 					<h3>마이페이지</h3>
 				</div>
-				<div class="page-content w-70 container">
 					<section class="card">
 						<div class="card-header">
 							<h4 class="card-title">비밀번호 변경</h4>
 						</div>
 						<div class="card-content">
 							<div class="card-body">
-								<%
-									if(msg != null) {
-								%>
-									<div><%=msg%></div>
-								<%		
-									}
-								%>
 								<form class="form form-horizontal px-4" action="<%=request.getContextPath()%>/member/updateMemberPwAction.jsp" method="post">
+									<%
+										if(msg != null) {
+									%>
+										<div class="text-danger mb-3"><%=msg%></div>
+									<%		
+										}
+									%>
 									<div class="form-body">
 										<div class="row">
-											<div class="col-md-2">
+											<div class="col-md-3">
 												<label for="currentPw">현재 비밀번호</label>
 											</div>
-											<div class="col-md-10 form-group">
+											<div class="col-md-9 form-group">
 												<input type="password" name="currentPw" id="currentPw" class="form-control" placeholder="현재 비밀번호">
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-3">
 												<label for="newPw">새 비밀번호</label>
 											</div>
-											<div class="col-md-10 form-group">
+											<div class="col-md-9 form-group">
 												<input type="password" name="updatePw" id="newPw" class="form-control" placeholder="새 비밀번호">
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-3">
 												<label for="confirmPw">새 비밀번호 확인</label>
 											</div>
-											<div class="col-md-10 form-group">
+											<div class="col-md-9 form-group">
 												<input type="password" name="updatePwCk" id="confirmPw" class="form-control" placeholder="새 비밀번호 확인">
 											</div>
 											<div class="d-flex justify-content-end mt-3">
-												<button type="submit" class="btn btn-primary mr-2">변경하기</button>
+												<button type="submit" class="btn btn-sm btn-primary mr-2">변경하기</button>
 											</div>
 										</div>
 									</div>

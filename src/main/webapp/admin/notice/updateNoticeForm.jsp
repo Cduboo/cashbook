@@ -10,7 +10,7 @@
 	}
 	
 	if(request.getParameter("noticeNo") == null || request.getParameter("noticeNo").equals("")) {
-		response.sendRedirect(request.getContextPath()+"/admin/adminMain.jsp");
+		response.sendRedirect(request.getContextPath()+"/admin/notice/noticeList.jsp");
 		return;
 	}
 	
@@ -42,10 +42,10 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-heading">
-					<h3>Notice Management</h3>
-				</div>
-				<div class="page-content">
+				<div class="page-content w-75 m-auto">
+					<div class="page-heading">
+						<h3>Notice Management</h3>
+					</div>
 					<section class="card">
 						<div class="card-header">
 							<h4 class="card-title">Notice</h4>

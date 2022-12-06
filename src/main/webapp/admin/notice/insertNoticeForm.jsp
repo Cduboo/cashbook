@@ -30,10 +30,10 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-heading">
-					<h3>공지사항 관리</h3>
-				</div>
-				<div class="page-content">
+				<div class="page-content w-75 m-auto">
+					<div class="page-heading">
+						<h3>공지사항 관리</h3>
+					</div>
 					<section class="card">
 						<div class="card-header">
 							<h4 class="card-title">공지사항 등록</h4>

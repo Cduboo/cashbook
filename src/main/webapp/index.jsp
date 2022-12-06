@@ -90,10 +90,10 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-			<div class="page-heading">
-				<h3>공지사항</h3>
-			</div>
-			<div class="page-content">
+			<div class="page-content container">
+				<div class="page-heading">
+					<h3>공지사항</h3>
+				</div>
 				<section class="row">
 					<div class="col-12">
 						<div class="card">

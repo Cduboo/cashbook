@@ -45,10 +45,10 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-heading">
-					<h3>1대1 문의</h3>
-				</div>
-				<div class="page-content">
+				<div class="page-content w-75 m-auto">
+					<div class="page-heading">
+						<h3>1대1 문의</h3>
+					</div>
 					<section class="card">
 						<div class="card-header">
 							<h4 class="card-title">문의 사항</h4>
@@ -61,7 +61,7 @@
 								<hr>
 								<h6 class="card-subtitle"><%=helpOne.getHelpMemo()%></h6>
 								<div class="d-flex justify-content-end mt-3">
-									<a class="btn btn-primary me-3 mt-5 mb-5" href="<%=request.getContextPath()%>/admin/help/helpList.jsp">목록</a>
+									<a class="btn btn-sm btn-primary me-3 mt-5 mb-5" href="<%=request.getContextPath()%>/admin/help/helpList.jsp">목록</a>
 								</div>
 								<div class="divider mt-5">
                                 	<div class="divider-text">답변 목록</div>

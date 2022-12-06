@@ -11,7 +11,7 @@
 	request.setCharacterEncoding("utf-8");
 	
 	if(request.getParameter("noticeNo") == null || request.getParameter("noticeNo").equals("")) {
-		response.sendRedirect(request.getContextPath()+"/admin/adminMain.jsp");
+		response.sendRedirect(request.getContextPath()+"/admin/notice/noticeList.jsp");
 		return;
 	}
 	

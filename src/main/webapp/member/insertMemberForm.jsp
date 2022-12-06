@@ -5,6 +5,11 @@
 		response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
 		return;
 	}
+
+	String msg = null;
+	if(request.getParameter("msg") != null) {
+		msg = request.getParameter("msg");
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -25,6 +30,13 @@
 					<div id="auth-left">
 						<h1 class="auth-title">회원가입</h1>
 						<p class="auth-subtitle mb-5">회원가입을 환영합니다!</p>
+						<%
+							if(msg != null) {
+						%>
+								<div><%=msg%></div>
+						<%		
+							}
+						%>
 						<form action="<%=request.getContextPath()%>/member/insertMemberAction.jsp" method="post">
 							<div class="form-group position-relative has-icon-left mb-4">
 								<input type="text" name="name" class="form-control form-control-xl" placeholder="이름">

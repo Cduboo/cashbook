@@ -10,7 +10,7 @@
 	}
 	
 	if(request.getParameter("memberNo") == null || request.getParameter("memberNo").equals("")) {
-		response.sendRedirect(request.getContextPath()+"/admin/adminMain.jsp");
+		response.sendRedirect(request.getContextPath()+"/admin/member/memberList.jsp");
 		return;
 	}
 	

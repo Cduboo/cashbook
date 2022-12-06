@@ -5,6 +5,11 @@
 		response.sendRedirect(request.getContextPath() + "/cash/cashList.jsp");
 		return;
 	}
+
+	String msg = null;
+	if(request.getParameter("msg") != null) {
+		msg = request.getParameter("msg");
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -24,7 +29,14 @@
 				<div class="col-lg-5 col-12">
 					<div id="auth-left">
 						<h4 class="auth-title">로그인</h4>
-						<p class="auth-subtitle mb-5">환영합니다!</p>
+						<p class="auth-subtitle mb-3">환영합니다!</p>
+						<%
+							if(msg != null) {
+						%>
+							<div class="text-danger mb-3"><%=msg%></div>
+						<%		
+							}
+						%>
 						<form action="<%=request.getContextPath()%>/loginAction.jsp" method="post">
 							<div class="form-group position-relative has-icon-left mb-4">
 								<input type="text" name="id" class="form-control form-control-xl" placeholder="아이디">

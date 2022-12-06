@@ -1,10 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-//비로그인 유저는 접근 불가
-if (session.getAttribute("loginMember") == null) {
-	response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
-	return;
-}
+	//비로그인 유저는 접근 불가
+	if (session.getAttribute("loginMember") == null) {
+		response.sendRedirect(request.getContextPath() + "/loginForm.jsp");
+		return;
+	}
+
+	String msg = null;
+	if(request.getParameter("msg") != null) {
+		msg = request.getParameter("msg");
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -27,10 +32,10 @@ if (session.getAttribute("loginMember") == null) {
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-heading">
-					<h3>1대1 문의</h3>
-				</div>
-				<div class="page-content">
+				<div class="page-content w-75 m-auto">
+					<div class="page-heading">
+						<h3>1대1 문의</h3>
+					</div>
 					<section class="card">
 						<div class="card-header">
 							<h4 class="card-title">문의 사항</h4>
@@ -38,11 +43,30 @@ if (session.getAttribute("loginMember") == null) {
 						<div class="card-content">
 							<div class="card-body">
 								<form class="form form-horizontal px-4" action="<%=request.getContextPath()%>/help/insertHelpAction.jsp" method="post">
+									<%
+										if(msg != null) {
+									%>
+										<div class="text-danger mb-3"><%=msg%></div>
+									<%		
+										}
+									%>
 									<div class="form-body">
 										<div class="row">
 											<div class="col-md-1">
 												<label for="title">제목</label>
 											</div>
+											<%
+												if(request.getParameter("helpTitle") != null || request.getParameter("helpMemo") != null) {
+											%>
+													<div class="col-md-11 form-group">
+														<input type="text" id="title" name="helpTitle" value="<%=request.getParameter("helpTitle")%>" class="form-control" placeholder="제목">
+													</div>
+													<div class="col-md-12 form-group mt-3">
+														<textarea id="summernote" name="helpMemo"><%=request.getParameter("helpMemo")%></textarea>
+													</div>
+											<%		
+												}
+											%>
 											<div class="col-md-11 form-group">
 												<input type="text" id="title" name="helpTitle" class="form-control" placeholder="제목">
 											</div>

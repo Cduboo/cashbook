@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.net.URLEncoder"%>
 <%@ page import="dao.MemberDao"%>
 <%@ page import="vo.*"%>
+<%@ page import="java.net.*"%>
 <%
 	request.setCharacterEncoding("utf-8");
 
@@ -12,7 +12,8 @@
 	}
 
 	if(request.getParameter("memberPw") == null || request.getParameter("memberPw").equals("")){
-		response.sendRedirect(request.getContextPath()+"/member/deleteMemberForm.jsp");
+		String msg = URLEncoder.encode("비밀번호를 입력해주세요.", "utf-8");
+		response.sendRedirect(request.getContextPath()+"/member/deleteMemberForm.jsp?msg="+msg);
 		return;
 	}
 	

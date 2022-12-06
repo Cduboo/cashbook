@@ -42,10 +42,10 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>			
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-heading">
-					<h3>카테고리 관리</h3>
-				</div>
-				<div class="page-content">
+				<div class="page-content w-75 m-auto">
+					<div class="page-heading">
+						<h3>카테고리 관리</h3>
+					</div>
 					<section class="row">
 						<div class="col-12">
 							<div class="card">
@@ -81,10 +81,10 @@
 																		<td><%=c.getUpdatedate()%></td>
 																		<td><%=c.getCreatedate()%></td>
 																		<td>
-																			<button class="btn btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/updateCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</button>
+																			<button class="btn btn-sm btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/updateCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</button>
 																		</td>
 																		<td>
-																			<button class="btn btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
+																			<button class="btn btn-sm btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
 																		</td>
 																	</tr>
 															<%			
@@ -96,10 +96,10 @@
 																		<td><%=c.getUpdatedate()%></td>
 																		<td><%=c.getCreatedate()%></td>
 																		<td>
-																			<button class="btn btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</button>
+																			<button class="btn btn-sm btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/updateCategoryForm.jsp?categoryNo=<%=c.getCategoryNo()%>">수정</button>
 																		</td>
 																		<td>
-																			<button class="btn btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
+																			<button class="btn btn-sm btn-light-secondary" type="submit" formaction="<%=request.getContextPath()%>/admin/category/deleteCategoryAction.jsp?categoryNo=<%=c.getCategoryNo()%>">삭제</button>
 																		</td>
 																	</tr>
 															<%										

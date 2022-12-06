@@ -37,10 +37,10 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>			
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-heading">
-					<h3>1대1 문의</h3>
-				</div>
-				<div class="page-content">
+				<div class="page-content w-75 m-auto">
+					<div class="page-heading">
+						<h3>1:1 문의</h3>
+					</div>
 					<section class="row">
 						<div class="col-12">
 							<div class="card">
@@ -54,7 +54,7 @@
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-lg" style="table-layout: fixed;">
+										<table class="table table-md" style="table-layout: fixed;">
 											<thead>
 												<tr>
 													<th class="text-center" style="width: 70%">제목</th>
@@ -97,7 +97,7 @@
 			<!-- main end -->
 			</div>
 		<!-- app end -->	
-		</div>
+		</div>	
 		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	    <script src="../assets/js/bootstrap.bundle.min.js"></script>

@@ -77,6 +77,14 @@
 	    <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
 	    <link rel="stylesheet" href="../assets/css/app.css">
 	    <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
+	    <style>
+	    	tr td:nth-child(7n) a{
+				color : blue;
+			}
+	    	tr td:nth-child(7n+1) a{
+				color: #FF7976
+			}
+	    </style>
 	</head>
 	<body>
 		<div id="app">
@@ -138,7 +146,7 @@
 													</div>
 												</div>
 												<div class="col-md-8">
-													<h6 class="text-muted font-semibold">Following</h6>
+													<h6 class="text-muted font-semibold">뭐할까</h6>
 													<h6 class="font-extrabold mb-0">80.000</h6>
 												</div>
 											</div>
@@ -155,7 +163,7 @@
 													</div>
 												</div>
 												<div class="col-md-8">
-													<h6 class="text-muted font-semibold">Saved Post</h6>
+													<h6 class="text-muted font-semibold">모르겠다</h6>
 													<h6 class="font-extrabold mb-0">112</h6>
 												</div>
 											</div>
@@ -167,7 +175,7 @@
 							<div class="row">
 								<div class="col-12">
 									<div class="card">
-										<div class="card-header">
+										<div class="card-header"  style="padding-bottom: 0">
 											<h4 class="text-center">
 												<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&lt;</a>
 												<%=year%>년 <%=month + 1%>월
@@ -179,13 +187,13 @@
 												<table class="table table-lg" style="table-layout: fixed;">
 													<thead>
 														<tr>
-															<th>일</th>
+															<th style="color: #FF7976">일</th>
 															<th>월</th>
 															<th>화</th>
 															<th>수</th>
 															<th>목</th>
 															<th>금</th>
-															<th>토</th>
+															<th class="text-primary">토</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -193,7 +201,7 @@
 															<%
 																for (int i = 1; i <= totalTd; i++) {
 															%>
-																	<td style="vertical-align:top; width: 200px; height: 100px;">
+																	<td style="vertical-align:top; font-size:0.8rem; padding-top: 10px; height: 90px;">
 															<%
 																	int date = i - beginBlank;
 																	if (date > 0 && date <= lastDate) {
@@ -203,17 +211,32 @@
 																	</div>
 																		<div>
 																			<%
+																				long totalIncomDate = 0;
+																				long totalExpenditureDate = 0;
+																				
 																				for (HashMap<String, Object> m : list) {
-																					String cashDate = (String) (m.get("cashDate"));
+																					String cashDate = (String)(m.get("cashDate"));
 																					if (Integer.parseInt(cashDate.substring(8)) == date) {
-																			%>
-																						[<%=(String) (m.get("categoryKind"))%>]
-																						<%=(String) (m.get("categoryName"))%>
-																						<%=(Long) (m.get("cashPrice"))%>원 <br>
-																			<%
+																						if(m.get("categoryKind").equals("지출")){
+																							totalExpenditureDate += (Long)m.get("cashPrice");
+																						}else if(m.get("categoryKind").equals("수입")) {
+																							totalIncomDate += (Long)m.get("cashPrice");				
+																						}
 																					}
 																				}
+																				if(totalExpenditureDate > 0){
 																			%>
+																					<div class="fw-bold">-<%=formatter.format(totalExpenditureDate)%>원</div>																																									
+																			<%																			
+																				}
+																				
+																				if(totalIncomDate > 0){
+																			%>
+																					<div class="fw-bold" style="color: #FFFFFF">+<%=formatter.format(totalIncomDate)%>원</div>	
+																			<%		
+																				}
+																			%>		
+																			
 																		</div> 
 															<%
 																	 }

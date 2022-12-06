@@ -47,10 +47,10 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-heading">
-					<h3>1대1 문의</h3>
-				</div>
 				<div class="page-content">
+					<div class="page-heading">
+						<h3>1대1 문의</h3>
+					</div>
 					<section class="card">
 						<div class="card-header">
 							<h4 class="card-title">문의 사항</h4>

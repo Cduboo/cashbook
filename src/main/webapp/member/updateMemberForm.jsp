@@ -36,24 +36,24 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-heading">
-					<h3>마이페이지</h3>
-				</div>
-				<div class="page-content w-70 container">
+				<div class="page-content w-50 m-auto">
+					<div class="page-heading">
+						<h3>마이페이지</h3>
+					</div>
 					<section class="card">
 						<div class="card-header">
 							<h4 class="card-title">회원정보 수정</h4>
 						</div>
 						<div class="card-content">
 							<div class="card-body">
-								<%
-									if(msg != null) {
-								%>
-									<div><%=msg%></div>
-								<%		
-									}
-								%>
 								<form class="form form-horizontal px-4" action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post">
+									<%
+										if(msg != null) {
+									%>
+										<div class="text-danger mb-3"><%=msg%></div>
+									<%		
+										}
+									%>
 									<div class="form-body">
 										<div class="row">
 											<div class="col-md-2">
@@ -75,7 +75,7 @@
 												<input type="password" name="currentPw" id="pw" class="form-control" placeholder="비밀번호">
 											</div>
 											<div class="d-flex justify-content-end mt-3">
-												<button type="submit" class="btn btn-primary mr-2">수정하기</button>
+												<button type="submit" class="btn btn-sm btn-primary mr-2">수정하기</button>
 											</div>
 										</div>
 									</div>
