@@ -42,14 +42,11 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-content w-75 m-auto">
+				<div class="page-content">
 					<div class="page-heading">
-						<h3>Notice Management</h3>
+						<h3>공지 사항 수정</h3>
 					</div>
-					<section class="card">
-						<div class="card-header">
-							<h4 class="card-title">Notice</h4>
-						</div>
+					<section class="card pt-3">
 						<div class="card-content">
 							<div class="card-body">
 								<form class="form form-horizontal px-4" action="<%=request.getContextPath()%>/admin/notice/updateNoticeAction.jsp" method="post">
@@ -67,7 +64,7 @@
 											</div>
 										</div>
 										<div class="d-flex justify-content-end mt-3">
-											<button type="submit" class="btn btn-primary">Submit</button>
+											<button type="submit" class="btn btn-outline-primary me-1">수정하기</button>
 										</div>
 									</div>
 								</form>

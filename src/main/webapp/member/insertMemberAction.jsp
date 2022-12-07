@@ -25,7 +25,15 @@
 		response.sendRedirect(request.getContextPath()+"/member/insertMemberForm.jsp?msg="+msg);
 		return;
 	}
-	//중복된 아이디가 아니라면
+	
+	//중복된 아이디가 아니라면 회원가입
 	int row = memberDao.insertMember(member);
-	response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
+	//회원가입 실패
+	if(row == 0) {
+		String alert = URLEncoder.encode("회원가입 실패", "utf-8");
+		response.sendRedirect(request.getContextPath()+"/member/insertMember.jsp?alert="+alert);	
+	}
+	//회원가입 성공
+	String alert = URLEncoder.encode("회원가입 성공", "utf-8");
+	response.sendRedirect(request.getContextPath()+"/loginForm.jsp?alert="+alert);
 %>

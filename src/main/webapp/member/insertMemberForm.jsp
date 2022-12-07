@@ -69,6 +69,15 @@
 					<div id="auth-right"></div>
 				</div>
 			</div>
-		</div>			
+		</div>
+		<%
+			if(request.getParameter("alert") != null) {
+		%>
+				<script type="text/javascript">
+					alert("<%=request.getParameter("alert")%>");
+				</script>		
+		<%		
+			}
+		%>
 	</body>
 </html>

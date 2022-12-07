@@ -1,90 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.*"%>
-<%@ page import="dao.NoticeDao"%>
+<%@ page import="dao.*"%>
 <%@ page import="java.util.ArrayList"%>
 <%
-	//로그인 유저는 접근 불가
-	if(session.getAttribute("loginMember") != null) {
-		response.sendRedirect(request.getContextPath()+"/cash/cashList.jsp");
+	//비로그인 유저는 접근 불가
+	if(session.getAttribute("loginMember") == null) {
+		response.sendRedirect(request.getContextPath()+"/loginForm.jsp");
 		return;
 	}
-	Member loginMember = (Member) session.getAttribute("loginMember");
 	
-	//공지 페이징
+	//M
 	int currentPage = 1;
-	int rowPerPage = 10;
-	int noticeCount= 0;
+	int rowPerPage = 5;
+	int noticeCount = 0;
 	int lastPage = 0;
 	
 	NoticeDao noticeDao = new NoticeDao();
-	//전체 회원 수
+	//전체 회원 수 
 	noticeCount = noticeDao.selectNoticeCount();
 	//마지막 페이지
 	lastPage = noticeCount / rowPerPage;
 	if(noticeCount % rowPerPage != 0) {
 		lastPage++;
 	}
-	
+
 	if(request.getParameter("currentPage") != null) {
 		if(!request.getParameter("currentPage").equals("") && Integer.parseInt(request.getParameter("currentPage")) > 1 && Integer.parseInt(request.getParameter("currentPage")) <= lastPage) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 	}
-	int beginRow = (currentPage - 1) * rowPerPage;
+	int beginRow = (currentPage-1) * rowPerPage;
 	
 	ArrayList<Notice> list = noticeDao.selectNoticeListByPage(beginRow, rowPerPage);
+	//V
 %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>index</title>
+		<title>noticeList</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 	    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-	    <link rel="stylesheet" href="assets/css/bootstrap.css">
-	    <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
-	    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-	    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
-	    <link rel="stylesheet" href="assets/css/app.css">
-	    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+	    <link rel="stylesheet" href="../assets/css/bootstrap.css">
+	    <link rel="stylesheet" href="../assets/vendors/iconly/bold.css">
+	    <link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+	    <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
+	    <link rel="stylesheet" href="../assets/css/app.css">
+	    <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
 	</head>
-	
 	<body>
-		<div id="sidebar" class="active">
-			<div class="sidebar-wrapper active">
-				<div class="sidebar-header">
-					<div class="d-flex justify-content-between">
-						<div class="logo">
-							<a href="<%=request.getContextPath()%>/cash/cashList.jsp"><img src="assets/images/logo/logo.png" alt="Logo"></a>
-						</div>
-						<div class="toggler">
-							<a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="sidebar-menu">
-					<ul class="menu">
-						<li class="sidebar-item">
-							<a href="<%=request.getContextPath()%>/index.jsp" class='sidebar-link'>
-								<i class="fas fa-home-lg-alt"></i>
-								<span>홈</span>
-							</a>
-						</li>
-						<li class="sidebar-item">
-							<a href="<%=request.getContextPath()%>/loginForm.jsp" class='sidebar-link'>
-								<i class="fas fa-user"></i>
-								<span>로그인</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<button class="sidebar-toggler btn x">
-					<i data-feather="x"></i>
-				</button>
-			</div>
-		</div>
-		<div id="main">
+		<div id="app">
+			<jsp:include page="/inc/header.jsp"></jsp:include>			
+			<jsp:include page="/inc/nav.jsp"></jsp:include>
+			<div id="main">
 			<header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
                     <i class="bi bi-justify fs-3"></i>
@@ -152,21 +121,21 @@
 								<div class="text-end">page : <%=currentPage%> / <%=lastPage%></div>
 								<!-- 공지사항 페이징 -->
 								<div class="text-center">
-									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=1">&lt;&lt;</a>
+									<a class="me-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=1">&lt;&lt;</a>
 									<%
 										if(currentPage >= 1){
 									%>
-											<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
+											<a class="me-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
 											<span class="me-2"><%=currentPage%></span>
 									<%		
 										}
 										if(currentPage <= lastPage) {
 									%>
-											<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
+											<a class="me-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
 									<%		
 										}
 									%>
-									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
+									<a class="me-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
 								</div>
 							</div>
 						</div>
@@ -174,10 +143,11 @@
 				</section>
 			</div>
 		</div>
-	    <script src="https://kit.fontawesome.com/0917e5f385.js"></script>
-		<script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-	    <script src="assets/js/bootstrap.bundle.min.js"></script>
-	    <script src="assets/js/pages/dashboard.js"></script>
-	    <script src="assets/js/main.js"></script>
+		</div>
+		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
+		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+	    <script src="../assets/js/pages/dashboard.js"></script>
+	    <script src="../assets/js/main.js"></script>
 	</body>
 </html>

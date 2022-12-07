@@ -85,6 +85,18 @@
 				<%
 					}
 				%>
+				<%
+					if(loginMember.getMemberLevel() == 0) {
+				%>
+						<li class="sidebar-item">
+							<a href="<%=request.getContextPath()%>/member/noticeList.jsp" class='sidebar-link'>
+								<i class="fas fa-question-circle"></i>
+								<span>공지 사항</span>
+							</a>
+						</li>
+				<%
+					}
+				%>
 				<li class="sidebar-item">
 					<a href="<%=request.getContextPath()%>/logOut.jsp" class='sidebar-link'>
 						<i class="fas fa-sign-out-alt"></i>

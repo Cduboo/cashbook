@@ -113,7 +113,7 @@
 												</div>
 												<div class="col-md-8">
 													<h6 class="text-muted font-semibold"><%=month+1%>월 수입</h6>
-													<h6 class="font-extrabold mb-0"><%=formatter.format(totalIncome)%></h6>
+													<h6 class="font-extrabold mb-0">+ <%=formatter.format(totalIncome)%></h6>
 												</div>
 											</div>
 										</div>
@@ -130,7 +130,7 @@
 												</div>
 												<div class="col-md-8">
 													<h6 class="text-muted font-semibold"><%=month+1%>월 지출</h6>
-													<h6 class="font-extrabold mb-0"><%=formatter.format(totalExpenditure)%></h6>
+													<h6 class="font-extrabold mb-0">- <%=formatter.format(totalExpenditure)%></h6>
 												</div>
 											</div>
 										</div>
@@ -232,7 +232,7 @@
 																				
 																				if(totalIncomDate > 0){
 																			%>
-																					<div class="fw-bold" style="color: #FFFFFF">+<%=formatter.format(totalIncomDate)%>원</div>	
+																					<div class="fw-bold" style="color: #CE2D59">+<%=formatter.format(totalIncomDate)%>원</div>	
 																			<%		
 																				}
 																			%>		

@@ -47,32 +47,29 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-heading">
-					<h3>Q&#38;A</h3>
+					<h3>문의 사항</h3>
 				</div>
 				<div class="page-content">
-					<section class="card">
-						<div class="card-header">
-							<h4 class="card-title">Question</h4>
-						</div>
+					<section class="card pt-3">
 						<div class="card-content">
 							<div class="card-body">
 								<form class="form form-horizontal px-4" method="post">
 									<div class="form-body">
 										<div class="row">
 											<div class="col-md-1">
-												<label>Title</label>
+												<label>제목</label>
 											</div>
 											<div class="col-md-11 form-group">
 												<input type="text" class="form-control" name="helpTitle" value="<%=helpOne.getHelpTitle()%>" placeholder="Title">
 											</div>
 											<div class="col-md-1">
-												<label>Writer</label>
+												<label>작성자</label>
 											</div>
 											<div class="col-md-11 form-group">
 												<input type="text" class="form-control" value="<%=helpOne.getMemberId()%>" readonly="readonly">
 											</div>
 											<div class="col-md-1">
-												<label>Date</label>
+												<label>작성일</label>
 											</div>
 											<div class="col-md-11 form-group">
 												<input type="text" class="form-control" value="<%=helpOne.getCreatedate()%>" readonly="readonly">
@@ -81,13 +78,13 @@
 												<textarea id="summernote" name="helpMemo"><%=helpOne.getHelpMemo()%></textarea>
 											</div>
 											<div class="d-flex justify-content-end mt-3">
-												<a class="btn btn-outline-primary me-3" href="<%=request.getContextPath()%>/help/helpList.jsp">List</a>
+												<a class="btn btn-outline-primary me-3" href="<%=request.getContextPath()%>/help/helpList.jsp">목록</a>
 												<%
 													for (HashMap<String, Object> map : list) {
 														if (helpNo == (int)map.get("helpNo") && map.get("commentMemo") == null) {
 												%>
-															<button class="btn btn-outline-primary me-3" type="submit" formaction="<%=request.getContextPath()%>/help/updateHelpAction.jsp?helpNo=<%=helpNo%>">Update</button>
-															<button class="btn btn-outline-primary" type="submit" formaction="<%=request.getContextPath()%>/help/deleteHelpAction.jsp?helpNo=<%=helpNo%>">Delete</button>
+															<button class="btn btn-outline-primary me-3" type="submit" formaction="<%=request.getContextPath()%>/help/updateHelpAction.jsp?helpNo=<%=helpNo%>">수정</button>
+															<button class="btn btn-outline-primary" type="submit" formaction="<%=request.getContextPath()%>/help/deleteHelpAction.jsp?helpNo=<%=helpNo%>">삭제</button>
 												<%
 														}
 													}

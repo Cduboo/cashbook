@@ -36,14 +36,11 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-content w-50 m-auto">
+				<div class="page-content w-75 m-auto">
 					<div class="page-heading">
-						<h3>마이페이지</h3>
+						<h3>회원정보 수정</h3>
 					</div>
-					<section class="card">
-						<div class="card-header">
-							<h4 class="card-title">회원정보 수정</h4>
-						</div>
+					<section class="card pt-3">
 						<div class="card-content">
 							<div class="card-body">
 								<form class="form form-horizontal px-4" action="<%=request.getContextPath()%>/member/updateMemberAction.jsp" method="post">
@@ -56,26 +53,41 @@
 									%>
 									<div class="form-body">
 										<div class="row">
-											<div class="col-md-2">
-												<label>아이디</label>
+											<div class="col-12">
+												<div class="form-group has-icon-left">
+													<label for="id">아이디</label>
+													<div class="position-relative mt-1">
+														<input type="text" class="form-control" value="<%=loginMember.getMemberId()%>" placeholder="아이디" id="id">
+														<div class="form-control-icon">
+															<i class="bi bi-person"></i>
+														</div>
+													</div>
+												</div>
 											</div>
-											<div class="col-md-10 form-group">
-												<input type="text" class="form-control" value="<%=loginMember.getMemberId()%>" placeholder="아이디" readonly="readonly">
+											<div class="col-12">
+												<div class="form-group has-icon-left">
+													<label for="name">이름</label>
+													<div class="position-relative mt-1">
+														<input type="text" class="form-control" id="name" name="updateName" value="<%=loginMember.getMemberName()%>" placeholder="이름">
+														<div class="form-control-icon">
+															<i class="bi bi-person"></i>
+														</div>
+													</div>
+												</div>
 											</div>
-											<div class="col-md-2">
-												<label for="name">이름</label>
+											<div class="col-12">
+												<div class="form-group has-icon-left">
+													<label for="pw">비밀번호</label>
+													<div class="position-relative mt-1">
+														<input type="password" name="currentPw" id="pw" class="form-control" placeholder="비밀번호">
+														<div class="form-control-icon">
+															<i class="bi bi-lock"></i>
+														</div>
+													</div>
+												</div>
 											</div>
-											<div class="col-md-10 form-group">
-												<input type="text" class="form-control" id="name" name="updateName" value="<%=loginMember.getMemberName()%>" placeholder="이름">
-											</div>
-											<div class="col-md-2">
-												<label for="pw">비밀번호</label>
-											</div>
-											<div class="col-md-10 form-group">
-												<input type="password" name="currentPw" id="pw" class="form-control" placeholder="비밀번호">
-											</div>
-											<div class="d-flex justify-content-end mt-3">
-												<button type="submit" class="btn btn-sm btn-primary mr-2">수정하기</button>
+											<div class="col-12 d-flex justify-content-end">
+												<button type="submit" class="btn btn-outline-primary me-1 mt-3">수정하기</button>
 											</div>
 										</div>
 									</div>

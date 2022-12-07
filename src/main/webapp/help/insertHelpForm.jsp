@@ -32,14 +32,11 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-content w-75 m-auto">
+				<div class="page-content">
 					<div class="page-heading">
-						<h3>1대1 문의</h3>
+						<h3>문의 사항</h3>
 					</div>
-					<section class="card">
-						<div class="card-header">
-							<h4 class="card-title">문의 사항</h4>
-						</div>
+					<section class="card pt-3">
 						<div class="card-content">
 							<div class="card-body">
 								<form class="form form-horizontal px-4" action="<%=request.getContextPath()%>/help/insertHelpAction.jsp" method="post">
@@ -75,7 +72,7 @@
 											</div>
 										</div>
 										<div class="d-flex justify-content-end mt-3">
-											<button type="submit" class="btn btn-primary">작성하기</button>
+											<button type="submit" class="btn btn-outline-primary">작성하기</button>
 										</div>
 									</div>
 								</form>

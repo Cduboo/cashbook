@@ -57,22 +57,22 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>			
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-content w-75 m-auto">
+				<div class="page-content">
 					<div class="page-heading">
 						<h3>회원 관리</h3>
 					</div>
 					<section class="row">
 						<div class="col-12">
 							<div class="card">
-								<div class="card-header">
+								<div class="card-header pt-0">
 									<!-- <h4 class="text-end me-3">
 										
 									</h4> -->
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-md caption-bottom" style="table-layout: fixed;">
-											<caption class="text-end">total <%=memberCount%></caption>
+										<table class="table table-sm caption-top" style="table-layout: fixed;">
+											<caption>total <%=memberCount%></caption>
 											<thead>
 												<tr>
 													<th>멤버번호</th>

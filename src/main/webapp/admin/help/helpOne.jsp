@@ -45,20 +45,17 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-content w-75 m-auto">
+				<div class="page-content">
 					<div class="page-heading">
-						<h3>1대1 문의</h3>
+						<h3>문의 사항</h3>
 					</div>
-					<section class="card">
-						<div class="card-header">
-							<h4 class="card-title">문의 사항</h4>
-						</div>
+					<section class="card pt-3">
 						<div class="card-content">
 							<div class="card-body">
 								<h4 class="card-title">제목 : <%=helpOne.getHelpTitle()%></h4>
 								<h4 class="card-title">작성자 : <%=helpOne.getMemberId()%></h4>
 								<h4 class="card-title">작성일 : <%=helpOne.getCreatedate()%></h4>
-								<hr>
+								<hr class="mb-4">
 								<h6 class="card-subtitle"><%=helpOne.getHelpMemo()%></h6>
 								<div class="d-flex justify-content-end mt-3">
 									<a class="btn btn-sm btn-primary me-3 mt-5 mb-5" href="<%=request.getContextPath()%>/admin/help/helpList.jsp">목록</a>

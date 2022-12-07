@@ -40,24 +40,21 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>			
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-content w-75 m-auto">
+				<div class="page-content">
 					<div class="page-heading">
-						<h3>1:1 문의</h3>
+						<h3>1:1 문의 목록</h3>
 					</div>
 					<section class="row">
 						<div class="col-12">
 							<div class="card">
 								<div class="card-header">
-									<h4 class="me-3">
-										문의 사항
-									</h4>
 								</div>
 								<div class="card-body">
 									<div class="table-responsive">
 										<table class="table table-md" style="table-layout: fixed;">
 											<thead>
 												<tr>
-													<th class="text-center" style="width: 50%">제목</th>
+													<th class="text-center" style="width: 30%">제목</th>
 													<th>작성자</th>
 													<th>작성일</th>
 													<th>답변일</th>

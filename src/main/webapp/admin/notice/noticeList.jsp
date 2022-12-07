@@ -56,14 +56,14 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>			
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-content w-75 m-auto">
+				<div class="page-content">
 					<div class="page-heading">
 						<h3>공지사항 관리</h3>
 					</div>
 					<section class="row">
 						<div class="col-12">
 							<div class="card">
-								<div class="card-header">
+								<div class="card-header pb-0">
 									<h4 class="text-end me-3">
 										<a href="<%=request.getContextPath()%>/admin/notice/insertNoticeForm.jsp">+ 공지 등록</a>
 									</h4>
