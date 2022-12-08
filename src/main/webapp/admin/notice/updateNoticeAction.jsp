@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.*" %>
 <%@ page import="dao.NoticeDao"%>
+<%@ page import="java.net.*"%>
 <%
 	//관리자가 아닐 경우 접근 불가
 	Member loginMember = (Member)session.getAttribute("loginMember");
@@ -34,5 +35,6 @@
 	NoticeDao noticeDao = new NoticeDao();
 	noticeDao.updateNotice(notice);
 	
-	response.sendRedirect(request.getContextPath()+"/admin/notice/noticeList.jsp");
+	String update = URLEncoder.encode("수정 완료", "utf-8"); 
+	response.sendRedirect(request.getContextPath()+"/admin/notice/noticeList.jsp?update="+update);
 %>

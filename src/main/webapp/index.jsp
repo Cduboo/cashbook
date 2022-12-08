@@ -15,10 +15,15 @@
 	int rowPerPage = 10;
 	int noticeCount= 0;
 	int lastPage = 0;
+	String search = "";
+	
+	if(request.getParameter("search") != null) {
+		search = request.getParameter("search");
+	}
 	
 	NoticeDao noticeDao = new NoticeDao();
 	//전체 회원 수
-	noticeCount = noticeDao.selectNoticeCount();
+	noticeCount = noticeDao.selectNoticeCount(search);
 	//마지막 페이지
 	lastPage = noticeCount / rowPerPage;
 	if(noticeCount % rowPerPage != 0) {
@@ -31,8 +36,9 @@
 		}
 	}
 	int beginRow = (currentPage - 1) * rowPerPage;
+	// startNum = currentPage - (currentPage-1)% 5 --> 첫번째페이지번호 // 1 2 3 4 5 // 6 7 8 9 10 // 11 12 13 14 15
 	
-	ArrayList<Notice> list = noticeDao.selectNoticeListByPage(beginRow, rowPerPage);
+	ArrayList<Notice> list = noticeDao.selectNoticeListByPage(search, beginRow, rowPerPage);
 %>
 <!DOCTYPE html>
 <html>
@@ -98,75 +104,67 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
+								<form class="mb-3" action="<%=request.getContextPath()%>/index.jsp">
+									<input class="form-control" type="text" name="search" placeholder="제목 검색">
+								</form>
 								<div class="table-responsive">
-									<table class="table table-sm table-hover text-center caption-top" style="table-layout: fixed;">
-										<caption>total <%=noticeCount%></caption>
-										<thead>
-											<tr>
-												<th style="width: 60%">제목</th>
-												<th>작성일</th>
-											</tr>
-										</thead>
-										<tbody>
-											<%
-												for(Notice n : list) {
-											%>		
-													<tr> 
+									<div class="accordion" id="accordion">
+										<table class="table table-sm table-hover text-center caption-top" style="table-layout: fixed;">
+											<caption>
+												total
+												<%=noticeCount%></caption>
+											<thead>
+												<tr>
+													<th style="width: 60%">제목</th>
+													<th>작성일</th>
+												</tr>
+											</thead>
+											<tbody>
+												<%
+												for (Notice n : list) {
+												%>
+													<tr>
 														<td>
-															<a href="#" data-bs-toggle="modal" data-bs-target="#notice<%=n.getNoticeNo()%>"><%=n.getNoticeTitle()%></a>
-	                                           				<div class="modal fade" id="notice<%=n.getNoticeNo()%>" tabindex="-1" role="dialog"
-					                                            aria-labelledby="noticeTitle" aria-hidden="true">
-					                                            <div class="modal-dialog modal-dialog-scrollable" role="document">
-					                                                <div class="modal-content w-100">
-					                                                    <div class="modal-header">
-					                                                        <h5 class="modal-title" id="noticeTitle">
-					                                                            <%=n.getNoticeTitle()%></h5>
-					                                                        <button type="button" class="close" data-bs-dismiss="modal"
-					                                                            aria-label="Close">
-					                                                            <i data-feather="x"></i>
-					                                                        </button>
-					                                                    </div>
-					                                                    <div class="modal-body">
-					                                                        <div class="text-end mb-3"><%=n.getCreatedate()%></div>
-					                                                        <p><%=n.getNoticeMemo()%></p>
-					                                                    </div>
-					                                                    <div class="modal-footer">
-					                                                        <button type="button" class="btn btn-light-secondary"
-					                                                            data-bs-dismiss="modal">
-					                                                            <i class="bx bx-x d-block d-sm-none"></i>
-					                                                            <span class="d-none d-sm-block">Close</span>
-					                                                        </button>
-					                                                    </div>
-					                                                </div>
-					                                            </div>
-					                                        </div>
+															<div class="accordion-item">
+																<div class="accordion-header" id="headingOne">
+																	<div class="accordion-button" role="button" data-bs-toggle="collapse" data-bs-target="#notice<%=n.getNoticeNo()%>" aria-expanded="true" aria-controls="collapseOne">
+																		<%=n.getNoticeTitle()%>
+																	</div>
+																</div>
+																<div id="notice<%=n.getNoticeNo()%>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
+																	<div class="accordion-body mt-5 p-3">
+																		<strong><%=n.getNoticeMemo()%></strong>
+																	</div>
+																</div>
+															</div>
 														</td>
 														<td><%=n.getCreatedate()%></td>
 													</tr>
-											<%		
-												}
-											%>
-										</tbody>
-									</table>
+												<%		
+													}
+												%>
+											</tbody>
+										</table>
+									</div>
 								</div>
-								<div class="text-end">page : <%=currentPage%> / <%=lastPage%></div>
+								<div class="text-end">
+									page : <%=currentPage%> / <%=lastPage%></div>
 								<!-- 공지사항 페이징 -->
 								<div class="text-center">
-									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=1">&lt;&lt;</a>
+									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=1&search=<%=search%>">&lt;&lt;</a>
 									<%
 										if(currentPage >= 1){
 									%>
-											<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
-											<span class="me-2"><%=currentPage%></span>
+									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage-1%>&search=<%=search%>">&lt;</a> <span class="me-2"><%=currentPage%></span>
 									<%		
 										}
 										if(currentPage <= lastPage) {
 									%>
-											<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
+									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=currentPage+1%>&search=<%=search%>">&gt;</a>
 									<%		
 										}
 									%>
-									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
+									<a class="me-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=lastPage%>&search=<%=search%>">&gt;&gt;</a>
 								</div>
 							</div>
 						</div>

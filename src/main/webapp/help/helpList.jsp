@@ -64,7 +64,7 @@
 													for(HashMap<String, Object> m : list) {
 												%>
 														<tr>
-															<td class="text-center"><a href="<%=request.getContextPath()%>/help/helpOne.jsp?helpNo=<%=m.get("helpNo")%>"><%=m.get("helpTitle")%></a></td>
+															<td class="text-center"><a class="d-block" href="<%=request.getContextPath()%>/help/helpOne.jsp?helpNo=<%=m.get("helpNo")%>"><%=m.get("helpTitle")%></a></td>
 															<td><%=m.get("helpCreatedate")%></td>
 															<td>
 																<%

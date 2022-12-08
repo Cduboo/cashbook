@@ -91,7 +91,7 @@ public class NoticeDao {
 	}
 	
 	//마지막 페이지 -> 전체 공지 수 구하기
-	public int selectNoticeCount() { 
+	public int selectNoticeCount(String search) { 
 		int count = 0;
 		DBUtil dbUtil = null;
 		Connection conn = null;
@@ -101,8 +101,9 @@ public class NoticeDao {
 		try {
 			dbUtil = new DBUtil();
 			conn = dbUtil.getConnection();
-			String sql = "SELECT COUNT(*) FROM notice";
+			String sql = "SELECT COUNT(*) FROM notice WHERE notice_title LIKE ?";
 			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "%"+ search +"%");
 			rs = stmt.executeQuery();
 			
 			if(rs.next()) {
@@ -122,7 +123,7 @@ public class NoticeDao {
 	}
 	
 	//공지목록
-	public ArrayList<Notice> selectNoticeListByPage(int beginRow, int rowPerPage) {
+	public ArrayList<Notice> selectNoticeListByPage(String search, int beginRow, int rowPerPage) {
 		ArrayList<Notice> list = null;
 		DBUtil dbUtil = null;
 		Connection conn = null;
@@ -133,10 +134,11 @@ public class NoticeDao {
 		try {
 			dbUtil = new DBUtil();
 			conn = dbUtil.getConnection();
-			String sql = "SELECT notice_no noticeNo, notice_title noticeTitle, notice_memo noticeMemo, updatedate, createdate FROM notice ORDER BY createdate desc LIMIT ?, ?";
+			String sql = "SELECT notice_no noticeNo, notice_title noticeTitle, notice_memo noticeMemo, updatedate, createdate FROM notice WHERE notice_title LIKE ? ORDER BY createdate desc LIMIT ?, ?";
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, beginRow);
-			stmt.setInt(2, rowPerPage);
+			stmt.setString(1, "%"+search+"%");
+			stmt.setInt(2, beginRow);
+			stmt.setInt(3, rowPerPage);
 			rs = stmt.executeQuery();
 			
 			list = new ArrayList<>();

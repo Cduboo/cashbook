@@ -20,6 +20,11 @@
 	
 	NoticeDao noticeDao = new NoticeDao();
 	Notice noticeOne = noticeDao.selectNoticeOne(notice);
+	
+	//  수정 시 알림창
+	if(request.getParameter("update") != null) {
+		out.print("<script>alert('"+request.getParameter("update")+"')</script>");
+	}
 %>
 <!DOCTYPE html>
 <html>

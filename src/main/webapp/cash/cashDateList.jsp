@@ -54,8 +54,8 @@
 			<jsp:include page="/inc/header.jsp"></jsp:include>
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
-				<div class="page-content">
-					<section class="card">
+				<div class="page-content row">
+					<section class="card col-7 me-3">
 						<div class="card-content">
 							<div class="card-body">
 								<div class="table-responsive">
@@ -94,9 +94,13 @@
 										</tbody>
 									</table>
 								</div>
-								<div class="divider mt-5 mb-5">
-                                	<div class="divider-text">입력</div>
-                   	  			</div>
+							</div>	
+						</div>
+					</section>
+                   	  			
+     	  			<section class="card col">	
+						<div class="card-content">
+							<div class="card-body">
 								<!-- 입력폼 -->
 								<%
 									if(msg != null) {
@@ -109,10 +113,10 @@
 									<input type="hidden" name="memberId" value="<%=loginMember.getMemberId()%>">
 									<div class="form-body">
 										<div class="row">
-											<div class="col-md-1">
+											<div class="col-md-3">
 												<label>분류/종류</label>
 											</div>
-											<div class="col-md-11 form-group">
+											<div class="col-md-9 form-group">
 												<select class="form-select" name="categoryNo">
 													<%
 														//category 목록 출력
@@ -126,16 +130,16 @@
 													%>
 												</select>
 											</div>
-											<div class="col-md-1">
+											<div class="col-md-3">
 												<label>가격</label>
 											</div>
-											<div class="col-md-11 form-group">
+											<div class="col-md-9 form-group">
 												<input class="form-control" type="number" name="cashPrice">
 											</div>
-											<div class="col-md-1">
+											<div class="col-md-3">
 												<label>날짜</label>
 											</div>
-											<div class="col-md-11 form-group">
+											<div class="col-md-9 form-group">
 												<input type="text" class="form-control" name="cashDate" value="<%=year%>-<%=month%>-<%=date%>" readonly="readonly">
 											</div>
 											<div class="col-md-12 form-group mt-3">
@@ -147,88 +151,12 @@
 										</div>
 									</div>
 								</form>
-							</div>
+							</div>	
 						</div>
 					</section>
 				</div>
 			</div>
 		</div>
-		
-		
-		
-		
-		<%-- <!-- main -->
-		<!-- cash 목록 출력 -->
-		<table border="1">
-			<tr>
-				<td>categoryKind</td>
-				<td>categoryName</td>
-				<td>cashPrice</td>
-				<td>cashMemo</td>
-				<td>수정</td> <!-- /cash/deleteCash.jsp?cashNo=  -->
-				<td>삭제</td> <!-- /cash/updateForm.jsp?cashNo= -->
-			</tr>
-			<%
-				for(HashMap<String, Object> m : cashList) {
-			%>
-					<tr>
-						<td><%=m.get("categoryKind")%></td>
-						<td><%=m.get("categoryName")%></td>
-						<td><%=m.get("cashPrice")%></td>
-						<td><%=m.get("cashMemo")%></td>
-						<td><a href="<%=request.getContextPath()%>/cash/updateCashForm.jsp?cashNo=<%=m.get("cashNo")%>">수정</a></td>
-						<td><a href="<%=request.getContextPath()%>/cash/deleteCashAction.jsp?cashNo=<%=m.get("cashNo")%>">삭제</a></td>
-					</tr>
-			<%			
-				}
-			%>
-		</table>
-		<!-- 입력폼 -->
-		<%
-			if(msg != null) {
-		%>
-			<div><%=msg%></div>
-		<%		
-			}
-		%>
-		<form action="<%=request.getContextPath()%>/cash/insertCashAction.jsp" method="post">
-			<input type="hidden" name="memberId" value="<%=loginMember.getMemberId()%>">
-			<table border="1">
-				<tr>
-					<td>categoryNo</td>
-					<td>
-						<select name="categoryNo">
-							<%
-								//category 목록 출력
-								for(Category c : categoryList) {
-							%>
-									<option value="<%=c.getCategoryNo()%>">
-										<%=c.getCategoryKind() %> <%=c.getCategoryName()%>
-									</option>
-							<%		
-								}
-							%>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>cashPrice</td>
-					<td><input type="number" name="cashPrice"/></td>
-				</tr>
-				<tr>
-					<td>cashDate</td>
-					<td><input type="text" name="cashDate" value="<%=year%>-<%=month%>-<%=date%>" readonly="readonly"></td>					
-				</tr>
-				<tr>
-					<td>cashMemo</td>
-					<td>
-						<textarea rows="3" cols="50" name="cashMemo"></textarea>
-					</td>
-				</tr>
-			</table>	
-			<button type="submit">입력</button>
-		</form> --%>
-		
 		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="../assets/js/pages/dashboard.js"></script>

@@ -84,6 +84,12 @@
 	    	tr td:nth-child(7n+1) a{
 				color: #FF7976
 			}
+			table,tr,td,th {
+				border:1px solid silver; 
+			}
+			td:hover {
+				background-color: #F2F7FF;
+			}
 	    </style>
 	</head>
 	<body>
@@ -184,7 +190,7 @@
 										</div>
 										<div class="card-body">
 											<div class="table-responsive">
-												<table class="table table-lg" style="table-layout: fixed;">
+												<table class="table table-lg mt-3" style="table-layout: fixed;">
 													<thead>
 														<tr>
 															<th style="color: #FF7976">일</th>
@@ -201,13 +207,13 @@
 															<%
 																for (int i = 1; i <= totalTd; i++) {
 															%>
-																	<td style="vertical-align:top; font-size:0.8rem; padding-top: 10px; height: 90px;">
+																	<td style="vertical-align:top; font-size:0.8rem; padding-top: 10px; height: 90px; cursor:pointer;">
 															<%
 																	int date = i - beginBlank;
 																	if (date > 0 && date <= lastDate) {
 															%>
 																	<div>
-																		<a href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month + 1%>&date=<%=date%>"> <%=date%></a>
+																		<a class="d-block" href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month + 1%>&date=<%=date%>"><%=date%></a>
 																	</div>
 																		<div>
 																			<%
