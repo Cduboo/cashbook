@@ -104,8 +104,8 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<form class="mb-3" action="<%=request.getContextPath()%>/index.jsp">
-									<input class="form-control" type="text" name="search" placeholder="제목 검색">
+								<form action="<%=request.getContextPath()%>/index.jsp">
+									<input class="form-control p-2" type="text" name="search" placeholder="제목 검색">
 								</form>
 								<div class="table-responsive">
 									<div class="accordion" id="accordion">

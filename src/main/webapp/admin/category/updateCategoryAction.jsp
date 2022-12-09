@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="vo.*"%>
 <%@ page import="dao.*" %>
-<%@ page import="java.net.*"%>
 <%
  	//관리자가 아닐 경우 접근 불가
 	Member loginMember = (Member)session.getAttribute("loginMember");
@@ -25,8 +24,11 @@
 	category.setCategoryName(categoryName);
 	
 	CategoryDao categoryDao = new CategoryDao();
-	categoryDao.updateCategoryName(category);
+	int row = categoryDao.updateCategoryName(category);
 	
-	String update = URLEncoder.encode("수정 완료", "utf-8"); 
-	response.sendRedirect(request.getContextPath()+"/admin/category/categoryList.jsp?update="+update);
+	if(row == 1) {
+		out.println("<script>alert('수정 완료'); location.href='" + request.getContextPath() + "/admin/category/categoryList.jsp" + "';</script>");
+	} else {
+		out.println("<script>alert('수정 실패'); location.href='" + request.getContextPath() + "/admin/category/categoryList.jsp" + "';</script>");
+	}
 %>

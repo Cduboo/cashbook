@@ -33,25 +33,25 @@
 						<%
 							if(msg != null) {
 						%>
-								<div><%=msg%></div>
+								<div class="text-danger mb-3"><%=msg%></div>
 						<%		
 							}
 						%>
 						<form action="<%=request.getContextPath()%>/member/insertMemberAction.jsp" method="post">
 							<div class="form-group position-relative has-icon-left mb-4">
-								<input type="text" name="name" class="form-control form-control-xl" placeholder="이름">
+								<input type="text" name="name" class="form-control form-control-xl" placeholder="이름" required="required">
 								<div class="form-control-icon">
 									<i class="bi bi-person"></i>
 								</div>
 							</div>
 							<div class="form-group position-relative has-icon-left mb-4">
-								<input type="text" name="id" class="form-control form-control-xl" placeholder="아이디">
+								<input type="text" name="id" class="form-control form-control-xl" placeholder="아이디" required="required">
 								<div class="form-control-icon">
 									<i class="bi bi-envelope"></i>
 								</div>
 							</div>
 							<div class="form-group position-relative has-icon-left mb-4">
-								<input type="password" name="pw" class="form-control form-control-xl" placeholder="비밀번호">
+								<input type="password" name="pw" class="form-control form-control-xl" placeholder="비밀번호" required="required">
 								<div class="form-control-icon">
 									<i class="bi bi-shield-lock"></i>
 								</div>

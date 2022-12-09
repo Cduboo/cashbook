@@ -92,8 +92,8 @@
 																	</h5>
 																	<small>
 																		<%=m.get("createdate")%>
-																		<button class="btn btn-sm btn-primary rounded-pill mx-2" type="submit" formaction="<%=request.getContextPath()%>/admin/help/updateCommentAction.jsp?commentNo=<%=m.get("commentNo")%>&helpNo=<%=helpNo%>">update</button>
-																		<button class="btn btn-sm btn-primary rounded-pill" type="submit" formaction="<%=request.getContextPath()%>/admin/help/deleteCommentAction.jsp?commentNo=<%=m.get("commentNo")%>&helpNo=<%=helpNo%>">delete</button>
+																		<button class="btn btn-sm btn-link mx-2" type="submit" formaction="<%=request.getContextPath()%>/admin/help/updateCommentAction.jsp?commentNo=<%=m.get("commentNo")%>&helpNo=<%=helpNo%>">수정</button>
+																		<button class="btn btn-sm btn-linky" type="submit" formaction="<%=request.getContextPath()%>/admin/help/deleteCommentAction.jsp?commentNo=<%=m.get("commentNo")%>&helpNo=<%=helpNo%>">삭제</button>
 																	</small>
 																</div>
 																<div class="form-floating">

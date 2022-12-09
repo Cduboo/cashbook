@@ -35,7 +35,6 @@
 	
 	//회원리스트
 	ArrayList<Member> list = memberDao.selectMemberListByPage(beginRow, rowPerPage);
-	//V
 %>
 <!DOCTYPE html>
 <html>
@@ -156,78 +155,6 @@
 			</div>
 		<!-- app end -->	
 		</div>
-	<%-- 
-		<div>
-			<h1>회원목록</h1>
-			<!-- 회원목록 페이징 -->
-			<div>
-				<a class="me-2" href="<%=request.getContextPath()%>/admin/member/memberList.jsp?currentPage=1">&lt;&lt;</a>
-				<%
-					if(currentPage >= 1){
-				%>
-						<a class="me-2" href="<%=request.getContextPath()%>/admin/member/memberList.jsp?currentPage=<%=currentPage-1%>">&lt;</a>
-						<span class="me-2"><%=currentPage%></span>
-				<%		
-					}
-					if(currentPage <= lastPage) {
-				%>
-						<a class="me-2" href="<%=request.getContextPath()%>/admin/member/memberList.jsp?currentPage=<%=currentPage+1%>">&gt;</a>
-				<%		
-					}
-				%>
-				<a class="me-2" href="<%=request.getContextPath()%>/admin/member/memberList.jsp?currentPage=<%=lastPage%>">&gt;&gt;</a>
-			</div>
-			<table border="1">
-				<tr>
-					<th>멤버번호</th>
-					<th>아이디</th>
-					<th>권한</th>
-					<th>이름</th>
-					<th>수정일자</th>
-					<th>생성일자</th>
-					<th>권한수정</th>
-					<th>강제탈퇴</th>
-				</tr>
-				<%  
-					for(Member m : list) {
-				%>
-					<form method="post">
-					<tr> 
-						<td><%=m.getMemberNo()%></td>
-						<td><%=m.getMemberId()%></td>
-						<td>
-							<select name="memberLevel">
-							<%
-								if(m.getMemberLevel() == 0) {
-							%>
-									<option value="0" selected="selected">일반회원</option>
-									<option value="1">관리자</option>
-																
-							<%		
-								}else if(m.getMemberLevel() == 1) {
-							%>									
-									<option value="0">일반회원</option>
-									<option value="1" selected="selected">관리자</option>
-							<%		
-								}
-							%>
-							</select>
-						</td>
-						<td><%=m.getMemberName()%></td>
-						<td><%=m.getUpdatedate()%></td>
-						<td><%=m.getCreatedate()%></td>
-						<td>
-							<button type="submit" formaction="<%=request.getContextPath()%>/admin/member/updateMemberAction.jsp?memberNo=<%=m.getMemberNo()%>">수정</button>
-						</td>
-						<td>
-							<button type="submit" formaction="<%=request.getContextPath()%>/admin/member/deleteMemberAction.jsp?memberNo=<%=m.getMemberNo()%>">삭제</button>
-						</td>
-					</tr>
-					</form>
-				<%		
-					}
-				%>
-			</table> --%>
 		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	    <script src="../../assets/js/bootstrap.bundle.min.js"></script>

@@ -14,7 +14,7 @@
 	if(request.getParameter("updateName") == null || request.getParameter("updateName").equals("")
 		|| request.getParameter("currentPw") == null || request.getParameter("currentPw").equals("")){
 		String msg = URLEncoder.encode("수정정보를 입력해주세요.", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?msg="+msg);
+		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?msg1="+msg);
 		return;
 	}
 	
@@ -32,7 +32,7 @@
 	//기존 아이디,이름 비교 -> 변경이 일어나지 않으면 수정 x
 	if(updateMember.getMemberName().equals(loginMember.getMemberName())) {
 		String msg = URLEncoder.encode("기존 정보와 동일합니다.", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?msg="+msg);
+		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?msg1="+msg);
 		return;
 	}
 	
@@ -40,7 +40,7 @@
 	//false : 본인인증(비밀번호) 실패
 	if(! memberDao.selectMemberPwCk(currentMember, updateMember)) {
 		String msg = URLEncoder.encode("비밀번호를 확인해주세요.", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?msg="+msg);
+		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?msg1="+msg);
 		return;
 	}
 	

@@ -54,76 +54,59 @@
 					<section class="card pt-3">
 						<div class="card-content">
 							<div class="card-body">
-								<form class="form form-horizontal px-4">
-									<div class="form-body">
-										<div class="row">
-											<div class="col-md-1">
-												<label>제목</label>
-											</div>
-											<div class="col-md-11 form-group">
-												<input type="text" class="form-control" value="<%=helpOne.getHelpTitle()%>" placeholder="제목" readonly="readonly">
-											</div>
-											<div class="col-md-1">
-												<label>작성자</label>
-											</div>
-											<div class="col-md-11 form-group">
-												<input type="text" class="form-control" value="<%=helpOne.getMemberId()%>" placeholder="작성자" readonly="readonly">
-											</div>
-											<div class="col-md-1">
-												<label>작성일</label>
-											</div>
-											<div class="col-md-11 form-group">
-												<input type="text" class="form-control" value="<%=helpOne.getCreatedate()%>" placeholder="작성일" readonly="readonly">
-											</div>
-											<div class="col-md-12 form-group mt-3">
-												<textarea class="form-control" rows="3" readonly="readonly"><%=helpOne.getHelpMemo()%></textarea>
-											</div>
-											<div class="d-flex justify-content-end mt-3">
-												<a class="btn btn-outline-primary me-3" href="<%=request.getContextPath()%>/help/helpList.jsp">목록</a>
-												<%
-													for (HashMap<String, Object> map : list) {
-														if (helpNo == (int)map.get("helpNo") && map.get("commentMemo") == null) {
-												%>
-															<a class="btn btn-outline-primary me-3" href="<%=request.getContextPath()%>/help/updateHelpForm.jsp?helpNo=<%=helpNo%>">수정</a>
-															<a class="btn btn-outline-primary" href="<%=request.getContextPath()%>/help/deleteHelpAction.jsp?helpNo=<%=helpNo%>">삭제</a>
-												<%
-														}
-													}
-												%>
-											</div>
-										</div>
-									</div>
-								</form>
+								<h4 class="card-title">제목 : <%=helpOne.getHelpTitle()%></h4>
+								<h4 class="card-title">작성자 : <%=helpOne.getMemberId()%></h4>
+								<h4 class="card-title">작성일 : <%=helpOne.getCreatedate()%></h4>
+								<hr class="mb-4">
+								<h6 class="card-subtitle"><%=helpOne.getHelpMemo()%></h6>
+								<div class="d-flex justify-content-end mt-3">
+									<a class="btn btn-sm btn-primary me-3" href="<%=request.getContextPath()%>/help/helpList.jsp">목록</a>
+									<%
+										for (HashMap<String, Object> map : list) {
+											if (helpNo == (int)map.get("helpNo") && map.get("commentMemo") == null) {
+									%>
+												<a class="btn btn-sm btn-primary me-3" href="<%=request.getContextPath()%>/help/updateHelpForm.jsp?helpNo=<%=helpNo%>">수정</a>
+												<a class="btn btn-sm btn-primary" href="<%=request.getContextPath()%>/help/deleteHelpAction.jsp?helpNo=<%=helpNo%>">삭제</a>
+									<%
+											} else if(helpNo == (int)map.get("helpNo") && map.get("commentMemo") != null) {
+									%>												
+												<a class="btn btn-sm btn-primary me-3 disabled">수정</a>
+												<a class="btn btn-sm btn-primary disabled">삭제</a>
+									<%
+											}
+										}
+									%>			
+								</div>
 								<div class="divider mt-5">
                                 	<div class="divider-text">답변 목록</div>
                    	  			</div>
-								<div class="card">
-									<div class="card-content">
-										<div class="card-body">
-											<div class="list-group">
-												<!-- 해당 문의 답변 리스트 -->
-												<%
-													for (HashMap<String, Object> m : commentList) {
-												%>
+								<!-- 해당 문의 답변 리스트 -->
+								<%
+									for (HashMap<String, Object> m : commentList) {
+								%>
+										<div class="card m-0">
+											<div class="card-content">
+												<div class="card-body p-3">
+													<div class="list-group">
 														<div href="#" class="list-group-item list-group-item-action">
 															<div class="d-flex w-100 mb-3 justify-content-between">
-																<h5 class="mb-1 text-primary">
+																<div class="mb-1 text-primary fw-bold">
 																	<div class="avatar avatar-sm me-3">
 																		<img src="<%=request.getContextPath()%>/assets/images/faces/1.jpg" alt="face">
 																	</div>
-																	<%=m.get("memberId")%>
-																</h5>
+																	<%=m.get("memberId")%>1
+																</div>
 																<small><%=m.get("createdate")%></small>
 															</div>
 															<p class="mb-1"><%=m.get("commentMemo")%></p>
 														</div>
-												<%
-													}
-												%>
+													</div>
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>
+								<%
+									}
+								%>
 							</div>
 						</div>
 					</section>

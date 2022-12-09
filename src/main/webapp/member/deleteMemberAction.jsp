@@ -13,7 +13,7 @@
 
 	if(request.getParameter("memberPw") == null || request.getParameter("memberPw").equals("")){
 		String msg = URLEncoder.encode("비밀번호를 입력해주세요.", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/member/deleteMemberForm.jsp?msg="+msg);
+		response.sendRedirect(request.getContextPath()+"/member/deleteMemberForm.jsp?msg3="+msg);
 		return;
 	}
 	
@@ -33,7 +33,7 @@
 	
 	if(row == 0) {
 		String msg = URLEncoder.encode("잘못된 패스워드", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/member/deleteMemberForm.jsp?msg="+msg);
+		response.sendRedirect(request.getContextPath()+"/member/deleteMemberForm.jsp?msg3="+msg);
 		return;
 	}
 	

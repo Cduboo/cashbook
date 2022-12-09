@@ -31,7 +31,11 @@
 	help.setHelpMemo(helpMemo);
 	
 	HelpDao helpDao = new HelpDao();
-	helpDao.updateHelp(help);
+	int row = helpDao.updateHelp(help);
 	
-	response.sendRedirect(request.getContextPath()+"/help/helpList.jsp");
+	if(row == 1) {
+		out.println("<script>alert('수정 완료'); location.href='" + request.getContextPath() + "/help/helpList.jsp" + "';</script>");
+	} else {
+		out.println("<script>alert('수정 실패'); location.href='" + request.getContextPath() + "/help/helpList.jsp" + "';</script>");
+	}
 %>

@@ -31,7 +31,7 @@
 	//회원가입 실패
 	if(row == 0) {
 		String alert = URLEncoder.encode("회원가입 실패", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/member/insertMember.jsp?alert="+alert);	
+		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?alert="+alert);	
 	}
 	//회원가입 성공
 	String alert = URLEncoder.encode("회원가입 성공", "utf-8");

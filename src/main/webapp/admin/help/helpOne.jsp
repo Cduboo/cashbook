@@ -63,22 +63,22 @@
 								<div class="divider mt-5">
                                 	<div class="divider-text">답변 목록</div>
                    	  			</div>
-								<div class="card">
-									<div class="card-content">
-										<div class="card-body">
-											<div class="list-group">
-												<!-- 해당 문의 답변 리스트 -->
-												<%
-													for(HashMap<String, Object> m : list) {
-												%>
+								<!-- 해당 문의 답변 리스트 -->
+								<%
+									for(HashMap<String, Object> m : list) {
+								%>
+										<div class="card m-0">
+											<div class="card-content">
+												<div class="card-body p-3">
+													<div class="list-group">
 														<div class="list-group-item list-group-item-action">
 															<div class="d-flex w-100 mb-3 justify-content-between">
-																<h5 class="mb-1 text-primary">
+																<div class="mb-1 text-primary fw-bold">
 																	<div class="avatar avatar-sm me-3">
 																		<img src="<%=request.getContextPath()%>/assets/images/faces/1.jpg" alt="face">
 																	</div>
 																	<%=m.get("memberId")%>
-																</h5>
+																</div>
 																<small>
 																	<%=m.get("createdate")%>
 																	<a class="mx-2" href="<%=request.getContextPath()%>/admin/help/updateCommentForm.jsp?commentNo=<%=m.get("commentNo")%>&helpNo=<%=helpNo%>">수정</a>
@@ -87,13 +87,13 @@
 															</div>
 															<p class="mb-1"><%=m.get("commentMemo")%></p>
 														</div>
-												<%
-													}
-												%>
+													</div>
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>
+								<%
+									}
+								%>
 								<!-- 답변 입력 -->
 								<div class="card">
 									<div class="card-header">답변 쓰기</div>

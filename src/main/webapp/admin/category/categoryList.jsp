@@ -13,16 +13,6 @@
 	//M
 	CategoryDao categoryDao = new CategoryDao();
 	ArrayList<Category> categoryList = categoryDao.selectCategoryList();
-	
-	// 카테고리 수정 시 알림창
-	if(request.getParameter("update") != null) {		  
-		out.print("<script>alert('"+request.getParameter("update")+"')</script>");
-	}
-	
-	// 카테고리 삭제 시 알림창
-	if(request.getParameter("delete") != null) {
-		out.print("<script>alert('"+request.getParameter("delete")+"')</script>");
-	}
 %>
 <!DOCTYPE html>
 <html>

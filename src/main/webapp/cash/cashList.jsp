@@ -206,46 +206,45 @@
 														<tr>
 															<%
 																for (int i = 1; i <= totalTd; i++) {
-															%>
-																	<td style="vertical-align:top; font-size:0.8rem; padding-top: 10px; height: 90px; cursor:pointer;">
-															<%
 																	int date = i - beginBlank;
-																	if (date > 0 && date <= lastDate) {
 															%>
-																	<div>
-																		<a class="d-block" href="<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month + 1%>&date=<%=date%>"><%=date%></a>
-																	</div>
-																		<div>
-																			<%
-																				long totalIncomDate = 0;
-																				long totalExpenditureDate = 0;
-																				
-																				for (HashMap<String, Object> m : list) {
-																					String cashDate = (String)(m.get("cashDate"));
-																					if (Integer.parseInt(cashDate.substring(8)) == date) {
-																						if(m.get("categoryKind").equals("지출")){
-																							totalExpenditureDate += (Long)m.get("cashPrice");
-																						}else if(m.get("categoryKind").equals("수입")) {
-																							totalIncomDate += (Long)m.get("cashPrice");				
+																	<td style="vertical-align:top; font-size:0.8rem; padding-top: 10px; height: 90px; cursor:pointer;"
+																	 onclick="location.href='<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month + 1%>&date=<%=date%>'">
+															<%
+																		if (date > 0 && date <= lastDate) {
+															%>
+																			<div><%=date%></div>
+																			<div>
+																				<%
+																					long totalIncomDate = 0;
+																					long totalExpenditureDate = 0;
+																					
+																					for (HashMap<String, Object> m : list) {
+																						String cashDate = (String)(m.get("cashDate"));
+																						if (Integer.parseInt(cashDate.substring(8)) == date) {
+																							if(m.get("categoryKind").equals("지출")){
+																								totalExpenditureDate += (Long)m.get("cashPrice");
+																							}else if(m.get("categoryKind").equals("수입")) {
+																								totalIncomDate += (Long)m.get("cashPrice");				
+																							}
 																						}
 																					}
-																				}
-																				if(totalExpenditureDate > 0){
-																			%>
-																					<div class="fw-bold">-<%=formatter.format(totalExpenditureDate)%>원</div>																																									
-																			<%																			
-																				}
+																					if(totalExpenditureDate > 0){
+																				%>
+																						<div class="fw-bold">-<%=formatter.format(totalExpenditureDate)%>원</div>																																									
+																				<%																			
+																					}
+																					
+																					if(totalIncomDate > 0){
+																				%>
+																						<div class="fw-bold" style="color: #CE2D59">+<%=formatter.format(totalIncomDate)%>원</div>	
+																				<%		
+																					}
+																				%>		
 																				
-																				if(totalIncomDate > 0){
-																			%>
-																					<div class="fw-bold" style="color: #CE2D59">+<%=formatter.format(totalIncomDate)%>원</div>	
-																			<%		
-																				}
-																			%>		
-																			
-																		</div> 
+																			</div> 
 															<%
-																	 }
+																		 }
 															%>
 																	</td>
 															<%

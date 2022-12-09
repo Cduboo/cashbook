@@ -15,7 +15,11 @@
 	int helpNo = Integer.parseInt(request.getParameter("helpNo"));
 	
 	HelpDao helpDao = new HelpDao();
-	helpDao.deleteHelp(helpNo);
+	int row = helpDao.deleteHelp(helpNo);
 	
-	response.sendRedirect(request.getContextPath()+"/help/helpList.jsp");
+	if(row == 1) {
+		out.println("<script>alert('삭제 완료'); location.href='" + request.getContextPath() + "/help/helpList.jsp" + "';</script>");
+	} else {
+		out.println("<script>alert('삭제 실패'); location.href='" + request.getContextPath() + "/help/helpList.jsp" + "';</script>");
+	}
 %>

@@ -2,6 +2,7 @@
 <%@ page import="vo.*"%>
 <%@ page import="dao.*"%>
 <%@ page import="java.util.*"%>
+<%@ page import="java.text.*"%>
 <% 
 	//비로그인 유저는 접근 불가
 	if(session.getAttribute("loginMember") == null) {
@@ -29,6 +30,9 @@
 	CashDao cashDao = new CashDao();
 	ArrayList<HashMap<String, Object>> cashList = cashDao.selectCashListByDate(loginMember.getMemberId(), year, month, date);
 	
+	//세자리 콤마
+	DecimalFormat formatter = new DecimalFormat("###,###");
+	
 	String msg = null;
 	if(request.getParameter("msg") != null) {
 		msg = request.getParameter("msg");
@@ -55,7 +59,7 @@
 			<jsp:include page="/inc/nav.jsp"></jsp:include>
 			<div id="main">
 				<div class="page-content row">
-					<section class="card col-7 me-3">
+					<section class="card col-8 me-3">
 						<div class="card-content">
 							<div class="card-body">
 								<div class="table-responsive">
@@ -64,9 +68,9 @@
 											<tr>
 												<th>분류</th>
 												<th>종류</th>
-												<th>가격</th>
-												<th>메모</th>
-												<th>날짜</th>
+												<th style="width:15%">가격</th>
+												<th style="width:30%">메모</th>
+												<th style="width:15%">날짜</th>
 												<th>수정</th>
 												<th>삭제</th>
 											</tr>
@@ -78,7 +82,7 @@
 													<tr>
 														<td><%=m.get("categoryKind")%></td>
 														<td><%=m.get("categoryName")%></td>
-														<td><%=m.get("cashPrice")%></td>
+														<td><%=formatter.format(m.get("cashPrice"))%></td>
 														<td><%=m.get("cashMemo")%></td>
 														<td><%=m.get("cashDate")%></td>
 														<td>
@@ -97,7 +101,6 @@
 							</div>	
 						</div>
 					</section>
-                   	  			
      	  			<section class="card col">	
 						<div class="card-content">
 							<div class="card-body">
@@ -145,8 +148,8 @@
 											<div class="col-md-12 form-group mt-3">
 												<textarea class="form-control" name="cashMemo" rows="3"></textarea>
 											</div>
-											<div class="d-flex justify-content-end mt-3">
-												<button class="btn btn-primary me-3" type="submit">입력하기</button>
+											<div class="d-grid">
+												<button class="btn btn-primary" type="submit">입력하기</button>
 											</div>
 										</div>
 									</div>

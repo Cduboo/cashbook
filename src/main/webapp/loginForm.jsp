@@ -39,7 +39,20 @@
 						%>
 						<form action="<%=request.getContextPath()%>/loginAction.jsp" method="post">
 							<div class="form-group position-relative has-icon-left mb-4">
-								<input type="text" name="id" class="form-control form-control-xl" placeholder="아이디">
+								<%
+									if(msg != null) {
+								%>
+										<input type="text" name="id" class="form-control form-control-xl is-invalid" id="invalid-state" placeholder="아이디">
+										<div class="invalid-feedback">
+											<i class="bx bx-radio-circle"></i>
+										</div>
+								<%
+									}else{
+								%>
+										<input type="text" name="id" class="form-control form-control-xl" placeholder="아이디">
+								<%
+									}
+								%>		
 								<div class="form-control-icon">
 									<i class="bi bi-person"></i>
 								</div>
@@ -64,14 +77,5 @@
 				</div>
 			</div>
 		</div>
-		<%
-			if(request.getParameter("alert") != null) {
-		%>
-				<script type="text/javascript">
-					alert("<%=request.getParameter("alert")%>");
-				</script>		
-		<%		
-			}
-		%>
 	</body>
 </html>

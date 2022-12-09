@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="dao.MemberDao"%>
 <%@ page import="vo.Member"%>
+<%@ page import="java.net.*"%>
 <%
 	//C
 	//관리자가 아닐 경우 접근 불가
@@ -23,6 +24,10 @@
 	
 	MemberDao memberDao = new MemberDao();
 	int row = memberDao.updateMemberLevel(member);
-	System.out.println(row);
-	response.sendRedirect(request.getContextPath()+"/admin/member/memberList.jsp");
+	
+	if(row == 1) {
+		out.println("<script>alert('수정 완료'); location.href='" + request.getContextPath() + "/admin/member/memberList.jsp" + "';</script>");
+	} else {
+		out.println("<script>alert('수정 실패'); location.href='" + request.getContextPath() + "/admin/member/memberList.jsp" + "';</script>");
+	}
 %>
