@@ -265,19 +265,33 @@
 							</div>
 						</div>
 						<div class="col-12 col-lg-3">
-	                        <div class="card">
-	                            <div class="card-body py-4 px-5">
-	                                <div class="d-flex align-items-center">
-	                                    <div class="avatar avatar-xl">
-	                                        <img src="<%=request.getContextPath()%>/assets/images/faces/1.jpg" alt="Face 1">
-	                                    </div>
-	                                    <div class="ms-3 name">
-	                                        <h5 class="font-bold"><%=loginMember.getMemberName()%></h5>
-	                                        <h6 class="text-muted mb-0"><%=loginMember.getMemberId()%></h6>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
+							<a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+		                        <div class="card">
+		                            <div class="card-body py-4 px-5">
+		                                <div class="d-flex align-items-center">
+		                                    <div class="avatar avatar-xl">
+		                                        <img src="<%=request.getContextPath()%>/assets/images/faces/1.jpg" alt="Face 1">
+		                                    </div>
+		                                    <div class="ms-3 name">
+		                                        <h5 class="font-bold"><%=loginMember.getMemberName()%></h5>
+		                                        <h6 class="text-muted mb-0"><%=loginMember.getMemberId()%></h6>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+	                        </a>
+	                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+								<li>
+									<h6 class="dropdown-header">
+										환영합니다. <%=loginMember.getMemberName()%>님!
+									</h6>
+								</li>
+								<li><a class="dropdown-item" href="<%=request.getContextPath()%>/member/updateMemberForm.jsp"><i class="icon-mid bi bi-person me-2"></i>마이페이지</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="<%=request.getContextPath()%>/logOut.jsp"><i class="icon-mid bi bi-box-arrow-left me-2"></i>로그아웃</a></li>
+							</ul>
 	                        <div class="card">
 	                            <div class="card-header">
 	                                <h4>Visitors Profile</h4>
