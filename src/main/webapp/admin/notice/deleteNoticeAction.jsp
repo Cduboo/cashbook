@@ -15,10 +15,13 @@
 	}
 	
 	int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-	Notice notice = new Notice();
-	notice.setNoticeNo(noticeNo);
 	
 	NoticeDao noticeDao = new NoticeDao();
-	noticeDao.deleteNotice(notice);
-	response.sendRedirect(request.getContextPath()+"/admin/notice/noticeList.jsp");
+	int row = noticeDao.deleteNotice(noticeNo);
+	
+	if(row == 1) {
+		out.println("<script>alert('삭제 완료'); location.href='" + request.getContextPath() + "/admin/notice/noticeList.jsp" + "';</script>");
+	} else {
+		out.println("<script>alert('삭제 실패'); location.href='" + request.getContextPath() + "/admin/notice/noticeList.jsp" + "';</script>");
+	}
 %>

@@ -36,7 +36,7 @@ public class NoticeDao {
 	}
 	
 	//공지 삭제
-	public int deleteNotice(Notice notice) {
+	public int deleteNotice(int notice_no) {
 		int row = 0;
 		DBUtil dbUtil = null;
 		Connection conn = null;
@@ -47,7 +47,7 @@ public class NoticeDao {
 			conn = dbUtil.getConnection();
 			String sql = "DELETE FROM notice WHERE notice_no = ?";
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, notice.getNoticeNo());
+			stmt.setInt(1, notice_no);
 			row = stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

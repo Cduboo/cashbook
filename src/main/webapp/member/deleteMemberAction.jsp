@@ -37,5 +37,7 @@
 		return;
 	}
 	
-	response.sendRedirect(request.getContextPath()+"/logOut.jsp");
+	if(row == 1) {
+		out.println("<script>alert('탈퇴 완료'); location.href='" + request.getContextPath() + "/logOut.jsp" + "';</script>");
+	}
 %>

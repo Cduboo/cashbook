@@ -22,7 +22,7 @@
 	String categoryName = request.getParameter("categoryName");
 	category.setCategoryKind(categoryKind);
 	category.setCategoryName(categoryName);
-	System.out.print(categoryKind);
+	
 	CategoryDao categoryDao = new CategoryDao();
 	categoryDao.insertCategory(category);
 	

@@ -48,6 +48,7 @@
 		return;
 	}
 	
-	//비밀번호 수정되면 로그아웃
-	response.sendRedirect(request.getContextPath()+"/logOut.jsp");
+	if(row == 1) {
+		out.println("<script>alert('비밀번호 변경 완료'); location.href='" + request.getContextPath() + "/logOut.jsp" + "';</script>");
+	}
 %>
