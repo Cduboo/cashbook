@@ -13,7 +13,7 @@
 	
 	//M
 	int currentPage = 1;
-	int rowPerPage = 3;
+	int rowPerPage = 5;
 	int memberCount = 0;
 	int lastPage = 0;
 	String search = "";

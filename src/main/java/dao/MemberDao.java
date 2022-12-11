@@ -73,7 +73,7 @@ public class MemberDao {
 	}
 	
 	//관리자 회원리스트
-	public ArrayList<Member> selectMemberListByPage(String select, String search , int beginRow, int rowPerPage) {
+	public ArrayList<Member> selectMemberListByPage(String select, String search, int beginRow, int rowPerPage) {
 		ArrayList<Member> list = null;
 		DBUtil dbUtil = null;
 		Connection conn = null;
@@ -87,9 +87,9 @@ public class MemberDao {
 			String sql = "";
 			
 			if(("").equals(select) || select.equals("memberId")) {
-				sql = "SELECT member_no memberNo, member_id memberId, member_level memberLevel, member_name memberName, updatedate, createdate FROM member WHERE member_id LIKE ? ORDER BY createdate DESC LIMIT ?, ?";
+				sql = "SELECT member_no memberNo, member_id memberId, member_level memberLevel, member_name memberName, updatedate, createdate FROM member WHERE member_id LIKE ? ORDER BY createdate DESC, member_no DESC LIMIT ?, ?";
 			} else if(select.equals("memberName")) {
-				sql = "SELECT member_no memberNo, member_id memberId, member_level memberLevel, member_name memberName, updatedate, createdate FROM member WHERE member_name LIKE ? ORDER BY createdate DESC LIMIT ?, ?";
+				sql = "SELECT member_no memberNo, member_id memberId, member_level memberLevel, member_name memberName, updatedate, createdate FROM member WHERE member_name LIKE ? ORDER BY createdate DESC, member_no DESC LIMIT ?, ?";
 			}
 			
 			stmt = conn.prepareStatement(sql);
@@ -290,7 +290,7 @@ public class MemberDao {
 		try {
 			dbUtil = new DBUtil();
 			conn = dbUtil.getConnection();
-			String sql = "UPDATE member SET member_name= ? WHERE member_id = ? AND member_pw = PASSWORD(?)";
+			String sql = "UPDATE member SET member_name = ?, updatedate = CURDATE() WHERE member_id = ? AND member_pw = PASSWORD(?)";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, updateMember.getMemberName());
 			stmt.setString(2, currentMember.getMemberId());
@@ -319,7 +319,7 @@ public class MemberDao {
 		try {
 			dbUtil = new DBUtil();
 			conn = dbUtil.getConnection();
-			String sql = "UPDATE member SET member_pw = PASSWORD(?) WHERE member_id = ? AND member_pw = PASSWORD(?)";
+			String sql = "UPDATE member SET member_pw = PASSWORD(?), updatedate = CURDATE() WHERE member_id = ? AND member_pw = PASSWORD(?)";
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, updatePw);
 			stmt.setString(2, memberId);
