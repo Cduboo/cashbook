@@ -178,7 +178,7 @@ public class HelpDao {
 		try {
 			dbUtil = new DBUtil();
 			conn = dbUtil.getConnection();
-			String sql = "SELECT help_no helpNo, help_title helpTitle, member_id memberId, createdate FROM help ORDER BY createdate DESC LIMIT ?, ?";
+			String sql = "SELECT h.help_no helpNo, help_title helpTitle, h.member_id memberId, h.createdate helpCreatedate, c.comment_no commentNo, c.createdate commentCreatedate FROM help h LEFT OUTER JOIN comment c ON h.help_no = c.help_no ORDER BY c.createdate IS NULL desc, h.createdate DESC LIMIT ?, ?;";
 			stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, beginRow);
 			stmt.setInt(2, rowPerPage);
@@ -190,7 +190,9 @@ public class HelpDao {
 				m.put("helpNo", rs.getString("helpNo"));
 				m.put("helpTitle", rs.getString("helpTitle"));
 				m.put("memberId", rs.getString("memberId"));
-				m.put("createdate", rs.getString("createdate"));
+				m.put("helpCreatedate", rs.getString("helpCreatedate"));
+				m.put("commentNo", rs.getInt("commentNo"));
+				m.put("commentCreatedate", rs.getString("commentCreatedate"));
 				list.add(m);
 			}
 		} catch (Exception e) {

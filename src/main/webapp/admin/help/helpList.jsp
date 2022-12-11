@@ -67,8 +67,18 @@
 														<tr>
 															<td class="text-center"><a href="<%=request.getContextPath()%>/admin/help/helpOne.jsp?helpNo=<%=m.get("helpNo")%>"><%=m.get("helpTitle")%></a></td>
 															<td><%=m.get("memberId")%></td>
-															<td><%=m.get("createdate")%></td>
-															<td>답변일 조인하기</td>
+															<td><%=m.get("helpCreatedate")%></td>
+															<%
+																if(m.get("commentCreatedate") == null) {
+															%>
+																	<td>답변 전</td>
+															<%		
+																} else {
+															%>
+																	<td><%=m.get("commentCreatedate")%></td>															
+															<%		
+																}
+															%>
 														</tr>
 												<%		
 													}
