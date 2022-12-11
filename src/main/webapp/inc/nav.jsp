@@ -47,11 +47,22 @@
 				<%
 					}
 				%>
-				<li class="sidebar-item">
-					<a href="<%=request.getContextPath()%>/member/updateMemberForm.jsp" class='sidebar-link'>
+				<li class="sidebar-item has-sub">
+					<a href="#" class='sidebar-link'>
 						<i class="fas fa-user"></i>
 						<span>마이페이지</span>
 					</a>
+					<ul class="submenu ">
+						<li class="submenu-item ">
+							<a href="<%=request.getContextPath()%>/member/updateMemberForm.jsp">회원정보 수정</a>
+						</li>
+						<li class="submenu-item ">
+							<a href="<%=request.getContextPath()%>/member/updateMemberPwForm.jsp">비밀번호 변경</a>
+						</li>
+						<li class="submenu-item ">
+							<a href="<%=request.getContextPath()%>/member/deleteMemberForm.jsp">회원 탈퇴</a>
+						</li>
+					</ul>
 				</li>
 				<%
 					if(loginMember.getMemberLevel() > 0) {
