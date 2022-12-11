@@ -207,9 +207,17 @@
 															<%
 																for (int i = 1; i <= totalTd; i++) {
 																	int date = i - beginBlank;
+																	if((date < 1 || date > lastDate)) {
 															%>
-																	<td style="vertical-align:top; font-size:0.8rem; padding-top: 10px; height: 90px; cursor:pointer;"
-																	 onclick="location.href='<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month + 1%>&date=<%=date%>'">
+																		<td></td>
+															<%			
+																	}else {
+															%>
+																		<td style="vertical-align:top; font-size:0.8rem; padding-top: 10px; height: 90px; cursor:pointer;"
+																		 onclick="location.href='<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month + 1%>&date=<%=date%>'">															
+															<%			
+																	}
+															%>
 															<%
 																		if (date > 0 && date <= lastDate) {
 															%>
