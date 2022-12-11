@@ -9,36 +9,43 @@
 		return;
 	}
 	
-	//M
+//공지 페이징
 	int currentPage = 1;
-	int rowPerPage = 5;
-	int noticeCount = 0;
+	int rowPerPage = 10;
+	int noticeCount= 0;
 	int lastPage = 0;
 	String search = "";
+	String select = "";
 	
 	if(request.getParameter("search") != null) {
 		search = request.getParameter("search");
 	}
 	
+	if(request.getParameter("select") != null) {
+		select = request.getParameter("select");
+	}
+	
 	NoticeDao noticeDao = new NoticeDao();
-	//전체 회원 수 
-	noticeCount = noticeDao.selectNoticeCount(search);
+	//전체 회원 수
+	noticeCount = noticeDao.selectNoticeCount(select ,search);
 	//마지막 페이지
 	lastPage = noticeCount / rowPerPage;
 	if(noticeCount % rowPerPage != 0) {
 		lastPage++;
 	}
-
+	
 	if(request.getParameter("currentPage") != null) {
 		if(!request.getParameter("currentPage").equals("") && Integer.parseInt(request.getParameter("currentPage")) > 1 && Integer.parseInt(request.getParameter("currentPage")) <= lastPage) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
 	}
-	int beginRow = (currentPage-1) * rowPerPage;
+	int beginRow = (currentPage - 1) * rowPerPage;
+	int showNum = 10; // 보여줄 페이지 수 
+	//for문 1:1~10, 2:1~10, 3:1~10... 10: 1~10, 11: 11~20, 12:11~20, ...
+	int startNum = currentPage - (currentPage-1) % showNum;
+	int endNum = startNum + showNum;
 	
-	
-	ArrayList<Notice> list = noticeDao.selectNoticeListByPage(search, beginRow, rowPerPage);
-	//V
+	ArrayList<Notice> list = noticeDao.selectNoticeListByPage(select, search, beginRow, rowPerPage);
 %>
 <!DOCTYPE html>
 <html>
@@ -73,12 +80,9 @@
 					<div class="col-12">
 						<div class="card">
 							<div class="card-body">
-								<form class="" action="<%=request.getContextPath()%>/member/noticeList.jsp">
-									<input class="form-control p-2" type="text" name="search" placeholder="제목 검색">
-								</form>
 								<div class="table-responsive">
 									<div class="accordion" id="accordion">
-										<table class="table table-sm table-hover text-center caption-top" style="table-layout: fixed;">
+										<table class="table table-hover text-center caption-top" style="table-layout: fixed;">
 											<caption>
 												total
 												<%=noticeCount%></caption>
@@ -116,25 +120,66 @@
 										</table>
 									</div>
 								</div>
-								<div class="text-end">page : <%=currentPage%> / <%=lastPage%></div>
 								<!-- 공지사항 페이징 -->
-								<div class="text-center">
-									<a class="me-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=1&search=<%=search%>">&lt;&lt;</a>
-									<%
-										if(currentPage >= 1){
-									%>
-											<a class="me-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage-1%>&search=<%=search%>">&lt;</a>
-											<span class="me-2"><%=currentPage%></span>
-									<%		
-										}
-										if(currentPage <= lastPage) {
-									%>
-											<a class="me-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage+1%>&search=<%=search%>">&gt;</a>
-									<%		
-										}
-									%>
-									<a class="me-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=lastPage%>&search=<%=search%>">&gt;&gt;</a>
+								<div class="container">
+									<div class="text-end">
+										page : <%=currentPage%> / <%=lastPage%>
+									</div>
+									<div class="text-center">
+										<a class="p-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=1&select=<%=select%>&search=<%=search%>">&lt;&lt;</a>
+										<%
+											if(lastPage > 10) {
+										%>
+												<a class="p-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage-showNum%>&search=<%=search%>">&lt;</a>									
+										<%		
+											}
+											for(int i=startNum; i<endNum; i++) {
+												if(i <= lastPage) {
+										%>
+													<a class="p-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=i%>&select=<%=select%>&search=<%=search%>"><%=i%></a>									
+										<%												
+												}
+											}
+											if(lastPage > 10) {
+										%>
+												<a class="p-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage+showNum%>&select=<%=select%>&search=<%=search%>">&gt;</a>									
+										<%		
+											}
+										%>
+										<a class="p-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=lastPage%>&select=<%=select%>&search=<%=search%>">&gt;&gt;</a>
+									</div>
+									<div class="mt-3">
+										<form class="d-flex" action="<%=request.getContextPath()%>/member/noticeList.jsp">
+											<select name="select" class="form-select w-25 me-1">
+												<%
+													if(select.equals("") || select.equals("title")) {
+												%>
+														<option value="title">제목</option>
+														<option value="memo">본문</option>
+														<option value="titleMemo">제목+본문</option>
+												<%		
+													}
+													else if(select.equals("memo")) {
+												%>
+														<option value="title">제목</option>
+														<option value="memo" selected="selected">본문</option>
+														<option value="titleMemo">제목+본문</option>
+												<%		
+													} else if(select.equals("titleMemo")) {
+												%>
+														<option value="title">제목</option>
+														<option value="memo">본문</option>
+														<option value="titleMemo" selected="selected">제목+본문</option>
+												<%		
+													}
+												%>
+											</select>
+											<input class="form-control p-2" type="text" name="search" value="<%=search%>" placeholder="검색">
+										</form>
+									</div>
+								<!-- 공지 페이징 끝 -->
 								</div>
+							<!-- card body 끝  -->
 							</div>
 						</div>
 					</div>

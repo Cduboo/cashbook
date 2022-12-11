@@ -36,7 +36,7 @@ public class MemberDao {
 	}
 	
 	//관리자 : 멤버수 
-	public int selectMemberCount() {
+	public int selectMemberCount(String select, String search) {
 		int memberCount = 0;
 		DBUtil dbUtil = null;
 		Connection conn = null;
@@ -46,8 +46,14 @@ public class MemberDao {
 		try {
 			dbUtil = new DBUtil();
 			conn = dbUtil.getConnection();
-			String sql = "SELECT COUNT(*) FROM member";
+			String sql = "";
+			if(("").equals(select) || select.equals("memberId")) {
+				sql = "SELECT COUNT(*) FROM member WHERE member_id LIKE ?";				
+			} else if(select.equals("memberName")) {
+				sql = "SELECT COUNT(*) FROM member WHERE member_name LIKE ?";
+			}
 			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "%" + search + "%");
 			rs = stmt.executeQuery();
 
 			if(rs.next()) {
@@ -67,7 +73,7 @@ public class MemberDao {
 	}
 	
 	//관리자 회원리스트
-	public ArrayList<Member> selectMemberListByPage(int beginRow, int rowPerPage) {
+	public ArrayList<Member> selectMemberListByPage(String select, String search , int beginRow, int rowPerPage) {
 		ArrayList<Member> list = null;
 		DBUtil dbUtil = null;
 		Connection conn = null;
@@ -78,10 +84,18 @@ public class MemberDao {
 		try {
 			dbUtil = new DBUtil();
 			conn = dbUtil.getConnection();
-			String sql = "SELECT member_no memberNo, member_id memberId, member_level memberLevel, member_name memberName, updatedate, createdate FROM member ORDER BY createdate DESC LIMIT ?, ?";
+			String sql = "";
+			
+			if(("").equals(select) || select.equals("memberId")) {
+				sql = "SELECT member_no memberNo, member_id memberId, member_level memberLevel, member_name memberName, updatedate, createdate FROM member WHERE member_id LIKE ? ORDER BY createdate DESC LIMIT ?, ?";
+			} else if(select.equals("memberName")) {
+				sql = "SELECT member_no memberNo, member_id memberId, member_level memberLevel, member_name memberName, updatedate, createdate FROM member WHERE member_name LIKE ? ORDER BY createdate DESC LIMIT ?, ?";
+			}
+			
 			stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, beginRow);
-			stmt.setInt(2, rowPerPage);
+			stmt.setString(1, "%" + search + "%");
+			stmt.setInt(2, beginRow);
+			stmt.setInt(3, rowPerPage);
 			rs = stmt.executeQuery();
 
 			list = new ArrayList<Member>();
