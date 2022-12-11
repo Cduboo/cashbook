@@ -63,16 +63,16 @@
 						<div class="card-content">
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-md" style="table-layout: fixed;">
+									<table class="table " style="table-layout: fixed;">
 										<thead>
 											<tr>
-												<th>분류</th>
-												<th>종류</th>
-												<th style="width:15%">가격</th>
-												<th style="width:30%">메모</th>
-												<th style="width:15%">날짜</th>
-												<th>수정</th>
-												<th>삭제</th>
+												<th style="width: 7%">분류</th>
+												<th style="width: 7%">종류</th>
+												<th style="width: 17%">가격</th>
+												<th>메모</th>
+												<th style="width: 17%">날짜</th>
+												<th style="width: 7%">수정</th>
+												<th style="width: 7%">삭제</th>
 											</tr>
 										</thead>
 										<tbody>

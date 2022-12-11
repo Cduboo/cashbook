@@ -112,12 +112,12 @@
 									<div class="card">
 										<div class="card-body px-3 py-4-5">
 											<div class="row">
-												<div class="col-md-4">
-													<div class="stats-icon purple">
-														<i class="iconly-boldShow"></i>
+												<div class="col-md-2">
+													<div class="stats-icon red">
+														<i class="fas fa-won-sign"></i>
 													</div>
 												</div>
-												<div class="col-md-8">
+												<div class="col-md-10">
 													<h6 class="text-muted font-semibold"><%=month+1%>월 수입</h6>
 													<h6 class="font-extrabold mb-0">+ <%=formatter.format(totalIncome)%></h6>
 												</div>
@@ -129,12 +129,12 @@
 									<div class="card">
 										<div class="card-body px-3 py-4-5">
 											<div class="row">
-												<div class="col-md-4">
-													<div class="stats-icon blue">
-														<i class="iconly-boldProfile"></i>
+												<div class="col-md-2">
+													<div class="stats-icon green">
+														<i class="fas fa-won-sign"></i>
 													</div>
 												</div>
-												<div class="col-md-8">
+												<div class="col-md-10">
 													<h6 class="text-muted font-semibold"><%=month+1%>월 지출</h6>
 													<h6 class="font-extrabold mb-0">- <%=formatter.format(totalExpenditure)%></h6>
 												</div>
