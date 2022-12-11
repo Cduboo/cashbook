@@ -28,12 +28,9 @@
 	
 	//중복된 아이디가 아니라면 회원가입
 	int row = memberDao.insertMember(member);
-	//회원가입 실패
-	if(row == 0) {
-		String alert = URLEncoder.encode("회원가입 실패", "utf-8");
-		response.sendRedirect(request.getContextPath()+"/member/updateMemberForm.jsp?alert="+alert);	
+	if(row == 1) {
+		out.println("<script>alert('회원가입 성공!'); location.href='" + request.getContextPath() + "/loginForm.jsp" + "';</script>");
+	} else {
+		out.println("<script>alert('회원가입 실패'); location.href='" + request.getContextPath() + "/loginForm.jsp" + "';</script>");
 	}
-	//회원가입 성공
-	String alert = URLEncoder.encode("회원가입 성공", "utf-8");
-	response.sendRedirect(request.getContextPath()+"/loginForm.jsp?alert="+alert);
 %>
