@@ -76,13 +76,13 @@
 	    <link rel="stylesheet" href="../assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
 	    <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
 	    <link rel="stylesheet" href="../assets/css/app.css">
-	    <link rel="shortcut icon" href="../assets/images/favicon.svg" type="image/x-icon">
+	    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
 	    <style>
 	    	tr td:nth-child(7n) a{
 				color : blue;
 			}
 	    	tr td:nth-child(7n+1) a{
-				color: #FF7976
+				color: #FF7976;
 			}
 			table,tr,td,th {
 				border:1px solid silver; 
@@ -113,7 +113,7 @@
 										<div class="card-body px-3 py-4-5">
 											<div class="row">
 												<div class="col-md-2">
-													<div class="stats-icon red">
+													<div class="stats-icon purple">
 														<i class="fas fa-won-sign"></i>
 													</div>
 												</div>
@@ -130,7 +130,7 @@
 										<div class="card-body px-3 py-4-5">
 											<div class="row">
 												<div class="col-md-2">
-													<div class="stats-icon green">
+													<div class="stats-icon blue">
 														<i class="fas fa-won-sign"></i>
 													</div>
 												</div>
@@ -183,9 +183,9 @@
 									<div class="card">
 										<div class="card-header"  style="padding-bottom: 0">
 											<h4 class="text-center">
-												<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&lt;</a>
+												<a class="p-3" href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&lt;</a>
 												<%=year%>년 <%=month + 1%>월
-												<a href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month + 1%>">&gt;</a>
+												<a class="p-3" href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month + 1%>">&gt;</a>
 											</h4>
 										</div>
 										<div class="card-body">
@@ -300,26 +300,48 @@
 								</li>
 								<li><a class="dropdown-item" href="<%=request.getContextPath()%>/logOut.jsp"><i class="icon-mid bi bi-box-arrow-left me-2"></i>로그아웃</a></li>
 							</ul>
-	                        <div class="card">
-	                            <div class="card-header">
-	                                <h4>Visitors Profile</h4>
-	                            </div>
-	                            <div class="card-body">
-	                                <div id="chart-visitors-profile"></div>
-	                            </div>
-	                        </div>
-	                    </div>	
+							<div class="card">
+								<div class="card-header">
+									<h4>수입/지출</h4>
+								</div>
+								<div class="card-body">
+									<div id="chart-visitors-profile"></div>
+								</div>
+							</div>
+						</div>	
 					</section>
 				</div>
 				<!-- main end -->
 			</div>
 		<!-- app end -->
 		</div>
+		<script type="text/javascript">
+			let optionsVisitorsProfile  = {
+				series: [<%=totalIncome%>, <%=totalExpenditure%>],
+				labels: ['수입', '지출'],
+				colors: ['#9694FF','#57CAEB'],
+				chart: {
+					type: 'donut',
+					width: '100%',
+					height:'350px'
+				},
+				legend: {
+					position: 'bottom'
+				},
+				plotOptions: {
+					pie: {
+						donut: {
+							size: '30%'
+						}
+					}
+				}
+			}
+		</script>
 		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 	    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-	    <script src="../assets/vendors/apexcharts/apexcharts.js"></script>
-	    <script src="../assets/js/pages/dashboard.js"></script>
+		<script src="../assets/vendors/apexcharts/apexcharts.js"></script>
+		<script src="../assets/js/pages/dashboard.js"></script>
 	    <script src="../assets/js/main.js"></script>
 	</body>
 </html>

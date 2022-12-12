@@ -290,7 +290,7 @@ var ctxBar = document.getElementById("bar").getContext("2d");
 var myBar = new Chart(ctxBar, {
     type: 'bar',
     data: {
-        labels: ["1월지출", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
         datasets: [{
             label: 'Students',
             backgroundColor: [chartColors.grey, chartColors.grey, chartColors.grey, chartColors.grey, chartColors.info, chartColors.blue, chartColors.grey],
