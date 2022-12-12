@@ -105,7 +105,7 @@
 																	</div>
 																</div>
 																<div id="notice<%=n.getNoticeNo()%>" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
-																	<div class="accordion-body mt-5 p-3">
+																	<div class="accordion-body p-3">
 																		<strong><%=n.getNoticeMemo()%></strong>
 																	</div>
 																</div>
@@ -125,29 +125,55 @@
 									<div class="text-end">
 										page : <%=currentPage%> / <%=lastPage%>
 									</div>
-									<div class="text-center">
-										<a class="p-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=1&select=<%=select%>&search=<%=search%>">&lt;&lt;</a>
+									<ul class="pagination pagination-primary justify-content-center">
+										<li class="page-item">
+											<a class="p-2 page-link" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=1&select=<%=select%>&search=<%=search%>">
+												<span aria-hidden="true"><i class="bi bi-chevron-double-left"></i></span>
+											</a>
+										</li>
 										<%
 											if(lastPage > 10) {
 										%>
-												<a class="p-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage-showNum%>&search=<%=search%>">&lt;</a>									
+											<li class="page-item">
+												<a class="p-2 page-link" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage-showNum%>&search=<%=search%>">
+													<span aria-hidden="true"><i class="bi bi-chevron-left"></i></span>
+												</a>	
+											</li>								
 										<%		
 											}
 											for(int i=startNum; i<endNum; i++) {
 												if(i <= lastPage) {
+													if(currentPage == i){
 										%>
-													<a class="p-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=i%>&select=<%=select%>&search=<%=search%>"><%=i%></a>									
-										<%												
+														<li class="page-item active">
+															<a class="p-2 page-link" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=i%>&select=<%=select%>&search=<%=search%>"><%=i%></a>
+														</li>																			
+										<%				
+													}else{
+										%>
+														<li class="page-item">
+															<a class="p-2 page-link" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=i%>&select=<%=select%>&search=<%=search%>"><%=i%></a>
+														</li>
+										<%				
+													}											
 												}
 											}
 											if(lastPage > 10) {
 										%>
-												<a class="p-2" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage+showNum%>&select=<%=select%>&search=<%=search%>">&gt;</a>									
+												<li class="page-item">
+													<a class="p-2 page-link" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=currentPage+showNum%>&select=<%=select%>&search=<%=search%>">
+														<span aria-hidden="true"><i class="bi bi-chevron-right"></i></span>
+													</a>
+												</li>									
 										<%		
 											}
 										%>
-										<a class="p-2" href="<%=request.getContextPath()%>/index.jsp?currentPage=<%=lastPage%>&select=<%=select%>&search=<%=search%>">&gt;&gt;</a>
-									</div>
+										<li class="page-item">
+											<a class="p-2 page-link" href="<%=request.getContextPath()%>/member/noticeList.jsp?currentPage=<%=lastPage%>&select=<%=select%>&search=<%=search%>">
+												<span aria-hidden="true"><i class="bi bi-chevron-double-right"></i></span>
+											</a>
+										</li>
+									</ul>
 									<div class="mt-3">
 										<form class="d-flex" action="<%=request.getContextPath()%>/member/noticeList.jsp">
 											<select name="select" class="form-select w-25 me-1">
