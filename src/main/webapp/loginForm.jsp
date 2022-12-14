@@ -67,9 +67,9 @@
 							<button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">로그인</button>
 						</form>
 						<div class="text-center mt-5 text-lg fs-4">
-							<p class="text-gray-600">
+							<h5 class="text-gray-600">
 								회원이 아니신가요? <a href="<%=request.getContextPath()%>/member/insertMemberForm.jsp" class="font-bold">회원가입</a>
-							</p>
+							</h5>
 						</div>
 					</div>
 				</div>

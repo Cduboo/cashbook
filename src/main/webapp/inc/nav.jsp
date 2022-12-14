@@ -24,6 +24,12 @@
 						<span>가계부</span>
 					</a>
 				</li>	
+				<li class="sidebar-item">
+					<a href="<%=request.getContextPath()%>/member/memberMain.jsp" class='sidebar-link'>
+						<i class="fa-sharp fa-solid fa-chart-simple"></i>
+						<span>통계</span>
+					</a>
+				</li>
 				<%
 					if (loginMember.getMemberLevel() > 0) {
 				%>	

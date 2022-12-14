@@ -6,6 +6,57 @@ import java.util.*;
 import java.sql.*;
 
 public class CashDao {
+	
+	//회원의 년도(페이징) 월별(수입/지출) 합/평균
+	public ArrayList<HashMap<String, Object>> selectIncomExpenditureSumAvgByMonth(String memberId, int year) {
+		ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+		DBUtil dbUtil = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT MONTH(t2.cashDate) month, COUNT(incomeCash) incomeCount, COUNT(expenditureCash) expenditureCount, IFNULL(SUM(incomeCash),0) incomeSum, IFNULL(ROUND(AVG(incomeCash)),0) incomeAvg, IFNULL(SUM(expenditureCash),0) expenditureSum, IFNULL(ROUND(AVG(expenditureCash)),0) expenditureAvg "
+				+ "FROM "
+				+ "(SELECT memberId, cashNo, cashDate, IF(categoryKind = '수입', cashPrice, NULL) incomeCash, IF(categoryKind = '지출', cashPrice, NULL) expenditureCash "
+				+ "FROM "
+				+ "(SELECT cs.cash_no cashNo, cs.cash_date cashDate, cs.cash_price cashPrice, cg.category_kind categoryKind, cs.member_id memberId "
+				+ "FROM cash cs "
+				+ "INNER JOIN category cg ON cs.category_no = cg.category_no) t) t2 "
+				+ "WHERE t2.memberId = ? AND YEAR(t2.cashDate) = "+ year +" " 
+				+ "GROUP BY MONTH(t2.cashDate) "
+				+ "ORDER BY MONTH(t2.cashDate)";
+		
+		try {
+			dbUtil = new DBUtil();
+			conn = dbUtil.getConnection();
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, memberId);
+			stmt.setInt(2, year);
+			rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				HashMap<String, Object> m = new HashMap<>();
+				m.put("month", rs.getInt("month"));
+				m.put("incomeCount", rs.getInt("incomeCount"));
+				m.put("expenditureCount", rs.getInt("expenditureCount"));
+				m.put("incomeSum", rs.getInt("incomeSum"));
+				m.put("incomeAvg", rs.getInt("incomeAvg"));
+				m.put("expenditureSum", rs.getInt("expenditureSum"));
+				m.put("expenditureAvg", rs.getInt("expenditureAvg"));
+				list.add(m);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				dbUtil.close(rs, stmt, conn);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
+	}
+	
 	//회원의 해당 년월 총 지출
 	public int selectExpenditureByMonth(String memberId, int year, int month) {
 		int totalExpenditure = 0;

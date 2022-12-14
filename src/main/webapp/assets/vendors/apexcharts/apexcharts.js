@@ -13042,7 +13042,7 @@
 
         switch (palette) {
           case 'palette1':
-            this.colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0'];
+            this.colors = ['#9694FF', '#57CAEB', '#FEB019', '#FF4560', '#775DD0'];
             break;
 
           case 'palette2':

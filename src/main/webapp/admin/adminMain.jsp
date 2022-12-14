@@ -68,7 +68,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>cashList</title>
+		<title>adminMain</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 	    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 	    <link rel="stylesheet" href="../assets/css/bootstrap.css">
@@ -77,20 +77,6 @@
 	    <link rel="stylesheet" href="../assets/vendors/bootstrap-icons/bootstrap-icons.css">
 	    <link rel="stylesheet" href="../assets/css/app.css">
 	    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/x-icon">
-	    <style>
-	    	tr td:nth-child(7n) div span {
-				color : #435EBE;
-			}
-	    	tr td:nth-child(7n+1) div span {
-				color: #FF7976;
-			}
-			table,tr,td,th {
-				border:1px solid silver; 
-			}
-			td:hover {
-				background-color: #F2F7FF;
-			}
-	    </style>
 	</head>
 	<body>
 		<div id="app">
@@ -101,137 +87,20 @@
 						<i class="bi bi-justify fs-3"></i>
 					</a>
 				</header>
+				<div class="page-heading">
+					<h3>관리자</h3>
+				</div>
 				<div class="page-content">
 					<section class="row">
 						<div class="col-12 col-lg-9">
 							<div class="row">
-								<div class="col-6 col-lg-6 col-md-6">
-									<div class="card">
-										<div class="card-body px-3 py-4-5">
-											<div class="row">
-												<div class="col-md-3">
-													<div class="stats-icon" style="background-color: #9694FF">
-														<i class="fas fa-won-sign"></i>
-													</div>
-												</div>
-												<div class="col-md-9">
-													<h6 class="text-muted font-semibold"><%=month+1%>월 수입</h6>
-													<h6 class="font-extrabold mb-0">+ <%=formatter.format(totalIncome)%></h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-6 col-lg-6 col-md-6">
-									<div class="card">
-										<div class="card-body px-3 py-4-5">
-											<div class="row">
-												<div class="col-md-3">
-													<div class="stats-icon" style="background-color: #57CAEB">
-														<i class="fas fa-won-sign"></i>
-													</div>
-												</div>
-												<div class="col-md-9">
-													<h6 class="text-muted font-semibold"><%=month+1%>월 지출</h6>
-													<h6 class="font-extrabold mb-0">- <%=formatter.format(totalExpenditure)%></h6>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- 달력 -->
-							<div class="row">
 								<div class="col-12">
 									<div class="card">
-										<div class="card-header"  style="padding-bottom: 0">
-											<h4 class="text-center">
-												<a class="p-3" href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month-1%>">&lt;</a>
-												<%=year%>년 <%=month + 1%>월
-												<a class="p-3" href="<%=request.getContextPath()%>/cash/cashList.jsp?year=<%=year%>&month=<%=month + 1%>">&gt;</a>
-											</h4>
+										<div class="card-header">
+											<h4>2022(변수) 가입자 수 통계</h4>
 										</div>
 										<div class="card-body">
-											<div class="table-responsive">
-												<table class="table mt-3" style="table-layout: fixed;">
-													<thead>
-														<tr>
-															<th style="color: #FF7976">일</th>
-															<th>월</th>
-															<th>화</th>
-															<th>수</th>
-															<th>목</th>
-															<th>금</th>
-															<th class="text-primary">토</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<%
-																for (int i = 1; i <= totalTd; i++) {
-																	int date = i - beginBlank;
-																	if((date < 1 || date > lastDate)) {
-															%>
-																		<td></td>
-															<%			
-																	}else {
-															%>
-																		<td style="vertical-align:top; font-size:0.8rem; padding-top: 10px; height: 90px; cursor:pointer;"
-																		 onclick="location.href='<%=request.getContextPath()%>/cash/cashDateList.jsp?year=<%=year%>&month=<%=month + 1%>&date=<%=date%>'">															
-															<%			
-																	}
-															%>
-															<%
-																		if (date > 0 && date <= lastDate) {
-															%>
-																			<div>
-																				<span><%=date%></span>
-																			</div>
-																			<div>
-																				<%
-																					long totalIncomDate = 0;
-																					long totalExpenditureDate = 0;
-																					
-																					for (HashMap<String, Object> m : list) {
-																						String cashDate = (String)(m.get("cashDate"));
-																						if (Integer.parseInt(cashDate.substring(8)) == date) {
-																							if(m.get("categoryKind").equals("지출")){
-																								totalExpenditureDate += (Long)m.get("cashPrice");
-																							}else if(m.get("categoryKind").equals("수입")) {
-																								totalIncomDate += (Long)m.get("cashPrice");				
-																							}
-																						}
-																					}
-																					if(totalExpenditureDate > 0){
-																				%>
-																						<div class="fw-bold text-truncate">-<%=formatter.format(totalExpenditureDate)%></div>																																									
-																				<%																			
-																					}
-																					
-																					if(totalIncomDate > 0){
-																				%>
-																						<div class="fw-bold text-truncate" style="color: #CE2D59">+<%=formatter.format(totalIncomDate)%></div>	
-																				<%		
-																					}
-																				%>		
-																				
-																			</div> 
-															<%
-																		 }
-															%>
-																	</td>
-															<%
-																	if (i % 7 == 0 && i != totalTd) {
-															%>
-																		</tr><tr><!-- td7개 만들고 테이블 줄 바꿈 -->
-															<%
-																	}
-																}
-															%>
-														</tr>
-													</tbody>
-												</table>
-											</div>
+											<div id="chart-profile-visit"></div>
 										</div>
 									</div>
 								</div>
@@ -240,7 +109,7 @@
 						<div class="col-12 col-lg-3">
 							<a href="#" data-bs-toggle="dropdown" aria-expanded="false">
 		                        <div class="card">
-		                            <div class="card-body">
+		                            <div class="card-body py-4 px-5">
 		                                <div class="d-flex align-items-center">
 		                                    <div class="avatar avatar-xl">
 		                                        <img src="<%=request.getContextPath()%>/assets/images/faces/1.jpg" alt="Face 1">
@@ -265,14 +134,6 @@
 								</li>
 								<li><a class="dropdown-item" href="<%=request.getContextPath()%>/logOut.jsp"><i class="icon-mid bi bi-box-arrow-left me-2"></i>로그아웃</a></li>
 							</ul>
-							<div class="card">
-								<div class="card-header">
-									<h4>월 수입/지출</h4>
-								</div>
-								<div class="card-body">
-									<div id="chart-cash-profile"></div>
-								</div>
-							</div>
 						</div>	
 					</section>
 				</div>
@@ -281,14 +142,14 @@
 		<!-- app end -->
 		</div>
 		<script type="text/javascript">
-			let optionsCashProfile = {
+			let optionsVisitorsProfile  = {
 				series: [<%=totalIncome%>, <%=totalExpenditure%>],
 				labels: ['수입', '지출'],
 				colors: ['#9694FF','#57CAEB'],
 				chart: {
 					type: 'donut',
 					width: '100%',
-					height:'300px'
+					height:'350px'
 				},
 				legend: {
 					position: 'bottom'
@@ -300,6 +161,31 @@
 						}
 					}
 				}
+			}
+			var optionsProfileVisit = {
+				annotations: {
+					position: 'back'
+				},
+				dataLabels: {
+					enabled:false
+				},
+				chart: {
+					type: 'bar',
+					height: 300
+				},
+				fill: {
+					opacity:1
+				},
+				plotOptions: {
+				},
+				series: [{
+					name: 'sales',
+					data: [9,20,30,20,10,20,30,20,10,20,30,20]
+				}],
+				colors: '#435ebe',
+				xaxis: {
+					categories: ["1월","2월","3월","4월","5월","6월","7월", "8월","9월","10월","11월","12월"],
+				},
 			}
 		</script>
 		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
