@@ -117,6 +117,7 @@
 												<div class="col-md-9">
 													<h6 class="text-muted font-semibold"><%=month+1%>월 수입</h6>
 													<h6 class="font-extrabold mb-0">+ <%=formatter.format(totalIncome)%></h6>
+													<input id="totalIncome" type="hidden" value="<%=totalIncome%>"/>
 												</div>
 											</div>
 										</div>
@@ -134,6 +135,7 @@
 												<div class="col-md-9">
 													<h6 class="text-muted font-semibold"><%=month+1%>월 지출</h6>
 													<h6 class="font-extrabold mb-0">- <%=formatter.format(totalExpenditure)%></h6>
+													<input id="totalExpenditure" type="hidden" value="<%=totalExpenditure%>"/>
 												</div>
 											</div>
 										</div>
@@ -280,9 +282,12 @@
 			</div>
 		<!-- app end -->
 		</div>
-		<script type="text/javascript">
+		<script>
+			let totalIncome = parseInt(document.querySelector('#totalIncome').value);
+			let totalExpenditure = parseInt(document.querySelector('#totalExpenditure').value);
+			
 			let optionsCashProfile = {
-				series: [<%=totalIncome%>, <%=totalExpenditure%>],
+				series: [totalIncome, totalExpenditure],
 				labels: ['수입', '지출'],
 				colors: ['#9694FF','#57CAEB'],
 				chart: {

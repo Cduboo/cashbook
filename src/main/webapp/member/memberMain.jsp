@@ -246,7 +246,7 @@
 			</div>
 		<!-- app end -->
 		</div>
-		<script type="text/javascript">
+		<script>
 			var barOptions = {
 			  series: [
 			    {
@@ -331,26 +331,6 @@
 					}
 				}
 			}
-			<%-- let optionsCategoryProfile  = {
-					series: [<%=incomeSumByYear/12%>, <%=expenditureSumByYear/12%>],
-					labels: ['평균 수입', '평균 지출'],
-					colors: ['#9694FF','#57CAEB'],
-					chart: {
-						type: 'donut',
-						width: '100%',
-						height:'200px'
-					},
-					legend: {
-						position: 'bottom'
-					},
-					plotOptions: {
-						pie: {
-							donut: {
-								size: '30%'
-							}
-						}
-					}
-				} --%>
 		</script>
 		<script src="https://kit.fontawesome.com/0917e5f385.js"></script>
 		<script src="../assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

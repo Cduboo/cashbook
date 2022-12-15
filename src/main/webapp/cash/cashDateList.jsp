@@ -111,7 +111,7 @@
 								<%
 									if(msg != null) {
 								%>
-									<div><%=msg%></div>
+									<div class="text-danger mb-3"><%=msg%></div>
 								<%		
 									}
 								%>
