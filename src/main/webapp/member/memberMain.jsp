@@ -247,7 +247,7 @@
 		<!-- app end -->
 		</div>
 		<script>
-			var barOptions = {
+			var barOptions = { 
 			  series: [
 			    {
 			      name: "수입",
@@ -301,14 +301,14 @@
 				for(HashMap<String, Object> m : monthList) {
 			%>			
 					for(var i=1; i<=12; i++) {
-						if(i == <%=m.get("month")%>) {
+						if(i == <%=m.get("month")%>) { // 해당 월의 맞는 총 수입/지출
 							barOptions.series[0].data[i-1] = <%=m.get("incomeSum")%>
 							barOptions.series[1].data[i-1] = <%=m.get("expenditureSum")%> 
 						}	
 					}	
 						
 			<%			
-					}
+				}
 			%>
 		    
 			let optionsCashProfile = {
