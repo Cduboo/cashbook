@@ -43,14 +43,14 @@
 								<%
 									if(msg != null) {
 								%>
-										<input type="text" name="id" class="form-control form-control-xl is-invalid" id="invalid-state" placeholder="아이디">
+										<input type="text" name="id" class="form-control form-control-xl is-invalid" value="goodee" id="invalid-state" placeholder="아이디">
 										<div class="invalid-feedback">
 											<i class="bx bx-radio-circle"></i>
 										</div>
 								<%
 									}else{
 								%>
-										<input type="text" name="id" class="form-control form-control-xl" placeholder="아이디">
+										<input type="text" name="id" class="form-control form-control-xl" value="goodee" placeholder="아이디">
 								<%
 									}
 								%>		
@@ -59,7 +59,7 @@
 								</div>
 							</div>
 							<div class="form-group position-relative has-icon-left mb-4">
-								<input type="password" name="pw" class="form-control form-control-xl" placeholder="비밀번호">
+								<input type="password" name="pw" class="form-control form-control-xl" value="1234" placeholder="비밀번호">
 								<div class="form-control-icon">
 									<i class="bi bi-shield-lock"></i>
 								</div>
@@ -74,7 +74,9 @@
 					</div>
 				</div>
 				<div class="col-lg-7 d-none d-lg-block">
-					<div id="auth-right"></div>
+					<div id="auth-right" style="color: black;">
+						<mark>관리자 ID: admin PW: 1234 </mark>
+					</div>
 				</div>
 			</div>
 		</div>

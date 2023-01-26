@@ -61,7 +61,7 @@
 						</form>
 						<div class="text-center mt-5 text-lg fs-4">
 							<p class='text-gray-600'>
-								이미 회원이신가요? <a href="<%=request.getContextPath()%>/loginForm.jsp" class="font-bold">로그인하기</a>
+								이미 회원이신가요? <a href="<%=request.getContextPath()%>/loginForm.jsp" class="font-bold">로그인</a>
 							</p>
 						</div>
 					</div>
