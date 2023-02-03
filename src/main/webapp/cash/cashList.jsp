@@ -105,7 +105,7 @@
 					<section class="row">
 						<div class="col-12 col-lg-9">
 							<div class="row">
-								<div class="col-6 col-lg-6 col-md-6">
+								<div class="col-4 col-lg-4 col-md-4">
 									<div class="card">
 										<div class="card-body px-3 py-4-5">
 											<div class="row">
@@ -123,7 +123,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-6 col-lg-6 col-md-6">
+								<div class="col-4 col-lg-4 col-md-4">
 									<div class="card">
 										<div class="card-body px-3 py-4-5">
 											<div class="row">
@@ -136,6 +136,24 @@
 													<h6 class="text-muted font-semibold"><%=month+1%>월 지출</h6>
 													<h6 class="font-extrabold mb-0">- <%=formatter.format(totalExpenditure)%></h6>
 													<input id="totalExpenditure" type="hidden" value="<%=totalExpenditure%>"/>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-4 col-lg-4 col-md-4">
+									<div class="card">
+										<div class="card-body px-3 py-4-5">
+											<div class="row">
+												<div class="col-md-3">
+													<div class="stats-icon" style="background-color: #FF7976">
+														<i class="fas fa-won-sign"></i>
+													</div>
+												</div>
+												<div class="col-md-9">
+													<h6 class="text-muted font-semibold"><%=month+1%>월 저축 금액</h6>
+													<h6 class="font-extrabold mb-0">- <%=formatter.format(totalExpenditure)%></h6>
+													<input id="totalExpenditure" type="hidden" value="<%=totalIncome - totalExpenditure%>"/>
 												</div>
 											</div>
 										</div>

@@ -33,7 +33,7 @@
 	//로그인 성공 시
 	if(resultMember != null) {
 		session.setAttribute("loginMember", resultMember);
-		redirectUrl = "/cash/cashList.jsp";
+		redirectUrl = "/member/memberMain.jsp";
 	}
 	
 	response.sendRedirect(request.getContextPath()+redirectUrl);
